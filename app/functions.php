@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
+function redirect(string $path)
+{
+    header("Location: {$path}");
+    exit;
+}
+
 /* 
 Here's something to start your career as a hotel manager.
 
@@ -18,14 +26,14 @@ function connect(string $dbName): object
 
     // Open the database file and catch the exception if it fails.
     try {
-        $db = new PDO($db);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $database = new PDO($db);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo "Failed to connect to the database";
         throw $e;
     }
-    return $db;
+    return $database;
 }
 
 function guidv4(string $data = null): string
