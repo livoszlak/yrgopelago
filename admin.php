@@ -1,12 +1,10 @@
-<?php require __DIR__ . '/app/autoload.php'; ?>
-<?php require __DIR__ . '/views/header.php'; ?>
-
+<?php require __DIR__ . '/app/autoload.php';
+require __DIR__ . '/views/header.php';
+require __DIR__ . '/views/navigation.php'; ?>
 <article>
-    <h1><?php echo $config['title']; ?></h1>
-    <p>This is the home page.</p>
-
+    <h1>Admin page</h1>
     <?php if (isset($_SESSION['user'])) : ?>
-        <p>Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
+        <p>Welcome, <?php echo $_SESSION['user']; ?>!</p>
     <?php endif; ?>
 </article>
 

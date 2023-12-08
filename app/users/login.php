@@ -3,37 +3,34 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
-// Check if both email and password exists in the POST request.
-if (isset($_POST['email'], $_POST['password'])) {
-    $email = trim($_POST['email']);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+$dotenv->load();
 
-    // Prepare, bind email parameter and execute the database query.
-    $statement = $database->prepare('SELECT * FROM users WHERE email = :email');
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement->execute();
+// Check if both username and key exist in the POST request, wash them a bit
+if (isset($_POST['username'], $_POST['key'])) {
+    $username = htmlspecialchars($_POST['username'], ENT_QUOTES);
+    $key = htmlspecialchars($_POST['key'], ENT_QUOTES);
 
-    // Fetch the user as an associative array.
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    echo "Form data:\n";
+    echo "Username: " . $username . "\n";
+    echo "Key: " . $key . "\n";
 
-    // If we couldn't find the user in the database, redirect back to the login
-    // page with our custom redirect function.
+    $user = validateAdmin($username, $key);
+
+    // If not valid, redirect back to the login page
     if (!$user) {
+        echo "Redirecting to login.php\n";
         redirect('/login.php');
-    }
-
-    // If we found the user in the database, compare the given password from the
-    // request with the one in the database using the password_verify function.
-    if (password_verify($_POST['password'], $user['password'])) {
-        // If the password was valid we know that the user exists and provided
-        // the correct password. We can now save the user in our session.
-        // Remember to not save the password in the session!
-        unset($user['password']);
-
-        $_SESSION['user'] = $user;
+    } else {
+        // Save username in session, unset key, redirect to admin page
+        unset($_POST['key']);
+        $_SESSION['user'] = $username;
+        echo "Redirecting to admin.php\n";
+        redirect('/admin.php');
     }
 }
 
-// We should put this redirect in the end of this file since we always want to
-// redirect the user back from this file.
-redirect('/admin.php');
+// Redirect
+redirect('/index.php');

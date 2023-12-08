@@ -58,3 +58,14 @@ function isValidUuid(string $uuid): bool
     }
     return true;
 }
+
+function validateAdmin(string $input_username, string $input_api_key): bool
+{
+    $username = $_ENV['USER_NAME'];
+    $apiKey = $_ENV['API_KEY'];
+    if ($input_username == $username && $input_api_key == $apiKey) {
+        return true;
+    } else {
+        return false;
+    }
+}
