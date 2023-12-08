@@ -12,9 +12,9 @@
 
             <li class="nav-item">
                 <?php if (isset($_SESSION['user'])) : ?>
-                    <a class="nav-link" href="/app/users/logout.php">Logout</a>
+                    <a class="nav-link" href="/app/users/logout.php">Logout admin</a>
                 <?php else : ?>
-                    <a class="nav-link" href="/login.php">Login</a>
+                    <a class="nav-link" href="/login.php">Login admin</a>
                 <?php endif; ?>
             </li>
         </ul>

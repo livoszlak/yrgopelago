@@ -6,3 +6,10 @@ body {
   margin: 0 auto;
   overscroll-behavior: none;
 }
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: right;
+}

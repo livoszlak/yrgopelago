@@ -18,4 +18,4 @@ require __DIR__ . '/functions.php';
 $config = require __DIR__ . '/config.php';
 
 // Setup the database connection.
-$database = connect('hotel.db');
+// $database = connect('/database/hotel.db');

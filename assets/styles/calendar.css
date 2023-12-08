@@ -1,0 +1,22 @@
+.calendar {
+  height: 300px;
+  width: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calendar-title {
+  background-color: cadetblue;
+}
+
+tbody {
+  background-color: rgb(238, 140, 105);
+}
+
+.cal-week-2,
+.cal-week-4 {
+  background-color: rgb(236, 118, 75);
+}
+
+tr {
+  text-align: center;
+}

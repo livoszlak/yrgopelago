@@ -19,23 +19,6 @@ one function to create a guid,
 and one function to control if a guid is valid.
 */
 
-function connect(string $dbName): object
-{
-    $dbPath = __DIR__ . '/' . $dbName;
-    $db = "sqlite:$dbPath";
-
-    // Open the database file and catch the exception if it fails.
-    try {
-        $database = new PDO($db);
-        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Failed to connect to the database";
-        throw $e;
-    }
-    return $database;
-}
-
 function guidv4(string $data = null): string
 {
     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
@@ -68,4 +51,45 @@ function validateAdmin(string $input_username, string $input_api_key): bool
     } else {
         return false;
     }
+}
+
+function databaseConnect(string $dbName): object
+{
+    $dbPath = __DIR__ . '/' . $dbName;
+    $db = "sqlite:$dbPath";
+
+    // Open the database file and catch the exception if it fails.
+    try {
+        $database = new PDO($db);
+        $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Failed to connect to the database";
+        throw $e;
+    }
+    return $database;
+}
+
+function checkAvailability(string $arrival, string $departure, int $roomId): array
+{
+    $arrival = $_POST['arrival'];
+    $departure = $_POST['departure'];
+    $roomId = $_POST['room-select'];
+    $database = databaseConnect('/database/hotel.db');
+
+    // Prepare the SQL statement
+    $statement = $database->prepare('SELECT * FROM room_availability WHERE is_available = 1 AND roomId = :roomId AND date BETWEEN :arrival AND :departure');
+
+    // Bind the parameters
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+    $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
+
+    // Execute the statement
+    $statement->execute();
+
+    // Fetch all the results
+    $availableRooms = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $availableRooms;
 }
