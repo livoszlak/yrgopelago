@@ -20,7 +20,7 @@ $features = $statement->fetchAll(PDO::FETCH_ASSOC);
             <?= $calendar->draw(date('2024-01-01')); ?>
         </div>
         <form action="" method="POST">
-            <select type="select" id="room-select" name="room-select">
+            <select type="select" id="room-type" name="room-type">
                 <option type="select" id="budget" name="budget" value="1">Budget</option>
                 <option type="select" id="standard" name="standard" value="2">Standard</option>
                 <option type="select" id="luxury" name="luxury" value="3">Luxury</option>
@@ -32,7 +32,7 @@ $features = $statement->fetchAll(PDO::FETCH_ASSOC);
             <br>
             <button type="submit" name="check-availability" id="check-availability">Check availability</button>
             <?php if (isset($_POST['room-type'], $_POST['arrival'], $_POST['departure'])) :
-                $availableRooms = checkAvailability($_POST['arrival'], $_POST['departure'], $_POST['room-type']);
+                $availableRooms = checkAvailability($_POST['arrival'], $_POST['departure'], (int)$_POST['room-type']);
                 var_dump($availableRooms);
             endif; ?>
 

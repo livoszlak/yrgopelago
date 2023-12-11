@@ -72,13 +72,10 @@ function databaseConnect(string $dbName): object
 
 function checkAvailability(string $arrival, string $departure, int $roomId): array
 {
-    $arrival = $_POST['arrival'];
-    $departure = $_POST['departure'];
-    $roomId = $_POST['room-select'];
     $database = databaseConnect('/database/hotel.db');
 
-    // Prepare the SQL statement
-    $statement = $database->prepare('SELECT * FROM room_availability WHERE is_available = 1 AND roomId = :roomId AND date BETWEEN :arrival AND :departure');
+    // Prepare SQL statement
+    $statement = $database->prepare('SELECT * FROM room_availability WHERE is_available = 1 AND room_id = :roomId AND date BETWEEN :arrival AND :departure');
 
     // Bind the parameters
     $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
