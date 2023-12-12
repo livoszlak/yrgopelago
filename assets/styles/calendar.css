@@ -20,3 +20,7 @@ tbody {
 tr {
   text-align: center;
 }
+
+.booked {
+  background-color: red;
+}

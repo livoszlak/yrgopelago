@@ -1,11 +1,24 @@
-<?php require __DIR__ . '/app/autoload.php';
+<?php
+require __DIR__ . '/views/head.php';
 require __DIR__ . '/views/header.php';
 require __DIR__ . '/views/navigation.php'; ?>
-<article>
+<div>
     <h1>Admin page</h1>
-    <?php if (isset($_SESSION['user'])) : ?>
-        <p>Welcome, <?php echo $_SESSION['user']; ?>!</p>
-    <?php endif; ?>
-</article>
+    <p>Welcome, admin</p>
+</div>
+
+//alter room prices, star rating, discount levels...
+
+<form action="app/posts/update.php" method="post" name="">
+
+</form>
+
+<form action="" method="post">
+
+</form>
+
+<form action="" method="post">
+
+</form>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

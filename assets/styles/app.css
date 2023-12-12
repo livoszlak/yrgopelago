@@ -13,3 +13,14 @@ body {
   gap: 20px;
   justify-content: right;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+}

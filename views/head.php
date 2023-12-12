@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../app/functions.php';
+require __DIR__ . '/../app/autoload.php';
 
 use GuzzleHttp\Client;
 use Dotenv\Dotenv;

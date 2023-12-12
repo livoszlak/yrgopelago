@@ -15,11 +15,27 @@ $features = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main>MAIN!
-    <article>
-        <div class="calendar-wrapper">
-            <?= $calendar->draw(date('2024-01-01')); ?>
-        </div>
-        <form action="" method="POST">
+    <div class="calendar-wrapper">
+        <?php
+        if (isset($_POST['check-availability'], $_POST['room-type'])) {
+            addCalendarEvent($calendar, (int)$_POST['room-type']);
+        } ?>
+        <?= $calendar->draw(date('2024-01-01')); ?>
+    </div>
+    <div class="update-availability">
+        <form action="" method="post" name="update-availability" id="update-availability">
+            <label for="room-type">Select room type:</label>
+            <select type="select" id="room-type" name="room-type">
+                <option type="select" id="budget" name="budget" value="1">Budget</option>
+                <option type="select" id="standard" name="standard" value="2">Standard</option>
+                <option type="select" id="luxury" name="luxury" value="3">Luxury</option>
+            </select>
+            <button type="submit" name="check-availability" id="check-availability">Check availability</button>
+        </form>
+    </div>
+    <div class="date-form" id="date-form">
+        <form action="" method="post" name="set-dates" id="set-dates">
+            <label for="room-type">Room type:</label>
             <select type="select" id="room-type" name="room-type">
                 <option type="select" id="budget" name="budget" value="1">Budget</option>
                 <option type="select" id="standard" name="standard" value="2">Standard</option>
@@ -29,26 +45,25 @@ $features = $statement->fetchAll(PDO::FETCH_ASSOC);
             <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
             <label for="departure">Departure date:</label>
             <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
-            <br>
-            <button type="submit" name="check-availability" id="check-availability">Check availability</button>
-            <?php if (isset($_POST['room-type'], $_POST['arrival'], $_POST['departure'])) :
-                $availableRooms = checkAvailability($_POST['arrival'], $_POST['departure'], (int)$_POST['room-type']);
-                var_dump($availableRooms);
-            endif; ?>
-
-            <br>
-            <br>
-
-            Add cats:
-            <?php foreach ($features as $cats => $cat) : ?>
-                <input type="checkbox" id="<?= $cat['id']; ?>" name="feature<?= $cat['id'] ?>"><?= $cat['feature_name']; ?></input>
-            <?php endforeach; ?>
-            <button type="submit" name="submit" method="POST" id="submit">Submit</button>
+            <button type=" submit" name="booking-step-1" id="booking-step-1">Book your stay</button>
         </form>
-        <?= '<pre>';
-        var_dump($_POST); ?>
-    </article>
-</main>
-<script>
+    </div>
+    <div class="features-wrapper" id="features-wrapper"></div>
 
-</script>
+    <?php if (isset($_POST['room-type'], $_POST['arrival'], $_POST['departure'])) :
+        $availableRooms = checkAvailability($_POST['arrival'], $_POST['departure'], (int)$_POST['room-type']);
+    endif;
+
+    if (isset($_POST['arrival'], $_POST['departure'])) :
+        $arrival = $_POST['arrival'];
+        $departure = $_POST['departure'];
+    endif;
+    ?>
+    <br>
+    <br>
+
+
+    <?php echo '<pre>';
+    var_dump($_POST); ?>
+
+</main>

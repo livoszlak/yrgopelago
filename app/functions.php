@@ -8,17 +8,6 @@ function redirect(string $path)
     exit;
 }
 
-/* 
-Here's something to start your career as a hotel manager.
-
-One function to connect to the database you want (it will return a PDO object which you then can use.)
-    For instance: $db = connect('hotel.db');
-                  $db->prepare("SELECT * FROM bookings");
-                  
-one function to create a guid,
-and one function to control if a guid is valid.
-*/
-
 function guidv4(string $data = null): string
 {
     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
@@ -89,4 +78,54 @@ function checkAvailability(string $arrival, string $departure, int $roomId): arr
     $availableRooms = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $availableRooms;
+}
+
+function addCalendarEvent($calendar, $roomId)
+{
+
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare('SELECT date FROM room_availability WHERE is_available = 0 AND room_id = :roomId');
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $statement->execute();
+    $dates = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($dates as $date) {
+        $calendar->addEvent(
+            $date['date'],
+            $date['date'],
+            "",
+            true,
+            ['booked']
+        );
+    }
+
+    // $calendar->addEvent(
+    //     $arrival,   # start date in either Y-m-d or Y-m-d H:i if you want to add a time.
+    //     $departure,   # end date in either Y-m-d or Y-m-d H:i if you want to add a time.
+    //     // 'My Birthday',  # event name text
+    //     true,           # should the date be masked - boolean default true
+    //     ['booked']   # (optional) additional classes in either string or array format to be included on the event days
+    // );
+
+    # or for multiple events
+
+    // $events = array();
+
+    // $events[] = array(
+    // 	'start' => '2022-01-14',
+    // 	'end' => '2022-01-14',
+    // 	'summary' => 'My Birthday',
+    // 	'mask' => true,
+    // 	'classes' => ['myclass', 'abc']
+    // );
+
+    // $events[] = array(
+    // 	'start' => '2022-12-25',
+    // 	'end' => '2022-12-25',
+    // 	'summary' => 'Christmas',
+    // 	'mask' => true
+    // );
+
+    // $calendar->addEvents($events);
+    // return $calendar->addEvents($events);
 }
