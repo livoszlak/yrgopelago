@@ -1,2 +1,2 @@
 <?php
-checkAvailability($arrival, $departure, $roomId);
+reserveRoom($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type']);

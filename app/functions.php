@@ -80,6 +80,28 @@ function checkAvailability(string $arrival, string $departure, int $roomId): arr
     return $availableRooms;
 }
 
+function reserveRoom(string $arrival, string $departure, int $roomId)
+{
+    $database = databaseConnect('/database/hotel.db');
+
+    $statement = $database->prepare('UPDATE room_availability SET is_available = 0 WHERE date BETWEEN :arrival AND :departure AND room_id = :roomId');
+
+    $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+    $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+
+    $statement->execute();
+}
+
+function fetchDates($availableRooms)
+{
+    $dates = array();
+    foreach ($availableRooms as $choice) {
+        $dates[] = $choice['date'];
+    }
+    return $dates;
+}
+
 function addCalendarEvent($calendar, $roomId)
 {
 

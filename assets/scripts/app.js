@@ -16,34 +16,22 @@ bookingStep1.addEventListener('click', () => {
   features.appendChild('div');
 });
 
-// let arrival = null;
-// let departure = null;
+const accordion = document.getElementsByClassName('accordion');
 
-// days.forEach(function (day) {
-//   day.addEventListener('click', function () {
-//     if (arrival === null) {
-//       arrival = this.id;
-//       this.classList.add('selected');
-//       document.getElementById('arrival').value = arrival;
-//       document.getElementById('calendar-form').submit();
-//     } else if (arrival !== null && departure === null) {
-//       departure = this.id;
-//       this.classList.add('selected');
-//       document.getElementById('departure').value = departure;
-//       document.getElementById('calendar-form').submit();
-//     }
+for (let i = 0; i < accordion.length; i++) {
+  accordion[i].addEventListener('click', function () {
+    this.classList.toggle('active');
 
-//   let arrivalIndex = days.indexOf(arrival);
-//   let departureIndex = days.indexOf(departure);
-//   while (arrivalIndex < departureIndex) {
-//     arrivalIndex++;
-//     days[arrivalIndex].classList.add('selected');
-//   }
-//   days[departureIndex].classList.add('selected');
-// } else {
-//   arrival = null;
-//   departure = null;
-//   document.querySelectorAll('.date').forEach((day) => {
-//     day.classList.remove('selected');
-//   });
-// });
+    const panel = this.nextElementSibling;
+    if (panel.style.display === 'block') {
+      panel.style.display = 'none';
+    } else {
+      panel.style.display = 'block';
+    }
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  });
+}

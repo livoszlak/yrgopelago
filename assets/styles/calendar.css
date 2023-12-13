@@ -24,3 +24,7 @@ tr {
 .booked {
   background-color: red;
 }
+
+td {
+  background-image: url('/assets/Frame 5.png');
+}
