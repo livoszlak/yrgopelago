@@ -1,4 +1,4 @@
-<footer>FOOTER!</footer>
+<footer></footer>
 <script src="../assets/scripts/app.js"></script>
 </body>
 

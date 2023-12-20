@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="container">
-
+        <div class="logo">Cat's Cradle</div>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/index.php">Home</a>

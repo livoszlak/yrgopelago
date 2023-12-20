@@ -6,38 +6,193 @@ body {
   margin: 0 auto;
   overscroll-behavior: none;
   position: relative;
+  background-color: #b4a7a9;
+  font-family: 'Raleway', sans-serif;
 }
 
 .navbar-nav {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  justify-content: right;
-  width: 100vw;
+  justify-content: space-between;
 }
 
 .navbar {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
   position: absolute;
   top: 0;
+  width: 100vw;
+  z-index: 5;
+}
+
+.navbar > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding: 1rem;
+}
+
+.logo {
+  font-family: 'Grandiflora One', serif;
+  font-size: 3rem;
+  color: #ffffff;
 }
 
 header {
   width: 100vw;
-  height: 600px;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 header > img {
   object-fit: contain;
   width: 100%;
+  max-width: 2560px;
+}
+
+.headline {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+}
+
+.header-text {
+  z-index: 2;
+  position: absolute;
+  bottom: 1rem;
+  max-width: calc(70%);
+  background-color: #ded5f3;
+  padding: 0.5rem;
+  border-radius: 15px;
+}
+
+.header-text > .text {
+  opacity: 100%;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  padding: 2rem 3rem;
+  width: 100%;
+}
+
+.rooms-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  gap: 1rem;
+}
+
+.room-card {
+  height: 400px;
+  border-radius: 15px;
+  background-color: #8187c7;
+  overflow: hidden;
+}
+
+.room-image > img {
+  overflow: hidden;
+  object-fit: contain;
+  height: 100%;
+}
+
+.booking {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.booking-info {
+}
+
+.calendar-dates-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.date-picker-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.date-picker-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #8187c7;
+  padding: 10px;
+  gap: 1rem;
+}
+
+.room-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.features-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 10px 10px 5px 10px;
+  align-items: end;
+  font-size: 0.9rem;
+  color: black;
+  position: relative;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: 5;
+  align-items: center;
+  padding: 0 0 0 15px;
+}
+
+.feature-name-wrapper {
+  background: whitesmoke;
+  opacity: 70%;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.feature-price-bubble {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: #8187c7;
+  position: absolute;
+  top: -20;
+  right: -5;
+  align-items: center;
+  justify-content: center;
 }
 
 .availability {
@@ -77,4 +232,10 @@ main {
 .accordion,
 .panel {
   width: 500px;
+}
+
+footer {
+  height: 500px;
+  width: 100vw;
+  background-color: #8187c7;
 }

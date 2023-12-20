@@ -4,7 +4,7 @@ declare(strict_types=1);
 require __DIR__ . '/views/navigation.php';
 require __DIR__ . '/views/head.php';
 require __DIR__ . '/views/header.php';
-require __DIR__ . '/views/main.php';
+require __DIR__ . '/TEMPmain.php';
 
 
 

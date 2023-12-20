@@ -55,9 +55,6 @@ function validateTransferCode(string $transferCode, int $totalCost)
 }
 
 
-
-
-
 function validateAdmin(string $input_username, string $input_api_key): bool
 {
     $username = $_ENV['USER_NAME'];
@@ -133,7 +130,7 @@ function reserveRoom(array $dates, int $roomId, string $guestId)
 function fetchFeatures($roomId)
 {
     $database = databaseConnect('/database/hotel.db');
-    $statement = $database->prepare('SELECT features.feature_name, features.id, room_feature.feature_price FROM features INNER JOIN room_feature ON features.id = room_feature.feature_id WHERE room_feature.room_id = :roomId');
+    $statement = $database->prepare('SELECT feature_name, feature_id, feature_price FROM room_feature WHERE room_id = :roomId');
     $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
     $statement->execute();
     $features = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -211,6 +208,16 @@ function addCalendarEvent($calendar, $roomId)
 
     // $calendar->addEvents($events);
     // return $calendar->addEvents($events);
+}
+
+function getRoomInfo()
+{
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare('SELECT rooms.room_price, room_feature.feature_name, room_feature.feature_id, room_feature.feature_price, room_feature.feature_url FROM room_feature INNER JOIN rooms ON rooms.id = room_feature.room_id  WHERE room_feature.room_id = :roomId ORDER BY room_feature.feature_name');
+    $statement->bindParam(':roomId', $_SESSION['room-type'], PDO::PARAM_INT);
+    $statement->execute();
+    $roomInfo = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $roomInfo;
 }
 
 function getQuote(): int
