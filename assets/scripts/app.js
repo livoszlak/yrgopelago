@@ -10,12 +10,6 @@ days.forEach((day) => {
   }
 });
 
-const bookingStep1 = document.getElementById('booking-step-1');
-const features = document.getElementById('features-wrapper');
-bookingStep1.addEventListener('click', () => {
-  features.appendChild('div');
-});
-
 const accordion = document.getElementsByClassName('accordion');
 
 for (let i = 0; i < accordion.length; i++) {
@@ -32,6 +26,16 @@ for (let i = 0; i < accordion.length; i++) {
       panel.style.maxHeight = null;
     } else {
       panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+
+    // Close all other accordions
+    for (let j = 0; j < accordion.length; j++) {
+      if (i !== j && accordion[j].classList.contains('active')) {
+        accordion[j].classList.remove('active');
+        const otherPanel = accordion[j].nextElementSibling;
+        otherPanel.style.display = 'none';
+        otherPanel.style.maxHeight = null;
+      }
     }
   });
 }

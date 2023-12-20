@@ -9,7 +9,7 @@
 }
 
 tbody {
-  background-color: rgb(238, 140, 105);
+  background-color: rgb(95, 178, 211);
 }
 
 .cal-week-2,
@@ -25,6 +25,14 @@ tr {
   background-color: red;
 }
 
-td {
+.available {
+  background-color: darkslateblue;
+}
+
+/* td {
   background-image: url('/assets/Frame 5.png');
+} */
+
+.calendar-wrapper {
+  display: flex;
 }

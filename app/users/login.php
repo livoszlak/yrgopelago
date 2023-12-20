@@ -9,24 +9,24 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
 
 // Check if both username and key exist in the POST request, wash them a bit
-if (isset($_POST['username'], $_POST['key'])) {
-    $username = htmlspecialchars($_POST['username'], ENT_QUOTES);
-    $key = htmlspecialchars($_POST['key'], ENT_QUOTES);
+if (isset($_POST['admin'], $_POST['adminKey'])) {
+    $admin = htmlspecialchars($_POST['admin'], ENT_QUOTES);
+    $adminKey = htmlspecialchars($_POST['adminKey'], ENT_QUOTES);
 
     echo "Form data:\n";
-    echo "Username: " . $username . "\n";
-    echo "Key: " . $key . "\n";
+    echo "admin: " . $admin . "\n";
+    echo "adminKey: " . $adminKey . "\n";
 
-    $user = validateAdmin($username, $key);
+    $admin = validateAdmin($admin, $adminKey);
 
     // If not valid, redirect back to the login page
-    if (!$user) {
+    if (!$admin) {
         echo "Redirecting to login.php\n";
         redirect('/login.php');
     } else {
-        // Save username in session, unset key, redirect to admin page
-        unset($_POST['key']);
-        $_SESSION['user'] = $username;
+        // Save admin in session, unset adminKey, redirect to admin page
+        unset($_POST['adminKey']);
+        $_SESSION['admin'] = $admin;
         echo "Redirecting to admin.php\n";
         redirect('/admin.php');
     }

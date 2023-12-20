@@ -6,14 +6,14 @@
 
     <form action="app/users/login.php" method="post">
         <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input class="form-control" type="text" name="username" id="username" placeholder="Thempress of Catville" required>
+            <label for="admin" class="form-label">Username</label>
+            <input class="form-control" type="text" name="admin" id="admin" placeholder="Thempress of Catville" required>
             <small class="form-text">Please provide admin username.</small>
         </div>
 
         <div class="mb-3">
-            <label for="key" class="form-label">Key</label>
-            <input class="form-control" type="password" name="key" id="key" required>
+            <label for="adminKey" class="form-label">Key</label>
+            <input class="form-control" type="password" name="adminKey" id="key" required>
             <small class="form-text">Please provide key.</small>
         </div>
 

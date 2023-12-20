@@ -7,11 +7,6 @@ use benhall14\phpCalendar\Calendar as Calendar;
 $calendar = new Calendar;
 $calendar->useMondayStartingDate();
 
-$database = databaseConnect('/database/hotel.db');
-$statement = $database->prepare('SELECT * FROM features');
-$statement->execute();
-$features = $statement->fetchAll(PDO::FETCH_ASSOC);
-
 if (isset($_POST['arrival'], $_POST['departure'])) :
     $_SESSION['arrival'] = $_POST['arrival'];
     $_SESSION['departure'] = $_POST['departure'];
@@ -19,16 +14,22 @@ endif;
 if (isset($_POST['room-type'])) :
     $_SESSION['room-type'] = $_POST['room-type'];
 endif;
+if (isset($_POST['transfer-code'], $_POST['guest-name'])) :
+    $_SESSION['transfer-code'] = $_POST['transfer-code'];
+    $_SESSION['guest-name'] = $_POST['guest-name'];
+endif;
+if (isset($_GET['check-availability'], $_GET['room-type'])) {
+    addCalendarEvent($calendar, (int)$_GET['room-type']);
+    $calendar->draw(date('2024-01-01'));
+}
+
 ?>
 
 <main>MAIN!
     <div class="availability">
         <div class="calendar-wrapper">
             <?php
-            if (isset($_POST['check-availability'], $_SESSION['room-type'])) {
-                addCalendarEvent($calendar, (int)$_SESSION['room-type']);
-            } ?>
-            <?= $calendar->draw(date('2024-01-01')); ?>
+            echo $calendar->draw(date('2024-01-01')); ?>
         </div>
         <div class="update-availability">
             <form action="" method="get" name="update-availability" id="update-availability">
@@ -42,7 +43,7 @@ endif;
             </form>
         </div>
     </div>
-    <button class="accordion">Book your stay!</button>
+    <button class="accordion">Choose your dates!</button>
     <div class="panel">
         <div class="date-form" id="date-form">
             <form action="" method="post" name="set-dates" id="set-dates">
@@ -56,23 +57,38 @@ endif;
                 <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
                 <label for="departure">Departure date:</label>
                 <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
-                <button type="submit" name="booking-step-1" id="booking-step-1">Book your stay</button>
+                <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Book your stay</button>
             </form>
         </div>
     </div>
-
     <button class="accordion">Add features!</button>
     <div class="panel">
-        <p>So many to choose from!</p>
+        <?php if (isset($_SESSION['room-type'])) :
+            $features = fetchFeatures($_SESSION['room-type']); ?>
+            <p><?= count($features); ?> features available for your chosen room type. Hint: other types may have more... or less...</p>
+        <?php endif; ?>
         <form action="" method="post" name="set-features" id="set-features">
             <?php foreach ($features as $cats => $cat) : ?>
-                <input type="checkbox" id="<?= $cat['id']; ?>" name="<?= $cat['feature_name'] ?>"><?= $cat['feature_name']; ?></input>
+                <input type="checkbox" id="<?= $cat['id']; ?>" name="<?= $cat['id'] ?>"><?= $cat['feature_name']; ?></input>
             <?php endforeach; ?>
-            <button type="submit" name="booking-step-2" method="post" id="booking-step-2">Add features</button>
+            <button class="button" type="submit" name="booking-step-2" method="post" id="booking-step-2">Add features</button>
+        </form>
+    </div>
+    <button class="accordion">Get your quote!</button>
+    <div class="panel">
+        <p>So cheap! Your total comes to:</p>
+        <?= getQuote(); ?>
+    </div>
+    <button class="accordion">Book your stay!</button>
+    <div class="panel">
+        <p>Please enter your name and your transfer code to finalize your booking!</p>
+        <form action="validateTransferCode.php" method="post" name="booking" id="booking">
+            <input type="text" id="guest-name" name="guest-name" placeholder="Themperor of Catville" required><br>
+            <input type="text" id="transfer-code" name="transfer-code" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required>
+            <button class="button" type="submit" name="booking-step-3" method="post" id="booking-step-3">Book!</button>
         </form>
     </div>
 
-    </div>
     <?php if (!isset($_SESSION['features'])) {
         $_SESSION['features'] = array();
     } else if (isset($_POST['booking-step-2']))
@@ -83,25 +99,28 @@ endif;
         }
     }
 
-    // if (isset($_POST['booking-step-1'])) {
-
-    //     if ($_SESSION['arrival'] > $_SESSION['departure']) {
-    //     }
-    // }
-
     if (isset($_POST['booking-step-1'], $_SESSION['room-type'], $_SESSION['arrival'], $_SESSION['departure'])) :
         $availableRooms = checkAvailability($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
-        var_dump($availableRooms);
         $dates = fetchDates($availableRooms);
-        var_dump($dates);
-    // if ($_SESSION['arrival'] > $_SESSION['departure']) 
+        $_SESSION['totalDays'] = count($dates);
+        reserveRoom($dates, (int)$_SESSION['room-type'], $_SESSION['userId']);
     endif; ?>
     <br>
     <br>
 
-
-    <?php echo '<pre>';
+    <?php echo '<pre> SESSION <br>';
+    var_dump($_SESSION);
+    echo 'POST <br>';
     var_dump($_POST);
-    var_dump($_SESSION); ?>
+    echo 'GET <br>';
+    var_dump($_GET);
+    echo 'FEATURES' . '<br>';
+    echo countFeatureCosts($_SESSION);
+    echo '<br>';
+    echo 'ROOM COST' . '<br>';
+    echo countStayCost() . '<br';
+    $data = validateTransferCode('c8c33dbe-e0c9-4321-8ac6-f82d893790e1', $_SESSION['totalCost']);
+    var_dump($data);
 
+    ?>
 </main>

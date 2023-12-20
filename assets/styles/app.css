@@ -5,6 +5,7 @@
 body {
   margin: 0 auto;
   overscroll-behavior: none;
+  position: relative;
 }
 
 .navbar-nav {
@@ -12,12 +13,31 @@ body {
   flex-direction: row;
   gap: 20px;
   justify-content: right;
+  width: 100vw;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  position: absolute;
+  top: 0;
+}
+
+header {
+  width: 100vw;
+  height: 600px;
+}
+
+header > img {
+  object-fit: contain;
+  width: 100%;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
 }
 
 .availability {
@@ -47,7 +67,11 @@ main {
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.3s ease-out;
+}
+
+.panel.active {
+  max-height: 1000px;
 }
 
 .accordion,

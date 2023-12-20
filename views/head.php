@@ -9,6 +9,11 @@ use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
+
+if (!key_exists('userId', $_SESSION)) {
+    $_SESSION['userId'] = guidv4();
+    $_SESSION['dates'] = array();
+}
 ?>
 
 <!DOCTYPE html>
