@@ -50,7 +50,7 @@ header {
 
 header > img {
   object-fit: contain;
-  width: 100%;
+  width: 100vw;
   max-width: 2560px;
 }
 
@@ -81,6 +81,7 @@ main {
   flex-direction: column;
   padding: 2rem 3rem;
   width: 100%;
+  margin: 0 auto;
 }
 
 .rooms-wrapper {
@@ -111,8 +112,7 @@ main {
 
 .booking-info {
 }
-
-.calendar-dates-wrapper {
+*/ .calendar-dates-wrapper {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -195,12 +195,40 @@ main {
   justify-content: center;
 }
 
+button {
+  width: 120px;
+}
+
+.booking-payment-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #8187c7;
+  border-radius: 15px;
+  /* padding: 2rem 2rem 3rem 2rem; */
+  gap: 1rem;
+}
+
+.booking-heading-wrapper {
+  width: 100%;
+  text-align: center;
+  font-family: 'Grandiflora One', cursive;
+  font-size: 2rem;
+}
+
+.booking-carousel-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .availability {
   display: flex;
   flex-direction: column;
 }
 
-.accordion {
+/* .accordion {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -232,7 +260,7 @@ main {
 .accordion,
 .panel {
   width: 500px;
-}
+} */
 
 footer {
   height: 500px;

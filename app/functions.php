@@ -86,13 +86,10 @@ function databaseConnect(string $dbName): object
 function checkAvailability(string $arrival, string $departure, int $roomId): array
 {
     $database = databaseConnect('/database/hotel.db');
-
     $statement = $database->prepare('SELECT * FROM room_availability WHERE is_available = 1 AND room_id = :roomId AND date BETWEEN :arrival AND :departure');
-
     $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
     $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
     $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
-
     $statement->execute();
 
     $availableRooms = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -240,13 +237,14 @@ function countFeatureCosts(): int
         $statement->execute();
         $bookedFeatures[] = $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    if (!empty($bookedFeatures)) {
+        $prices = array_map(function ($element) {
+            return array_column($element, 'feature_price')[0];
+        }, $bookedFeatures);
 
-    $prices = array_map(function ($element) {
-        return array_column($element, 'feature_price')[0];
-    }, $bookedFeatures);
-
-    for ($i = 0; $i < count($prices); $i++) {
-        $featureTotal += $prices[$i];
+        for ($i = 0; $i < count($prices); $i++) {
+            $featureTotal += $prices[$i];
+        }
     }
     return $featureTotal;
 }
@@ -263,6 +261,7 @@ function countStayCost()
     $roomTotal = $roomPrice[0]['room_price'] * $_SESSION['totalDays'];
     return $roomTotal;
 }
+
 
 function booking()
 {

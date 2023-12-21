@@ -11,11 +11,12 @@ $calendar = new Calendar;
 $calendar->useMondayStartingDate();
 $_SESSION['room-type'] = $_GET['room-type'];
 $roomInfo = getRoomInfo();
+
 ?>
 
 <main>
     <div class="room-info">
-        <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p>
+        <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p><br>
     </div>
     <form action="" method="post" name="booking" id="booking">
         <div class="booking">
@@ -31,11 +32,11 @@ $roomInfo = getRoomInfo();
                     <div class="date-picker-wrapper">
                         <div class="arrival">
                             <label for="arrival">Arrival date:</label>
-                            <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
+                            <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
                         </div>
                         <div class="departure">
                             <label for="departure">Departure date:</label>
-                            <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" />
+                            <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
                         </div>
                     </div>
                 </div>
@@ -54,8 +55,53 @@ $roomInfo = getRoomInfo();
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Book your stay</button>
+            <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
     </form>
+    <div class="booking-payment-wrapper">
+        <div class="booking-carousel-wrapper">
+            <div class="room-carousel">
+
+                <div class="mySlides fade">
+                    <img src="/assets/images/FEATURE-ABYSSINIAN-pexels-lindsey-garrett-13986951.png" style="width:100%; height: 100%">
+                    <div class="text">Caption Text</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="/assets/images/FEATURE-BALINESE-pexels-leah-kelley-341522.png" style="width:100%; height: 100%">
+                    <div class="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="/assets/images/FEATURE-BENGAL-pexels-nika-benedictova-15802496.png" style="width:100%; height: 100%">
+                    <div class="text">Caption Three</div>
+                </div>
+                <div class="dots" style="text-align:center">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
+                <div class="booking-heading-wrapper">
+                    <?php if (isset($_POST['booking-step-1'])) : ?>
+                        <?= "Your total is " . $_SESSION['totalCost'] . " for " . $_SESSION['totalDays'] . " days and " . count($_SESSION['features']) . " cats."; ?>
+                    <?php endif; ?>
+                    Book your stay
+                    <div class="error-container"></div>
+                </div>
+                <label for="guest-name">
+                    Meow, what is your name?
+                </label><br>
+                <input type="text" id="guest-name" name="guest-name" placeholder="Themperor of Catville" required><br>
+                <label for="transfer-code">
+                    Meow-meow, enter your transfer code!
+                </label><br>
+                <input type="text" id="transfer-code" name="transfer-code" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required><br>
+                <button class="button" type="submit" name="booking-step-2" method="post" id="booking-step-2">Book!</button>
+            </form>
+        </div>
+    </div>
+
 
     </div>
     <div>
@@ -66,4 +112,4 @@ $roomInfo = getRoomInfo();
     </div>
 
 </main>
-<?php require __DIR__ . '/footer.php';
+<?php require __DIR__ . '/footer.php'; ?>
