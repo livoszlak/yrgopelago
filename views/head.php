@@ -14,14 +14,18 @@ if (!key_exists('userId', $_SESSION)) :
     $_SESSION['userId'] = guidv4();
     $_SESSION['dates'] = array();
     $_SESSION['features'] = array();
+    $_SESSION['errors'] = array();
+
 endif;
 if (isset($_POST['arrival'], $_POST['departure'])) :
     $_SESSION['arrival'] = $_POST['arrival'];
     $_SESSION['departure'] = $_POST['departure'];
 endif;
 if (isset($_POST['transfer-code'], $_POST['guest-name'])) :
-    $_SESSION['transfer-code'] = $_POST['transfer-code'];
-    $_SESSION['guest-name'] = $_POST['guest-name'];
+    $_POST['transfer-code'] = trim(htmlspecialchars($_POST['transfer-code'], ENT_QUOTES));
+    $_POST['guest-name'] = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
+// $_SESSION['transfer-code'] = trim(htmlspecialchars($_POST['transfer-code'], ENT_QUOTES));
+// $_SESSION['guest-name'] = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
 endif;
 
 if (isset($_POST['booking-step-1'])) :

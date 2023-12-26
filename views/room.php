@@ -15,6 +15,7 @@ $roomInfo = getRoomInfo();
 ?>
 
 <main>
+    <div class="discounts"></div>
     <div class="room-info">
         <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p><br>
     </div>
@@ -55,7 +56,13 @@ $roomInfo = getRoomInfo();
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
+            <div class="button-quote-wrapper">
+                <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button><br>
+                <?php if (isset($_POST['booking-step-1'])) : ?>
+                    <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.'; ?>
+                <?php endif; ?>
+
+            </div>
     </form>
     <div class="booking-payment-wrapper">
         <div class="booking-carousel-wrapper">
@@ -63,17 +70,15 @@ $roomInfo = getRoomInfo();
 
                 <div class="mySlides fade">
                     <img src="/assets/images/FEATURE-ABYSSINIAN-pexels-lindsey-garrett-13986951.png" style="width:100%; height: 100%">
-                    <div class="text">Caption Text</div>
                 </div>
 
                 <div class="mySlides fade">
                     <img src="/assets/images/FEATURE-BALINESE-pexels-leah-kelley-341522.png" style="width:100%; height: 100%">
-                    <div class="text">Caption Two</div>
                 </div>
 
                 <div class="mySlides fade">
                     <img src="/assets/images/FEATURE-BENGAL-pexels-nika-benedictova-15802496.png" style="width:100%; height: 100%">
-                    <div class="text">Caption Three</div>
+
                 </div>
                 <div class="dots" style="text-align:center">
                     <span class="dot"></span>
@@ -81,13 +86,17 @@ $roomInfo = getRoomInfo();
                     <span class="dot"></span>
                 </div>
             </div>
+            <div class="error-container">
+                <?php if (!empty($_SESSION['errors'])) :
+                    foreach ($_SESSION['errors'] as $error) :
+                        echo $error;
+                    endforeach;
+                    $_SESSION['errors'] = [];
+                endif; ?>
+            </div>
             <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
                 <div class="booking-heading-wrapper">
-                    <?php if (isset($_POST['booking-step-1'])) : ?>
-                        <?= "Your total is " . $_SESSION['totalCost'] . " for " . $_SESSION['totalDays'] . " days and " . count($_SESSION['features']) . " cats."; ?>
-                    <?php endif; ?>
                     Book your stay
-                    <div class="error-container"></div>
                 </div>
                 <label for="guest-name">
                     Meow, what is your name?
@@ -106,7 +115,10 @@ $roomInfo = getRoomInfo();
     </div>
     <div>
         <?php echo '<pre>';
-        var_dump(getRoomInfo()); ?>
+        ?>
+        <br>
+        <br>
+        <?php var_dump($_POST); ?>
         <br>
         <?php var_dump($_SESSION); ?>
     </div>

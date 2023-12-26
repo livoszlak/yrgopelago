@@ -34,7 +34,7 @@ function isValidUuid(string $uuid): bool
     return true;
 }
 
-function validateTransferCode(string $transferCode, int $totalCost)
+function validateTransferCode(string $transferCode, float $totalCost)
 {
     $client = new Client();
     try {
@@ -45,7 +45,7 @@ function validateTransferCode(string $transferCode, int $totalCost)
             ],
         ]);
     } catch (ClientException $e) {
-        echo "An error occurred: " . $e->getMessage();
+        echo "There was an issue validating your transfer code: " . $e->getMessage();
     }
 
     if ($response->getBody()) {
@@ -54,6 +54,23 @@ function validateTransferCode(string $transferCode, int $totalCost)
     return $data;
 }
 
+function deposit(string $transferCode)
+{
+    $client = new Client();
+    try {
+        $response = $client->request('POST', 'https://www.yrgopelag.se/centralbank/deposit', [
+            'form_params' => [
+                'user' => 'Liv',
+                'transferCode' => $transferCode
+            ],
+        ]);
+        $response = $response->getBody()->getContents();
+        return true;
+    } catch (ClientException $e) {
+        echo "There was an issue with depositing: " . $e->getMessage();
+        return false;
+    }
+}
 
 function validateAdmin(string $input_username, string $input_api_key): bool
 {
@@ -97,32 +114,50 @@ function checkAvailability(string $arrival, string $departure, int $roomId): arr
     return $availableRooms;
 }
 
-// function reserveRoom(string $arrival, string $departure, int $roomId)
-// {
-//     $database = databaseConnect('/database/hotel.db');
-
-//     $statement = $database->prepare('UPDATE room_availability SET is_available = 0 WHERE date BETWEEN :arrival AND :departure AND room_id = :roomId');
-
-//     $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
-//     $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
-//     $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
-
-//     $statement->execute();
-// }
-
-function reserveRoom(array $dates, int $roomId, string $guestId)
+function isAvailable(string $arrival, string $departure, int $roomId): bool
 {
     $database = databaseConnect('/database/hotel.db');
-    $time = time();
-    foreach ($dates as $date) {
-        $statement = $database->prepare('INSERT INTO reservations (guest_id, room_id, date, time) VALUES (:guestId, :roomId, :date, :time)');
-        $statement->bindParam(':guestId', $guestId, PDO::PARAM_STR);
-        $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
-        $statement->bindParam(':date', $date, PDO::PARAM_STR);
-        $statement->bindParam(':time', $time, PDO::PARAM_STR);
-        $statement->execute();
+    $statement = $database->prepare('SELECT * FROM room_availability WHERE is_available = 0 AND room_id = :roomId AND date BETWEEN :arrival AND :departure');
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+    $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
+    $statement->execute();
+
+    $bookedRooms = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!empty($bookedRooms)) {
+        return false;
+    } else {
+        return true;
     }
 }
+
+function reserveRoom(string $arrival, string $departure, int $roomId)
+{
+    $database = databaseConnect('/database/hotel.db');
+
+    $statement = $database->prepare('UPDATE room_availability SET is_available = 0 WHERE date BETWEEN :arrival AND :departure AND room_id = :roomId');
+
+    $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+    $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+
+    $statement->execute();
+}
+
+// function reserveRoom(array $dates, int $roomId, string $guestId)
+// {
+//     $database = databaseConnect('/database/hotel.db');
+//     $time = time();
+//     foreach ($dates as $date) {
+//         $statement = $database->prepare('INSERT INTO reservations (guest_id, room_id, date, time) VALUES (:guestId, :roomId, :date, :time)');
+//         $statement->bindParam(':guestId', $guestId, PDO::PARAM_STR);
+//         $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+//         $statement->bindParam(':date', $date, PDO::PARAM_STR);
+//         $statement->bindParam(':time', $time, PDO::PARAM_STR);
+//         $statement->execute();
+//     }
+// }
 
 function fetchFeatures($roomId)
 {
@@ -217,12 +252,22 @@ function getRoomInfo()
     return $roomInfo;
 }
 
-function getQuote(): int
+function getQuote()
 {
     $featureTotal = countFeatureCosts();
     $roomTotal = countStayCost();
+    $discount = 1;
     $_SESSION['totalCost'] = $featureTotal + $roomTotal;
-    return $featureTotal + $roomTotal;
+
+    if ($_SESSION['totalDays'] > 3) {
+        $discount = 0.75;
+    } else if ($_SESSION['totalDays'] > 3 && count($_SESSION['features']) > 4) {
+        $discount = 0.6;
+    }
+
+    $totalCost = $_SESSION['totalCost'] * $discount;
+    $_SESSION['totalCost'] = $totalCost;
+    return $totalCost;
 }
 
 function countFeatureCosts(): int
@@ -263,14 +308,28 @@ function countStayCost()
 }
 
 
-function booking()
+function bookStay()
 {
-    $guestName = trim(htmlspecialchars($_SESSION['guest-name'], ENT_QUOTES));
-    $transferCode = trim(htmlspecialchars($_SESSION['transfer-code'], ENT_QUOTES));
+    $guestName = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
     $totalCost = $_SESSION['totalCost'];
-    if (!isValidUuid($transferCode)) {
-        echo "Sorry, your transfer code is invalid. Please try again.";
-    } else {
-        validateTransferCode($transferCode, $totalCost);
-    }
+    $guestId = $_SESSION['userId'];
+    $roomId = $_SESSION['room-type'];
+    $arrival = $_SESSION['arrival'];
+    $departure = $_SESSION['departure'];
+    // $discount = 1;
+    $totalDays = $_SESSION['totalDays'];
+    $totalCost = $_SESSION['totalCost'];
+    $transferCode = trim(htmlspecialchars($_POST['transfer-code'], ENT_QUOTES));
+    $greeting = "Thank you, " . $guestName . ", for staying with us for " . $totalDays . " days!";
+
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare('INSERT INTO bookings(guest_id, room_id, arrival_date, departure_date, total_cost, transfer_code, greeting) VALUES (:guestId, :roomId, :arrival, :departure, :totalCost, :transferCode, :greeting)');
+    $statement->bindParam(':guestId', $guestId, PDO::PARAM_STR);
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_STR);
+    $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
+    $statement->bindParam(':departure', $departure, PDO::PARAM_STR);
+    $statement->bindParam(':totalCost', $totalCost, PDO::PARAM_STR);
+    $statement->bindParam(':transferCode', $transferCode, PDO::PARAM_STR);
+    $statement->bindParam(':greeting', $greeting, PDO::PARAM_STR);
+    $statement->execute();
 }
