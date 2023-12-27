@@ -5,7 +5,14 @@
         <a>Welcome to the Cat's Cradle</a>
     </div>
     <div class="index-info">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus eius sapiente iusto, nam rem temporibus ipsa aut nisi in pariatur repellat nulla debitis a laborum dolorum laboriosam delectus sunt excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae similique facere fugit, maxime quisquam. Minus tenetur natus quam alias, quisquam numquam error omnis at hic. Commodi facere quod voluptates? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati recusandae eos sint cupiditate reiciendis molestiae esse, quas corporis blanditiis odit, deleniti voluptatem? Ea eaque enim, veniam quasi veritatis quae neque.</p>
+        <div class="hotel-info">
+            <div class="info headline">THE ISLE OF CATS</div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus eius sapiente iusto, nam rem temporibus ipsa aut nisi in pariatur repellat nulla debitis a laborum dolorum laboriosam delectus sunt excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae similique facere fugit, maxime quisquam. Minus tenetur natus quam alias, quisquam numquam error omnis at hic.</p>
+        </div>
+        <div class="discount-info">
+            <div class="info headline">MEOWGICAL DISCOUNTS</div>
+            <p>Commodi facere quod voluptates? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati recusandae eos sint cupiditate reiciendis molestiae esse, quas corporis blanditiis odit, deleniti voluptatem? Ea eaque enim, veniam quasi veritatis quae neque.</p>
+        </div>
     </div>
     <div class="rooms-wrapper">
         <a href="/views/room.php?room-type=1">

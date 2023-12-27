@@ -307,7 +307,6 @@ function countStayCost()
     return $roomTotal;
 }
 
-
 function bookStay()
 {
     $guestName = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
@@ -332,4 +331,13 @@ function bookStay()
     $statement->bindParam(':transferCode', $transferCode, PDO::PARAM_STR);
     $statement->bindParam(':greeting', $greeting, PDO::PARAM_STR);
     $statement->execute();
+
+    $bookingId = $database->lastInsertId();
+
+    foreach ($_SESSION['features'] as $feature) {
+        $statement = $database->prepare('INSERT INTO booking_feature(feature_id, booking_id) VALUES(:featureId, :bookingId)');
+        $statement->bindParam(':featureId', $feature);
+        $statement->bindParam(':bookingId', $bookingId);
+        $statement->execute();
+    }
 }

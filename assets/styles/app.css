@@ -5,6 +5,7 @@
   --headline-orange: #e27d5f;
   --outline-pale: #d4cae3;
   --bg-grey: #cacddc;
+  --bg-minty: #ddedec;
 }
 
 * {
@@ -25,7 +26,7 @@ body {
   text-decoration: none;
 
   &:hover {
-    color: #e26274;
+    color: var(--standard-pink);
     text-decoration: underline;
   }
   &:active {
@@ -85,13 +86,29 @@ header > img {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--headline-orange);
   text-align: center;
 }
 
 .index-info {
   width: 100%;
   height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.hotel-info,
+.discount-info {
+  width: calc(40%);
+  background-color: var(--bg-minty);
+  padding: 2rem;
+}
+
+.info {
+  color: var(--standard-pink);
 }
 
 .headline > a:hover {
@@ -115,7 +132,6 @@ header > img {
 main {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0 2rem 0;
   width: 100%;
   margin: 0 auto;
 }
@@ -172,8 +188,8 @@ main {
   &:hover {
     color: var(--budget-yellow);
     background-color: var(--standard-pink);
-    transition: 0.5s ease-in-out;
-    border: 1rem solid var(--bg-grey);
+    transition: 0.3s ease-in-out;
+    /* border: 1rem solid var(--bg-grey); */
   }
 }
 
@@ -187,7 +203,7 @@ main {
     color: var(--standard-pink);
     background-color: var(--budget-yellow);
     transition: 0.5s ease-in-out;
-    border: 1rem solid var(--bg-grey);
+    /* border: 1rem solid var(--bg-grey); */
   }
 }
 
@@ -199,7 +215,7 @@ main {
     color: var(--luxury-purple);
     background-color: var(--standard-pink);
     transition: 0.5s ease-in-out;
-    border: 1rem solid var(--bg-grey);
+    /* border: 1rem solid var(--bg-grey); */
   }
 }
 
@@ -211,7 +227,8 @@ main {
 
 .booking-info {
 }
-*/ .calendar-dates-wrapper {
+
+.calendar-dates-wrapper {
   display: flex;
   flex-direction: row;
   gap: 1rem;
