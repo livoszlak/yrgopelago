@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/views/head.php';
-require __DIR__ . '/views/header.php';
-require __DIR__ . '/views/navigation.php'; ?>
+require __DIR__ . '/views/navigation.php';
+require __DIR__ . '/views/header.php'; ?>
 <div>
     <h1>Admin page</h1>
     <p>Welcome, admin</p>

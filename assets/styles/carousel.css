@@ -2,14 +2,14 @@
   display: none;
 }
 
-img {
+.mySlides > img {
   vertical-align: middle;
   object-fit: cover;
   border-radius: 15px 0 0 15px;
 }
 
 .room-carousel {
-  max-width: calc(50%);
+  max-width: 400px;
   height: 400px;
   position: relative;
 }

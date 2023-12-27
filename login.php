@@ -1,5 +1,6 @@
-<?php require __DIR__ . '/views/head.php'; ?>
-<?php require __DIR__ . '/views/header.php'; ?>
+<?php require __DIR__ . '/views/head.php';
+require __DIR__ . '/views/header.php';
+require __DIR__ . '/views/navigation.php'; ?>
 
 <article>
     <h1>Admin login</h1>

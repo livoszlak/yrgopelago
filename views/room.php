@@ -21,25 +21,27 @@ $roomInfo = getRoomInfo();
     </div>
     <form action="" method="post" name="booking" id="booking">
         <div class="booking">
+
             <div class="calendar-dates-wrapper">
                 <div class="calendar-wrapper">
                     <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
                     echo $calendar->draw(date('2024-01-01')); ?>
                 </div>
-                <div class="date-picker-info-wrapper">
-                    <div class="booking-info">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quaerat consequatur alias vel sit sequi, adipisci ullam dignissimos? Hic unde pariatur totam incidunt at maxime, corporis adipisci labore vel enim! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio unde, quas alias adipisci voluptas aperiam natus enim reprehenderit eum, dolor nam esse incidunt ad tempora dolorum? Voluptas neque cum provident. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque consequatur voluptatem quas. Quod veniam fuga earum, laudantium recusandae magni amet. Enim praesentium quae tempore repellat, modi facilis aliquam dolorum sint!</p>
-                    </div>
-                    <div class="date-picker-wrapper">
-                        <div class="arrival">
-                            <label for="arrival">Arrival date:</label>
-                            <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
-                        </div>
-                        <div class="departure">
-                            <label for="departure">Departure date:</label>
-                            <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
-                        </div>
-                    </div>
+            </div>
+
+            <div class="date-picker-info-wrapper">
+                <div class="booking-info">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quaerat consequatur alias vel sit sequi, adipisci ullam dignissimos? Hic unde pariatur totam incidunt at maxime, corporis adipisci labore vel enim! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio unde, quas alias adipisci voluptas aperiam natus enim reprehenderit eum, dolor nam esse incidunt ad tempora dolorum? Voluptas neque cum provident. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque consequatur voluptatem quas. Quod veniam fuga earum, laudantium recusandae magni amet. Enim praesentium quae tempore repellat, modi facilis aliquam dolorum sint!</p>
+                </div>
+            </div>
+            <div class="date-picker-wrapper">
+                <div class="arrival">
+                    <label for="arrival">Arrival date:</label>
+                    <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
+                </div>
+                <div class="departure">
+                    <label for="departure">Departure date:</label>
+                    <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
                 </div>
             </div>
 
@@ -98,15 +100,17 @@ $roomInfo = getRoomInfo();
                 <div class="booking-heading-wrapper">
                     Book your stay
                 </div>
-                <label for="guest-name">
-                    Meow, what is your name?
-                </label><br>
-                <input type="text" id="guest-name" name="guest-name" placeholder="Themperor of Catville" required><br>
-                <label for="transfer-code">
-                    Meow-meow, enter your transfer code!
-                </label><br>
-                <input type="text" id="transfer-code" name="transfer-code" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required><br>
-                <button class="button" type="submit" name="booking-step-2" method="post" id="booking-step-2">Book!</button>
+                <div class="form-payment">
+                    <label for="guest-name">
+                        Meow, what is your name?
+                    </label><br>
+                    <input type="text" id="guest-name" name="guest-name" placeholder="Themperor of Catville" required><br>
+                    <label for="transfer-code">
+                        Meow-meow, enter your transfer code!
+                    </label><br>
+                    <input type="text" id="transfer-code" name="transfer-code" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required><br>
+                    <button class="button" type="submit" name="booking-step-2" method="post" id="booking-step-2">Book!</button>
+                </div>
             </form>
         </div>
     </div>

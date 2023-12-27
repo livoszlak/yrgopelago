@@ -53,7 +53,7 @@ endif;
     <link rel="stylesheet" type="text/css" href="../assets/styles/carousel.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Raleway&family=Bebas+Neue&family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 

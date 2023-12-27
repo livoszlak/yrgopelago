@@ -6,15 +6,31 @@ body {
   margin: 0 auto;
   overscroll-behavior: none;
   position: relative;
-  background-color: #b4a7a9;
-  font-family: 'Raleway', sans-serif;
+  background-color: #cacddc;
+  font-family: 'EB Garamond', serif;
+}
+
+a {
+  color: #e27d5f;
+  text-decoration: none;
+
+  &:hover {
+    color: #e26274;
+    text-decoration: underline;
+  }
+  &:active {
+    text-decoration: underline;
+  }
 }
 
 .navbar-nav {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
   display: flex;
   flex-direction: row;
   gap: 20px;
   justify-content: space-between;
+  list-style-type: none;
 }
 
 .navbar {
@@ -34,9 +50,9 @@ body {
 }
 
 .logo {
-  font-family: 'Grandiflora One', serif;
-  font-size: 3rem;
-  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: #e27d5f;
 }
 
 header {
@@ -55,25 +71,29 @@ header > img {
 }
 
 .headline {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
   font-weight: 800;
   color: #ffffff;
   text-align: center;
 }
 
+.headline > a:hover {
+  text-decoration: none;
+  color: #e27d5f;
+}
+
 .header-text {
   z-index: 2;
   position: absolute;
-  bottom: 1rem;
+  bottom: calc(60%);
   max-width: calc(70%);
-  background-color: #ded5f3;
   padding: 0.5rem;
-  border-radius: 15px;
 }
 
-.header-text > .text {
+.header-text > p {
   opacity: 100%;
+  font-size: 2rem;
 }
 
 main {
@@ -160,8 +180,11 @@ main {
   padding: 10px 10px 5px 10px;
   align-items: end;
   font-size: 0.9rem;
-  color: black;
   position: relative;
+}
+
+.feature-name-wrapper > a {
+  color: black;
 }
 
 .input-wrapper {
@@ -236,8 +259,8 @@ button {
 .booking-heading-wrapper {
   width: 100%;
   text-align: center;
-  font-family: 'Grandiflora One', cursive;
-  font-size: 2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
 }
 
 /* .error-wrapper {
@@ -250,6 +273,20 @@ button {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.form-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .availability {
@@ -291,8 +328,21 @@ button {
   width: 500px;
 } */
 
+.cat {
+  width: 100%;
+}
+
+.cat-cal > img {
+  width: 50%;
+  z-index: 5;
+}
+
+.cat-cal {
+  width: 100%;
+}
+
 footer {
   height: 500px;
   width: 100vw;
-  background-color: #8187c7;
+  background-color: #e27d5f;
 }
