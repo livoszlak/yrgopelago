@@ -1,17 +1,9 @@
 <?php
 
 declare(strict_types=1);
-require __DIR__ . '/navigation.php';
-require __DIR__ . '/head.php';
-require __DIR__ . '/header.php'; ?>
+require '../vendor/autoload.php';
+require __DIR__ . '/../app/autoload.php';
 
-<main>
-    <div class="thank-you">
-        <div class="info-headline">Booking complete</div>
-        <div class="json">
+header('Content-type: application/json');
 
-        </div>
-    </div>
-</main>
-
-<?php require __DIR__ . '/footer.php'; ?>
+echo json_encode($_SESSION['booking'], JSON_PRETTY_PRINT);

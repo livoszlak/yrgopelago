@@ -27,7 +27,8 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     $bookingId = bookStay();
 
     $database = databaseConnect('/database/hotel.db');
-    $statement = $database->prepare("SELECT 
+    if (!empty($_SESSION['features'])) {
+        $statement = $database->prepare("SELECT 
     hotel.island,
     hotel.hotel,
     bookings.arrival_date,
@@ -46,25 +47,43 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     features ON booking_feature.feature_id = features.id
  WHERE 
     bookings.id = :bookingId");
+    } else {
+        $statement = $database->prepare("SELECT 
+    hotel.island,
+    hotel.hotel,
+    bookings.arrival_date,
+    bookings.departure_date,
+    bookings.total_cost,
+    hotel.stars,
+    bookings.greeting
+ FROM 
+    bookings
+ JOIN 
+    hotel ON bookings.hotel_id = hotel.id
+ WHERE 
+    bookings.id = :bookingId");
+    }
 
     $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    // $booking = [];
-    // foreach ($results as $row) {
-    //     $booking['island'] = $row['island'];
-    //     $booking['hotel'] = $row['hotel'];
-    //     $booking['arrival_date'] = $row['arrival_date'];
-    //     $booking['departure_date'] = $row['departure_date'];
-    //     $booking['total_cost'] = $row['total_cost'];
-    //     $booking['stars'] = $row['stars'];
-    //     $booking['features'][] = $row['features'];
-    //     $booking['additional_info'] = ['greeting' => $row['greeting']];
-    // }
+    $booking = [];
+    foreach ($results as $row) {
+        $booking['island'] = $row['island'];
+        $booking['hotel'] = $row['hotel'];
+        $booking['arrival_date'] = $row['arrival_date'];
+        $booking['departure_date'] = $row['departure_date'];
+        $booking['total_cost'] = $row['total_cost'];
+        $booking['stars'] = $row['stars'];
+        !empty($_SESSION['features']) ? $booking['features'][] = $row['features'] : $booking['features'][] = 'none';
+        $booking['additional_info'] = ['greeting' => $row['greeting']];
+    }
 
-    header('Content-type: JSON');
-    echo json_encode($results, JSON_PRETTY_PRINT);
-    // $_SESSION['booking'] = json_encode($booking, JSON_PRETTY_PRINT);
+    // header('Content-type: JSON');
+    // echo json_encode($results, JSON_PRETTY_PRINT);
+    // echo json_encode($booking, JSON_PRETTY_PRINT);
+    $_SESSION['booking'] = array();
+    $_SESSION['booking'] = $booking;
+    redirect('/../views/booking-complete.php');
 }
-// redirect('/../views/booking-response.php');

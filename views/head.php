@@ -15,7 +15,6 @@ if (!key_exists('userId', $_SESSION)) :
     $_SESSION['dates'] = array();
     $_SESSION['features'] = array();
     $_SESSION['errors'] = array();
-    $_SESSION['booking'] = array();
 
 endif;
 if (isset($_POST['arrival'], $_POST['departure'])) :
@@ -25,8 +24,6 @@ endif;
 if (isset($_POST['transfer-code'], $_POST['guest-name'])) :
     $_POST['transfer-code'] = trim(htmlspecialchars($_POST['transfer-code'], ENT_QUOTES));
     $_POST['guest-name'] = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
-// $_SESSION['transfer-code'] = trim(htmlspecialchars($_POST['transfer-code'], ENT_QUOTES));
-// $_SESSION['guest-name'] = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
 endif;
 
 if (isset($_POST['booking-step-1'])) :

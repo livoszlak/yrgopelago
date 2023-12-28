@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-require __DIR__ . '/navigation.php';
 require __DIR__ . '/head.php';
+require __DIR__ . '/navigation.php';
 require __DIR__ . '/header.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
