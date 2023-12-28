@@ -5,11 +5,11 @@
 }
 
 .calendar-title {
-  background-color: cadetblue;
+  background-color: var(--luxury-purple);
 }
 
 tbody {
-  background-color: rgb(95, 178, 211);
+  background-color: var(--bg-grey);
 }
 
 .cal-week-2,
@@ -22,11 +22,11 @@ tr {
 }
 
 .booked {
-  background-color: red;
+  background-color: var(--bg-grey);
 }
 
 .available {
-  background-color: darkslateblue;
+  background-color: var(--standard-pink);
 }
 
 /* td {

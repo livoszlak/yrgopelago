@@ -25,6 +25,7 @@ if (isset($_POST['update-feature-price'])) {
     $statement->execute();
     $currentPrices = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
 if (isset($_POST['increase'])) {
     foreach ($currentPrices as $index => $price) {
         $newPrice = ($price['feature_price'] + $priceModifier);
@@ -47,5 +48,12 @@ if (isset($_POST['increase'])) {
     }
 }
 
+if (isset($_POST['update-stars'])) {
+    $newStars = $_POST['new-stars'];
+
+    $statement = $database->prepare('UPDATE hotel SET stars = :stars WHERE id = 1');
+    $statement->bindParam(':stars', $newStars, PDO::PARAM_INT);
+    $statement->execute();
+}
 
 redirect('/../../admin.php');

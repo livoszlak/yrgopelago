@@ -1,5 +1,4 @@
 <?php
-// reserveRoom($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type']);
 
 require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../app/autoload.php';
@@ -24,14 +23,48 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
         deposit($_POST['transfer-code']);
     }
 
-    unset($_SESSION['errors']);
     reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
-    bookStay();
-    echo "Booked";
+    $bookingId = bookStay();
+
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare("SELECT 
+    hotel.island,
+    hotel.hotel,
+    bookings.arrival_date,
+    bookings.departure_date,
+    bookings.total_cost,
+    hotel.stars,
+    features.feature_name AS features,
+    bookings.greeting
+ FROM 
+    bookings
+ JOIN 
+    hotel ON bookings.hotel_id = hotel.id
+ JOIN 
+    booking_feature ON bookings.id = booking_feature.booking_id
+ JOIN 
+    features ON booking_feature.feature_id = features.id
+ WHERE 
+    bookings.id = :bookingId");
+
+    $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    // $booking = [];
+    // foreach ($results as $row) {
+    //     $booking['island'] = $row['island'];
+    //     $booking['hotel'] = $row['hotel'];
+    //     $booking['arrival_date'] = $row['arrival_date'];
+    //     $booking['departure_date'] = $row['departure_date'];
+    //     $booking['total_cost'] = $row['total_cost'];
+    //     $booking['stars'] = $row['stars'];
+    //     $booking['features'][] = $row['features'];
+    //     $booking['additional_info'] = ['greeting' => $row['greeting']];
+    // }
+
+    header('Content-type: JSON');
+    echo json_encode($results, JSON_PRETTY_PRINT);
+    // $_SESSION['booking'] = json_encode($booking, JSON_PRETTY_PRINT);
 }
-
-
-
-// reserve room on booked dates
-
-// redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
+// redirect('/../views/booking-response.php');

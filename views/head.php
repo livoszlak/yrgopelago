@@ -15,6 +15,7 @@ if (!key_exists('userId', $_SESSION)) :
     $_SESSION['dates'] = array();
     $_SESSION['features'] = array();
     $_SESSION['errors'] = array();
+    $_SESSION['booking'] = array();
 
 endif;
 if (isset($_POST['arrival'], $_POST['departure'])) :

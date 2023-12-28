@@ -259,9 +259,9 @@ function getQuote()
     $discount = 1;
     $_SESSION['totalCost'] = $featureTotal + $roomTotal;
 
-    if ($_SESSION['totalDays'] > 3) {
+    if ($_SESSION['totalDays'] > 2) {
         $discount = 0.75;
-    } else if ($_SESSION['totalDays'] > 3 && count($_SESSION['features']) > 4) {
+    } else if ($_SESSION['totalDays'] > 2 && count($_SESSION['features']) > 3) {
         $discount = 0.6;
     }
 
@@ -311,6 +311,7 @@ function bookStay()
 {
     $guestName = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
     $totalCost = $_SESSION['totalCost'];
+    $hotelId = 1;
     $guestId = $_SESSION['userId'];
     $roomId = $_SESSION['room-type'];
     $arrival = $_SESSION['arrival'];
@@ -322,7 +323,8 @@ function bookStay()
     $greeting = "Thank you, " . $guestName . ", for staying with us for " . $totalDays . " days!";
 
     $database = databaseConnect('/database/hotel.db');
-    $statement = $database->prepare('INSERT INTO bookings(guest_id, room_id, arrival_date, departure_date, total_cost, transfer_code, greeting) VALUES (:guestId, :roomId, :arrival, :departure, :totalCost, :transferCode, :greeting)');
+    $statement = $database->prepare('INSERT INTO bookings(hotel_id, guest_id, room_id, arrival_date, departure_date, total_cost, transfer_code, greeting) VALUES (:hotelId, :guestId, :roomId, :arrival, :departure, :totalCost, :transferCode, :greeting)');
+    $statement->bindParam(':hotelId', $hotelId, PDO::PARAM_INT);
     $statement->bindParam(':guestId', $guestId, PDO::PARAM_STR);
     $statement->bindParam(':roomId', $roomId, PDO::PARAM_STR);
     $statement->bindParam(':arrival', $arrival, PDO::PARAM_STR);
@@ -334,10 +336,13 @@ function bookStay()
 
     $bookingId = $database->lastInsertId();
 
-    foreach ($_SESSION['features'] as $feature) {
-        $statement = $database->prepare('INSERT INTO booking_feature(feature_id, booking_id) VALUES(:featureId, :bookingId)');
-        $statement->bindParam(':featureId', $feature);
-        $statement->bindParam(':bookingId', $bookingId);
-        $statement->execute();
+    if (!empty($_SESSION['features'])) {
+        foreach ($_SESSION['features'] as $feature) {
+            $statement = $database->prepare('INSERT INTO booking_feature(feature_id, booking_id) VALUES(:featureId, :bookingId)');
+            $statement->bindParam(':featureId', $feature);
+            $statement->bindParam(':bookingId', $bookingId);
+            $statement->execute();
+        }
     }
+    return $bookingId;
 }

@@ -37,7 +37,13 @@ require __DIR__ . '/views/header.php'; ?>
     <br>
     <input type="submit" method="post" name="update-feature-price" value="Update feature price">
 </form>
-
+<br>
+<p>UPDATE STARS</p>
+<form action="/app/posts/update.php" method="post" name="update-stars">
+    <input type="text" name="new-stars" placeholder="Enter new star count">
+    <br>
+    <input type="submit" method="post" name="update-stars" value="Update star count">
+</form>
 <form action="" method="post">
 
 </form>

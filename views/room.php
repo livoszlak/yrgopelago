@@ -15,25 +15,27 @@ $roomInfo = getRoomInfo();
 ?>
 
 <main>
-    <div class="discounts"></div>
-    <div class="room-info">
-        <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p><br>
+    <div class="discounts">
+        <div class="discount-headline">DISCOUNTS AVAILABLE!</div>
+        <img class="paw" src="/assets/images/paw.svg">
     </div>
+    <div class="calendar-info-wrapper">
+        <div class="calendar-wrapper">
+            <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
+            echo $calendar->draw(date('2024-01-01')); ?>
+        </div>
+        <div class="info-wrapper">
+            <div class="room-info">
+                <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p><br>
+            </div>
+            <div class="booking-info">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quaerat consequatur alias vel sit sequi, adipisci ullam dignissimos? Hic unde pariatur totam incidunt at maxime, corporis adipisci labore vel enim! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio unde, quas alias adipisci voluptas aperiam natus enim reprehenderit eum, dolor nam esse incidunt ad tempora dolorum? Voluptas neque cum provident. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque consequatur voluptatem quas. Quod veniam fuga earum, laudantium recusandae magni amet. Enim praesentium quae tempore repellat, modi facilis aliquam dolorum sint!</p>
+            </div>
+        </div>
+    </div>
+
     <form action="" method="post" name="booking" id="booking">
         <div class="booking">
-
-            <div class="calendar-dates-wrapper">
-                <div class="calendar-wrapper">
-                    <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
-                    echo $calendar->draw(date('2024-01-01')); ?>
-                </div>
-            </div>
-
-            <div class="date-picker-info-wrapper">
-                <div class="booking-info">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quaerat consequatur alias vel sit sequi, adipisci ullam dignissimos? Hic unde pariatur totam incidunt at maxime, corporis adipisci labore vel enim! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio unde, quas alias adipisci voluptas aperiam natus enim reprehenderit eum, dolor nam esse incidunt ad tempora dolorum? Voluptas neque cum provident. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque consequatur voluptatem quas. Quod veniam fuga earum, laudantium recusandae magni amet. Enim praesentium quae tempore repellat, modi facilis aliquam dolorum sint!</p>
-                </div>
-            </div>
             <div class="date-picker-wrapper">
                 <div class="arrival">
                     <label for="arrival">Arrival date:</label>
