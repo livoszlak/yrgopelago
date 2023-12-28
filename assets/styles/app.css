@@ -21,7 +21,8 @@ body {
 }
 
 .logo > a,
-.nav-item > a {
+.nav-item > a,
+.json > a {
   color: var(--headline-orange);
   text-decoration: none;
 
@@ -462,6 +463,19 @@ button {
 
 .cat-cal {
   width: 100%;
+}
+
+.thank-you {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-html {
+}
+
+.json {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 footer {
