@@ -336,11 +336,23 @@ function bookStay()
 
     $bookingId = $database->lastInsertId();
 
+    //    HÄMTA PRIS HÄR??
+    //    $_SESSION['features'][]=[ 'id'=> $key,
+    //  'cost' => $value
+    // ];
+
     if (!empty($_SESSION['features'])) {
         foreach ($_SESSION['features'] as $feature) {
             $statement = $database->prepare('INSERT INTO booking_feature(feature_id, booking_id) VALUES(:featureId, :bookingId)');
-            $statement->bindParam(':featureId', $feature);
-            $statement->bindParam(':bookingId', $bookingId);
+            $statement->bindParam(':featureId', $feature, PDO::PARAM_INT);
+            $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
+            $statement->execute();
+        }
+        foreach ($_SESSION['feature-data'] as $data) {
+            $statement = $database->prepare('UPDATE booking_feature SET feature_price = :featurePrice WHERE booking_id = :bookingId AND feature_id = :featureId');
+            $statement->bindParam(':featurePrice', $data['cost'], PDO::PARAM_INT);
+            $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
+            $statement->bindParam(':featureId', $data['id'], PDO::PARAM_INT);
             $statement->execute();
         }
     }

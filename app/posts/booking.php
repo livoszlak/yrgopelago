@@ -35,7 +35,8 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     bookings.departure_date,
     bookings.total_cost,
     hotel.stars,
-    features.feature_name AS features,
+    features.feature_name AS feature_name,
+    booking_feature.feature_price AS feature_price,
     bookings.greeting
  FROM 
     bookings
@@ -76,7 +77,7 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
         $booking['departure_date'] = $row['departure_date'];
         $booking['total_cost'] = $row['total_cost'];
         $booking['stars'] = $row['stars'];
-        !empty($_SESSION['features']) ? $booking['features'][] = $row['features'] : $booking['features'][] = 'none';
+        !empty($_SESSION['features']) ? $booking['features'][] = ['name' => $row['feature_name'], 'cost' => $row['feature_price']] : $booking['features'][] = 'none';
         $booking['additional_info'] = ['greeting' => $row['greeting']];
     }
 

@@ -14,7 +14,12 @@ require __DIR__ . '/header.php'; ?>
             Arrival date: <?= $_SESSION['booking']['arrival_date']; ?><br>
             Departure date: <?= $_SESSION['booking']['departure_date']; ?><br>
             Total cost: <?= $_SESSION['booking']['total_cost']; ?><br>
-            Cats chosen for company during your stay: <?php for ($i = 0; $i < count($_SESSION['booking']['features']); $i++) : echo $_SESSION['booking']['features'][$i] . '! ';
+            Cats chosen for company during your stay: <?php
+                                                        for ($i = 0; $i < count($_SESSION['booking']['features']); $i++) :
+                                                            if (isset($_SESSION['booking']['features'][$i]['name'])) :
+                                                                echo $_SESSION['booking']['features'][$i]['name'] . '! ';
+                                                            else : echo $_SESSION['booking']['features'][$i];
+                                                            endif;
                                                         endfor; ?>
         </div>
         <div class="json">

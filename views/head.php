@@ -30,6 +30,8 @@ if (isset($_POST['booking-step-1'])) :
     $availableRooms = checkAvailability($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
     $dates = fetchDates($availableRooms);
     $_SESSION['totalDays'] = count($dates);
+    unset($_SESSION['feature-data']);
+    $_SESSION['feature-data'] = array();
     $_SESSION['features'] = [];
     foreach ($_POST as $key => $value) {
         if ($value == 'on') {

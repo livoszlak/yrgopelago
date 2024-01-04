@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-require __DIR__ . '/head.php';
 require __DIR__ . '/navigation.php';
+require __DIR__ . '/head.php';
 require __DIR__ . '/header.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
@@ -11,6 +11,16 @@ $calendar = new Calendar;
 $calendar->useMondayStartingDate();
 $_SESSION['room-type'] = $_GET['room-type'];
 $roomInfo = getRoomInfo();
+if (!empty($_SESSION['features'])) {
+    foreach ($roomInfo as $info => $feature) {
+        if (!in_array((int)$feature['feature_id'], $_SESSION['features'])) {
+            continue;
+        } else {
+            $_SESSION['feature-data'][] = ['name' => $feature['feature_name'], 'cost' => $feature['feature_price'], 'id' => $feature['feature_id']];
+        }
+    }
+}
+
 
 ?>
 
@@ -123,9 +133,9 @@ $roomInfo = getRoomInfo();
         <?php echo '<pre>';
         ?>
         <br>
-        <br>
+        <br> POST
         <?php var_dump($_POST); ?>
-        <br>
+        <br> SESSION
         <?php var_dump($_SESSION); ?>
     </div>
 
