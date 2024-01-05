@@ -21,13 +21,13 @@ if (!empty($_SESSION['features'])) {
     }
 }
 
-
 ?>
 
 <main>
     <div class="discounts">
         <div class="discount-headline">DISCOUNTS AVAILABLE!</div>
-        <img class="paw" src="/assets/images/paw.svg">
+        <div class="discount-specs">Book more than 2 days with us for 25% off your stay -<br>
+            and add 4 or more features to your 2+ days long stay for 40% off!</div>
     </div>
     <div class="calendar-info-wrapper">
         <div class="calendar-wrapper">
@@ -44,16 +44,20 @@ if (!empty($_SESSION['features'])) {
         </div>
     </div>
 
+
+
+
+
     <form action="" method="post" name="booking" id="booking">
         <div class="booking">
             <div class="date-picker-wrapper">
                 <div class="arrival">
                     <label for="arrival">Arrival date:</label>
-                    <input type="date" id="arrival" name="arrival" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
+                    <input type="date" id="arrival" name="arrival" value="<?php echo isset($_POST['arrival']) ? htmlspecialchars($_POST['arrival'], ENT_QUOTES) : '2024-01-01'; ?>" min="2024-01-01" max="2024-01-31" required />
                 </div>
                 <div class="departure">
                     <label for="departure">Departure date:</label>
-                    <input type="date" id="departure" name="departure" value="2024-01-01" min="2024-01-01" max="2024-01-31" required />
+                    <input type="date" id="departure" name="departure" value="<?php echo isset($_POST['departure']) ? htmlspecialchars($_POST['departure'], ENT_QUOTES) : '2024-01-01'; ?>" min="2024-01-01" max="2024-01-31" required />
                 </div>
             </div>
 
@@ -71,33 +75,27 @@ if (!empty($_SESSION['features'])) {
                 <?php endforeach; ?>
             </div>
             <div class="button-quote-wrapper">
-                <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button><br>
-                <?php if (isset($_POST['booking-step-1'])) : ?>
-                    <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.'; ?>
-                <?php endif; ?>
+                <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
+                <div class="quote-wrapper">
 
-            </div>
+                    <?php if (isset($_POST['booking-step-1'])) : ?>
+                        <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.';
+                        if ($_SESSION['totalDays'] == 0) :
+                            echo '<br>Either you selected unavailable dates, or you selected none. Please double check our availability calendar!';
+                        // if (count($_SESSION['features']) == 0) :
+                        //     echo '<b>No cats? Seriously? That hurts... right here in my meow-meow...';
+                        // endif;
+                        endif; ?>
+                    <?php endif; ?>
+                </div>
     </form>
     <div class="booking-payment-wrapper">
         <div class="booking-carousel-wrapper">
             <div class="room-carousel">
-
-                <div class="mySlides fade">
-                    <img src="/assets/images/FEATURE-ABYSSINIAN-pexels-lindsey-garrett-13986951.png" style="width:100%; height: 100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <img src="/assets/images/FEATURE-BALINESE-pexels-leah-kelley-341522.png" style="width:100%; height: 100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <img src="/assets/images/FEATURE-BENGAL-pexels-nika-benedictova-15802496.png" style="width:100%; height: 100%">
-
-                </div>
-                <div class="dots" style="text-align:center">
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                <div class="room-carousel">
+                    <div class="mySlides fade">
+                        <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).png">
+                    </div>
                 </div>
             </div>
             <div class="error-container">
@@ -126,9 +124,9 @@ if (!empty($_SESSION['features'])) {
             </form>
         </div>
     </div>
-
-
     </div>
+    </div>
+
     <div>
         <?php echo '<pre>';
         ?>
@@ -137,6 +135,8 @@ if (!empty($_SESSION['features'])) {
         <?php var_dump($_POST); ?>
         <br> SESSION
         <?php var_dump($_SESSION); ?>
+        <br> GET
+        <?php var_dump($_GET); ?>
     </div>
 
 </main>

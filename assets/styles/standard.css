@@ -1,0 +1,41 @@
+.discounts,
+.discount-specs {
+  background-color: var(--standard-fuchsia);
+  color: var(--standard-green);
+}
+
+.calendar-info-wrapper {
+  color: var(--standard-fuchsia);
+  background-color: var(--standard-green);
+}
+
+.discount-headline {
+  color: var(--standard-green);
+}
+
+.date-picker-wrapper {
+  background-color: var(--standard-fuchsia);
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--standard-green);
+}
+
+.feature-price-bubble {
+  background-color: var(--standard-green);
+  color: black;
+}
+
+.quote {
+  background-color: var(--standard-fuchsia);
+}
+
+.booking-payment-wrapper {
+  background-color: var(--standard-fuchsia);
+}
+
+.booking-heading-wrapper {
+  color: var(--standard-green);
+}
+
+.button {
+  background-color: var(--standard-green);
+}

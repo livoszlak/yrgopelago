@@ -7,29 +7,31 @@
     <div class="index-info">
         <div class="hotel-info">
             <div class="info headline">THE ISLE OF CATS</div>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus eius sapiente iusto, nam rem temporibus ipsa aut nisi in pariatur repellat nulla debitis a laborum dolorum laboriosam delectus sunt excepturi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates beatae similique facere fugit, maxime quisquam. Minus tenetur natus quam alias, quisquam numquam error omnis at hic.</p>
+            <p>Our idyllic island hosts a harmony of domestic cats amid lush landscapes and sunny vistas. Wander pathways adorned by playful felines amidst blooming gardens, and listen to the serene symphony of contented purrs. Encounter a variety of breeds relaxing by clear streams or perched with regal grace. Your heart will surely be stolen by their charming antics.</p>
         </div>
-        <div class="discount-info">
-            <div class="info headline">MEOWGICAL DISCOUNTS</div>
-            <p>Commodi facere quod voluptates? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati recusandae eos sint cupiditate reiciendis molestiae esse, quas corporis blanditiis odit, deleniti voluptatem? Ea eaque enim, veniam quasi veritatis quae neque.</p>
+        <div class="hotel-info">
+            <div class="info headline">YOUR MEOWGICAL STAY AWAITS</div>
+            <p>Indulge in a stay tailored to cat lovers' dreams! Choose from budget, standard, or luxury rooms, each offering modern comforts and equipped with cat toys. Personalize your stay by welcoming adorable feline companions into your room. Picture yourself unwinding amidst cozy spaces, cuddling with furry friends, and creating memories that purr-sist forever.</p>
         </div>
     </div>
     <div class="rooms-wrapper">
         <a href="/views/room.php?room-type=1">
             <div class="room-card budget">
-                <div class="room-image"><img src="/assets/images/ROOM-pexels-ekaterina-bolovtsova-7445017.png"></div>
+                <div class="room-image"><img src="/assets/images/ROOM-pexels-anete-lusina-5240576.png"></div>
                 <div class="room-text">
-                    <div class="room-heading">BUDGET</div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam animi voluptates ipsam eveniet provident accusamus architecto voluptas. Nisi doloremque architecto veniam nam optio cupiditate, facere repellendus iure repellat fuga? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus recusandae dignissimos eligendi ab, veniam nulla nemo sapiente voluptates dolor sed odio excepturi, pariatur similique. Id odit dolor nemo labore unde. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates amet vel vero! Provident laborum adipisci praesentium consequuntur fuga qui, veritatis nobis reprehenderit aliquid nihil corporis corrupti libero illo sequi facilis!</p>
+                    <div class="room-heading">SAM'S SUITE (BUDGET)</div>
+                    <p>Welcome to our cozy budget room! For savvy travelers seeking a delightful stay without breaking the catnip bank, this snug space offers all the essentials for a comfortable catcation. Enjoy a purrfectly charming room filled with playful vibes and a touch of feline flair. Relax and recharge in this whisker-friendly hideaway, where frugal meets fabulous!</p>
+                    <p>This affordable room is named after Unsinkable Sam, the ship's cat who survived the sinking of three ships during World War II.</p>
                 </div>
             </div>
         </a>
         <a href="/views/room.php?room-type=2">
             <div class="room-card standard">
-                <div class="room-image"><img src="/assets/images/ROOM-pexels-ekaterina-bolovtsova-7445122.png"></div>
+                <div class="room-image"><img src="/assets/images/ROOM-pexels-ekaterina-bolovtsova-7445017.png"></div>
                 <div class="room-text">
-                    <div class="room-heading">STANDARD</div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur totam illo nisi, similique fuga eius, iste ipsam enim possimus eveniet numquam quis animi itaque temporibus sequi earum, adipisci cumque? Perferendis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor molestias, in illum quo quis consectetur, necessitatibus nesciunt ducimus corporis labore non voluptas minima, assumenda vitae possimus. Qui ex culpa magnam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quis possimus maiores aspernatur, laboriosam, accusamus exercitationem impedit quibusdam repellendus id et? Magni dolorem est repellendus blanditiis laborum. Dignissimos, eos fugiat.</p>
+                    <div class="room-heading">FINDUS' FLAT (STANDARD)</div>
+                    <p>Step into this delightful den designed for those seeking a little extra charm and comfort during their stay. It's a meowtel room filled with all the purrks you might desire, and features a blend of modern convenience and cozy cat-inspired details. Unwind in style and enjoy the playful ambiance that serves you the Cradle's essential blend of comfort and whimsy!</p>
+                    <p>This classic room is named after Findus, the beloved fun-loving feline known from Swedish children's literature. Complimentary <i>pannkakstårta</i> served on arrival.</p>
                 </div>
             </div>
         </a>
@@ -37,10 +39,12 @@
             <div class="room-card luxury">
                 <div class="room-image"><img src="/assets/images/ROOM-pexels-max-rahubovskiy-6580369.png"></div>
                 <div class="room-text">
-                    <div class="room-heading">LUXURY</div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, reprehenderit? Dicta provident nam assumenda illo magni facilis esse cupiditate. Voluptas quia distinctio aperiam nam commodi facere, tempora natus possimus delectus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero voluptas harum dolorum dolor esse ipsum, nemo omnis numquam nam debitis vel iste architecto corporis saepe temporibus est exercitationem eos eius? Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ut culpa impedit, quod, laudantium voluptatibus iusto, velit cumque vero necessitatibus natus officia quia totam dolor corrupti. Praesentium numquam mollitia totam.</p>
+                    <div class="room-heading">CHESHIRE'S CHAMBER (LUXURY)</div>
+                    <p>You are cordially invited to an unforgettable stay in our legendary premium suite, where opulence meets fun and fancy! Indulge in the lap of luxury in this regal space designed for the most discerning cat aficionados. From plush amenities to sophisticated décor, every detail exudes elegance and comfort. Immerse yourself in the ultimate cat-loving paradise, where every moment feels like a purrivilege!</p>
+                    <p>This pawsomely palacial place is named after the Cheshire Cat, of Wonderland fame - a playful trickster icon with a winning smile. Won't you stay for tea?</p>
                 </div>
             </div>
         </a>
+        <div class="cat-fact"></div>
     </div>
 </main>

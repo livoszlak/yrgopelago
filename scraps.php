@@ -176,3 +176,8 @@ if ($key < 40) { $_SESSION['features'][]=[ 'id'=> $key,
 
         ?>
     </main>
+
+
+    // const accordion = document.getElementsByClassName('accordion');
+
+    // for (let i = 0; i < accordion.length; i++) { // accordion[i].addEventListener('click', function () { // this.classList.toggle('active'); // const panel=this.nextElementSibling; // if (panel.style.display==='block' ) { // panel.style.display='none' ; // } else { // panel.style.display='block' ; // } // if (panel.style.maxHeight) { // panel.style.maxHeight=null; // } else { // panel.style.maxHeight=panel.scrollHeight + 'px' ; // } // // Close all other accordions // for (let j=0; j < accordion.length; j++) { // if (i !==j && accordion[j].classList.contains('active')) { // accordion[j].classList.remove('active'); // const otherPanel=accordion[j].nextElementSibling; // otherPanel.style.display='none' ; // otherPanel.style.maxHeight=null; // } // } // }); // }

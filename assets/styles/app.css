@@ -1,6 +1,8 @@
 :root {
-  --budget-yellow: #faef7c;
-  --standard-pink: #e26274;
+  --budget-yellow: #f7e9a0;
+  --budget-pink: #e26274;
+  --standard-green: #40b3a2;
+  --standard-fuchsia: #af3b8c;
   --luxury-purple: #78589f;
   --headline-orange: #e27d5f;
   --outline-pale: #d4cae3;
@@ -27,7 +29,7 @@ body {
   text-decoration: none;
 
   &:hover {
-    color: var(--standard-pink);
+    color: var(--budget-pink);
     text-decoration: underline;
   }
   &:active {
@@ -101,15 +103,14 @@ header > img {
   gap: 2rem;
 }
 
-.hotel-info,
-.discount-info {
+.hotel-info {
   width: calc(40%);
   background-color: var(--bg-minty);
   padding: 2rem;
 }
 
 .info {
-  color: var(--standard-pink);
+  color: var(--budget-pink);
 }
 
 .headline > a:hover {
@@ -151,9 +152,7 @@ main {
 
 .room-card {
   height: 400px;
-  background-color: #8187c7;
   overflow: hidden;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -182,12 +181,12 @@ main {
 }
 
 .budget {
-  background-color: var(--budget-yellow);
-  color: var(--standard-pink);
+  background-color: var(--budget-pink);
+  color: var(--budget-yellow);
   padding-right: 3rem;
   &:hover {
-    color: var(--budget-yellow);
-    background-color: var(--standard-pink);
+    background-color: var(--budget-yellow);
+    color: var(--budget-pink);
     transition: 0.3s ease-in-out;
     /* border: 1rem solid var(--bg-grey); */
   }
@@ -196,12 +195,12 @@ main {
 .standard {
   justify-content: right;
   flex-direction: row-reverse;
-  background-color: var(--standard-pink);
-  color: var(--budget-yellow);
+  background-color: var(--standard-fuchsia);
+  color: var(--standard-green);
   padding-left: 3rem;
   &:hover {
-    color: var(--standard-pink);
-    background-color: var(--budget-yellow);
+    color: var(--standard-fuchsia);
+    background-color: var(--standard-green);
     transition: 0.5s ease-in-out;
     /* border: 1rem solid var(--bg-grey); */
   }
@@ -209,14 +208,18 @@ main {
 
 .luxury {
   background-color: var(--luxury-purple);
-  color: var(--standard-pink);
+  color: var(--budget-pink);
   padding-right: 3rem;
   &:hover {
     color: var(--luxury-purple);
-    background-color: var(--standard-pink);
+    background-color: var(--budget-pink);
     transition: 0.5s ease-in-out;
     /* border: 1rem solid var(--bg-grey); */
   }
+}
+
+.cat-fact {
+  height: 400px;
 }
 
 .booking {
@@ -225,31 +228,26 @@ main {
   gap: 2rem;
 }
 
-.booking-info {
-}
-
-.paw {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: -150;
-  right: 25;
-  z-index: 6;
-}
-
 .discounts {
+  font-family: 'Bebas Neue', sans-serif;
   display: flex;
   position: relative;
   flex-direction: column;
-  height: 200px;
   width: 100%;
-  background-color: var(--standard-pink);
+  background-color: var(--budget-pink);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .discount-headline {
   font-size: 3rem;
-  font-family: 'Bebas Neue', sans-serif;
   color: var(--budget-yellow);
+  text-align: center;
+}
+
+.discount-specs {
+  letter-spacing: 2px;
   text-align: center;
 }
 
@@ -261,6 +259,7 @@ main {
   height: 400px;
   padding: 2rem;
   background-color: var(--budget-yellow);
+  position: relative;
 }
 
 .info-wrapper {
@@ -268,6 +267,11 @@ main {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+}
+
+input {
+  font-family: 'EB Garamond', serif;
+  font-weight: 800;
 }
 
 .date-picker-wrapper {
@@ -280,6 +284,13 @@ main {
   gap: 1rem;
 }
 
+.arrival,
+.departure {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
 .room-info {
   display: flex;
   flex-direction: column;
@@ -288,6 +299,8 @@ main {
 .features-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
@@ -340,6 +353,8 @@ main {
   right: -5;
   align-items: center;
   justify-content: center;
+  font-weight: 1000;
+  box-shadow: 3px 3px 3px black;
 }
 
 button {
@@ -358,10 +373,19 @@ button {
   align-items: center;
 }
 
+.quote-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
 .quote {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Bebas Neue', sans-serif;
   background-image: url('/assets/images/paw.svg');
   background-color: #8187c7;
   border-radius: 30px;
@@ -402,6 +426,8 @@ button {
 .booking-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: 1rem;
   gap: 1rem;
@@ -410,7 +436,7 @@ button {
 .form-payment {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  max-width: 400px;
 }
 
 .availability {
@@ -470,9 +496,6 @@ button {
   flex-direction: column;
 }
 
-.booking-html {
-}
-
 .json {
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
@@ -482,4 +505,74 @@ footer {
   height: 500px;
   width: 100vw;
   background-color: var(--headline-orange);
+}
+
+/* FADE-IN ANIMATION */
+
+.inview {
+  animation: fadeIn ease-in-out 1.3s;
+  -webkit-animation: fadeIn ease-in-out 1s;
+  -moz-animation: fadeIn ease-in-out 1s;
+  -o-animation: fadeIn ease-in-out 1s;
+  -ms-animation: fadeIn ease-in-out 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

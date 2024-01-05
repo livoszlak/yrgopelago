@@ -54,6 +54,13 @@ endif;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Raleway&family=Bebas+Neue&family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+    <?php if (isset($_GET['room-type']) && $_GET['room-type'] == 1) : ?>
+        <link rel="stylesheet" href="../assets/styles/budget.css">
+    <?php elseif (isset($_GET['room-type']) && $_GET['room-type'] == 2) : ?>
+        <link rel="stylesheet" href="../assets/styles/standard.css">
+    <?php elseif (isset($_GET['room-type']) && $_GET['room-type'] == 3) : ?>
+        <link rel="stylesheet" href="../assets/styles/luxury.css">
+    <?php endif; ?>
     <title>Document</title>
 </head>
 
