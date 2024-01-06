@@ -159,6 +159,15 @@ function reserveRoom(string $arrival, string $departure, int $roomId)
 //     }
 // }
 
+function fetchStars()
+{
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare('SELECT stars FROM hotel');
+    $statement->execute();
+    $stars = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $stars[0];
+}
+
 function fetchFeatures($roomId)
 {
     $database = databaseConnect('/database/hotel.db');
@@ -335,11 +344,6 @@ function bookStay()
     $statement->execute();
 
     $bookingId = $database->lastInsertId();
-
-    //    HÄMTA PRIS HÄR??
-    //    $_SESSION['features'][]=[ 'id'=> $key,
-    //  'cost' => $value
-    // ];
 
     if (!empty($_SESSION['features'])) {
         foreach ($_SESSION['features'] as $feature) {

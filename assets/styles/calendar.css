@@ -4,21 +4,24 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.calendar-title {
-  background-color: var(--luxury-purple);
-}
-
-tbody {
-  background-color: var(--bg-grey);
-}
-
-.cal-week-2,
-.cal-week-4 {
-  background-color: rgb(236, 118, 75);
-}
-
 tr {
   text-align: center;
+}
+
+.cal-day-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.calendar-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
 }
 
 .booked {
@@ -29,8 +32,17 @@ tr {
   background-color: var(--standard-pink);
 }
 
-/* td {
-  background-image: url('/assets/Frame 5.png');
+.booked > .cal-day-box {
+  background-image: url('/assets/images/icons/unavailable-strike.svg');
+  content-visibility: hidden;
+}
+
+.booked {
+  background-color: unset;
+}
+
+/* .available > .cal-day-box {
+  background-image: url('/assets/images/icons/available-paw.svg');
 } */
 
 .calendar-wrapper {

@@ -25,7 +25,7 @@ if (!empty($_SESSION['features'])) {
 
 <main>
     <div class="discounts">
-        <div class="discount-headline">DISCOUNTS AVAILABLE!</div>
+        <div class="discount-headline">PAW-TASTIC DISCOUNTS AVAILABLE!</div>
         <div class="discount-specs">Book more than 2 days with us for 25% off your stay -<br>
             and add 4 or more features to your 2+ days long stay for 40% off!</div>
     </div>
@@ -43,10 +43,6 @@ if (!empty($_SESSION['features'])) {
             </div>
         </div>
     </div>
-
-
-
-
 
     <form action="" method="post" name="booking" id="booking">
         <div class="booking">
@@ -77,27 +73,28 @@ if (!empty($_SESSION['features'])) {
             <div class="button-quote-wrapper">
                 <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
                 <div class="quote-wrapper">
-
                     <?php if (isset($_POST['booking-step-1'])) : ?>
-                        <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.';
-                        if ($_SESSION['totalDays'] == 0) :
-                            echo '<br>Either you selected unavailable dates, or you selected none. Please double check our availability calendar!';
-                        // if (count($_SESSION['features']) == 0) :
-                        //     echo '<b>No cats? Seriously? That hurts... right here in my meow-meow...';
-                        // endif;
-                        endif; ?>
+                        <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.'; ?>
+                        <div class="issues">
+                            <?php if ($_SESSION['totalDays'] == 0) : ?>
+                            <?= '<br>Either you selected unavailable dates, or you selected none. Please double check our availability calendar!';
+                                if (count($_SESSION['features']) == 0) :
+                                    echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
+                                endif;
+                            endif; ?>
+
+                        </div>
                     <?php endif; ?>
                 </div>
     </form>
     <div class="booking-payment-wrapper">
         <div class="booking-carousel-wrapper">
             <div class="room-carousel">
-                <div class="room-carousel">
-                    <div class="mySlides fade">
-                        <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).png">
-                    </div>
+                <div class="mySlides fade">
+                    <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).png">
                 </div>
             </div>
+
             <div class="error-container">
                 <?php if (!empty($_SESSION['errors'])) :
                     foreach ($_SESSION['errors'] as $error) :
@@ -127,17 +124,17 @@ if (!empty($_SESSION['features'])) {
     </div>
     </div>
 
-    <div>
-        <?php echo '<pre>';
-        ?>
+    <!-- <div> -->
+    <!-- <?php echo '<pre>';
+            ?>
         <br>
         <br> POST
         <?php var_dump($_POST); ?>
         <br> SESSION
         <?php var_dump($_SESSION); ?>
         <br> GET
-        <?php var_dump($_GET); ?>
-    </div>
+        <?php var_dump($_GET); ?> -->
+    <!-- </div> -->
 
 </main>
 <?php require __DIR__ . '/footer.php'; ?>

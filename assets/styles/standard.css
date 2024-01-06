@@ -9,7 +9,16 @@
   background-color: var(--standard-green);
 }
 
-.discount-headline {
+.calendar-wrapper {
+  background-color: var(--standard-fuchsia);
+}
+
+.available {
+  background-color: var(--standard-green);
+}
+
+.discount-headline,
+.calendar-title {
   color: var(--standard-green);
 }
 

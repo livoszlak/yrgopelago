@@ -9,7 +9,16 @@
   background-color: var(--budget-pink);
 }
 
-.discount-headline {
+.calendar-wrapper {
+  background-color: var(--luxury-purple);
+}
+
+.available {
+  background-color: var(--budget-pink);
+}
+
+.discount-headline,
+.calendar-title {
   color: var(--budget-pink);
 }
 

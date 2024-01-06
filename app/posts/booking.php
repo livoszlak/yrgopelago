@@ -3,7 +3,7 @@
 require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../app/autoload.php';
 
-use GuzzleHttp\Client;
+// use GuzzleHttp\Client;
 
 if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type'])) {
     $_SESSION['errors'][] = 'Meouch, too slow! Someone else booked your desired date(s). Please refresh page to see updated availability calendar.';
@@ -11,7 +11,6 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
 } else {
 
     if (!isValidUuid($_POST['transfer-code'])) {
-        // $_SESSION['errors'] = array();
         $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
         redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
     } else {

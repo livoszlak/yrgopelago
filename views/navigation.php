@@ -1,6 +1,10 @@
 <nav class="navbar">
     <div class="container">
-        <div class="logo"><a href="/index.php">Cat's Cradle</a></div>
+        <div class="logo"><a href="/index.php">Cat's Cradle</a>
+            <div class="stars">
+
+            </div>
+        </div>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/index.php">Home</a>
