@@ -120,32 +120,31 @@ if (!empty($_SESSION['features'])) {
                         <div class="issues">
                             <?php if ($_SESSION['totalDays'] == 0) : ?>
                             <?= '<br>Either you selected unavailable dates, or you selected none. Please double check our availability calendar!';
-                                if (count($_SESSION['features']) == 0) :
-                                    echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
-                                endif;
+                            endif;
+                            if (count($_SESSION['features']) == 0) :
+                                echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
                             endif; ?>
-
                         </div>
                     <?php endif; ?>
                 </div>
     </form>
-    <div class="booking-payment-wrapper">
-        <div class="booking-carousel-wrapper">
-            <div class="room-carousel">
-                <div class="mySlides fade">
-                    <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).png">
-                </div>
+    <div class="booking-carousel-wrapper">
+        <div class="room-carousel">
+            <div class="mySlides fade">
+                <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg">
             </div>
+        </div>
 
-            <div class="error-container">
-                <?php if (!empty($_SESSION['errors'])) :
-                    foreach ($_SESSION['errors'] as $error) :
-                        echo $error;
-                    endforeach;
-                    $_SESSION['errors'] = [];
-                endif; ?>
-            </div>
-            <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
+        <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
+            <div class="booking-wrapper">
+                <?php if (!empty($_SESSION['errors'])) : ?>
+                    <div class="error-container">
+                        <?php foreach ($_SESSION['errors'] as $error) :
+                            echo $error;
+                        endforeach;
+                        $_SESSION['errors'] = []; ?>
+                    </div>
+                <?php endif; ?>
                 <div class="booking-heading-wrapper">
                     Book your stay
                 </div>
@@ -160,8 +159,8 @@ if (!empty($_SESSION['features'])) {
                     <input type="text" id="transfer-code" name="transfer-code" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required><br>
                     <button class="button" type="submit" name="booking-step-2" method="post" id="booking-step-2">Book!</button>
                 </div>
-            </form>
-        </div>
+        </form>
+    </div>
     </div>
     </div>
     </div>

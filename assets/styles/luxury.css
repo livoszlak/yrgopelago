@@ -1,12 +1,12 @@
 .discounts,
 .discount-specs {
   background-color: var(--luxury-purple);
-  color: var(--budget-pink);
+  color: var(--luxury-blue);
 }
 
 .calendar-info-wrapper {
   color: var(--luxury-purple);
-  background-color: var(--budget-pink);
+  background-color: var(--luxury-blue);
 }
 
 .calendar-wrapper {
@@ -14,22 +14,22 @@
 }
 
 .available {
-  background-color: var(--budget-pink);
+  background-color: var(--luxury-blue);
 }
 
 .discount-headline,
 .calendar-title {
-  color: var(--budget-pink);
+  color: var(--luxury-blue);
 }
 
 .date-picker-wrapper {
   background-color: var(--luxury-purple);
   font-family: 'Bebas Neue', sans-serif;
-  color: var(--budget-pink);
+  color: var(--luxury-blue);
 }
 
 .feature-price-bubble {
-  background-color: var(--budget-pink);
+  background-color: var(--luxury-blue);
   color: var(--luxury-purple);
 }
 
@@ -37,14 +37,14 @@
   background-color: var(--luxury-purple);
 }
 
-.booking-payment-wrapper {
+.booking-carousel-wrapper {
   background-color: var(--luxury-purple);
 }
 
 .booking-heading-wrapper {
-  color: var(--budget-pink);
+  color: var(--luxury-blue);
 }
 
 .button {
-  background-color: var(--budget-pink);
+  background-color: var(--luxury-blue);
 }

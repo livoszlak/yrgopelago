@@ -4,6 +4,7 @@
   --standard-green: #40b3a2;
   --standard-fuchsia: #af3b8c;
   --luxury-purple: #78589f;
+  --luxury-blue: #8cb1d7;
   --headline-orange: #e27d5f;
   --outline-pale: #d4cae3;
   --bg-grey: #cacddc;
@@ -24,10 +25,10 @@ body {
   font-size: 1rem;
 }
 
-img:not(.header-img) {
+/* img:not(.header-img) {
   max-width: 405px;
   max-height: 405px;
-}
+} */
 
 .logo {
   display: flex;
@@ -181,13 +182,13 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   padding: 1rem;
 }
 
 .room-image > img {
-  overflow: hidden;
-  object-fit: contain;
-  scale: 85%;
+  height: 350px;
+  width: 350px;
 }
 
 .room-heading {
@@ -227,10 +228,10 @@ main {
 
 .luxury {
   background-color: var(--luxury-purple);
-  color: var(--budget-pink);
+  color: var(--luxury-blue);
   &:hover {
     color: var(--luxury-purple);
-    background-color: var(--budget-pink);
+    background-color: var(--luxury-blue);
     transition: 0.5s ease-in-out;
   }
 }
@@ -349,6 +350,14 @@ input {
   position: relative;
 }
 
+.feature:hover,
+button:hover {
+  transform: translateY(5px);
+  transition: 200ms ease-in-out;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 .feature-name-wrapper > a {
   color: black;
 }
@@ -414,8 +423,7 @@ button {
   justify-content: center;
   align-items: center;
   font-family: 'Bebas Neue', sans-serif;
-  background-image: url('/assets/images/paw.svg');
-  background-color: #8187c7;
+  /* background-image: url('/assets/images/paw.svg'); */
   border-radius: 30px;
   width: 60px;
   height: 60px;
@@ -423,32 +431,22 @@ button {
   font-weight: 800;
 }
 
-.booking-payment-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #8187c7;
-  /* padding: 2rem 2rem 3rem 2rem; */
-  gap: 1rem;
-}
-
-.booking-heading-wrapper {
-  width: 100%;
-  text-align: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-}
-
-/* .error-wrapper {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-} */
-
 .booking-carousel-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+}
+
+.booking-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-heading-wrapper {
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
 }
 
 .booking-form {
@@ -456,7 +454,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 400px;
   margin: 1rem;
   gap: 1rem;
 }

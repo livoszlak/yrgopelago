@@ -34,11 +34,11 @@ tr {
 
 .booked > .cal-day-box {
   background-image: url('/assets/images/icons/unavailable-strike.svg');
-  content-visibility: hidden;
 }
 
 .booked {
   background-color: unset;
+  color: var(--luxury-blue);
 }
 
 /* .available > .cal-day-box {

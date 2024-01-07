@@ -10,9 +10,7 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-if (!key_exists('stars', $_SESSION)) {
-    $_SESSION['stars'] = fetchStars();
-}
+$_SESSION['stars'] = fetchStars();
 
 if (!key_exists('userId', $_SESSION)) :
     $_SESSION['userId'] = guidv4();
