@@ -180,4 +180,11 @@ if ($key < 40) { $_SESSION['features'][]=[ 'id'=> $key,
 
     // const accordion = document.getElementsByClassName('accordion');
 
-    // for (let i = 0; i < accordion.length; i++) { // accordion[i].addEventListener('click', function () { // this.classList.toggle('active'); // const panel=this.nextElementSibling; // if (panel.style.display==='block' ) { // panel.style.display='none' ; // } else { // panel.style.display='block' ; // } // if (panel.style.maxHeight) { // panel.style.maxHeight=null; // } else { // panel.style.maxHeight=panel.scrollHeight + 'px' ; // } // // Close all other accordions // for (let j=0; j < accordion.length; j++) { // if (i !==j && accordion[j].classList.contains('active')) { // accordion[j].classList.remove('active'); // const otherPanel=accordion[j].nextElementSibling; // otherPanel.style.display='none' ; // otherPanel.style.maxHeight=null; // } // } // }); // }
+    // for (let i = 0; i < accordion.length; i++) { // accordion[i].addEventListener('click', function () { // this.classList.toggle('active'); // const panel=this.nextElementSibling; // if (panel.style.display==='block' ) { // panel.style.display='none' ; // } else { // panel.style.display='block' ; // } // if (panel.style.maxHeight) { // panel.style.maxHeight=null; // } else { // panel.style.maxHeight=panel.scrollHeight + 'px' ; // } // // Close all other accordions // for (let j=0; j < accordion.length; j++) { // if (i !==j && accordion[j].classList.contains('active')) { // accordion[j].classList.remove('active'); // const otherPanel=accordion[j].nextElementSibling; // otherPanel.style.display='none' ; // otherPanel.style.maxHeight=null; // } // } // }); // } /* .accordion { background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; } .active, .accordion:hover { background-color: #ccc; } .panel { padding: 0 18px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; } .panel.active { max-height: 1000px; } .accordion, .panel { width: 500px; } */ /* .cat { width: 100%; } .cat-cal> img {
+        width: 50%;
+        z-index: 5;
+        }
+
+        .cat-cal {
+        width: 100%;
+        } */

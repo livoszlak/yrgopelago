@@ -30,7 +30,7 @@
 
 .feature-price-bubble {
   background-color: var(--budget-yellow);
-  color: black;
+  color: var(--budget-pink);
 }
 
 .quote {

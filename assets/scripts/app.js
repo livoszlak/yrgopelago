@@ -1,6 +1,7 @@
 /* Fade-in animation */
 
 const items = document.querySelectorAll('.hotel-info');
+
 const active = function (entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -63,22 +64,22 @@ function showSlides() {
 }
 
 let images = [
-  '/assets/images/carousel/CAROUSEL-wren-meinberg-AL2-t0GrSko-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-tucker-good-i5wk7pPTarY-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-tran-mau-tri-tam-pfRES3CjcUM-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-samsung-memory-zFzbcadA0Ro-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-pexels-viktorya-sergeeva-🫂-10455928.png',
-  '/assets/images/carousel/CAROUSEL-pexels-tranmautritam-2215599.png',
-  '/assets/images/carousel/CAROUSEL-pexels-sam-lion-6002000.png',
-  '/assets/images/carousel/CAROUSEL-pexels-pixabay-236606.png',
-  '/assets/images/carousel/CAROUSEL-pexels-milda-puga-4862597.png',
-  '/assets/images/carousel/CAROUSEL-pexels-helena-lopes-7980485.png',
-  '/assets/images/carousel/CAROUSEL-pexels-cottonbro-studio-6869654.png',
-  '/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).png',
-  '/assets/images/carousel/CAROUSEL-artem-trubitsyn-oO0g3OfBQMw-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-paul-hanaoka-C0zDWAPFT9A-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-humberto-arellano-N_G2Sqdy9QY-unsplash.png',
-  '/assets/images/carousel/CAROUSEL-pexels-daniela-constantini-5591700.png',
+  '/assets/images/carousel/CAROUSEL-wren-meinberg-AL2-t0GrSko-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-tucker-good-i5wk7pPTarY-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-tran-mau-tri-tam-pfRES3CjcUM-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-samsung-memory-zFzbcadA0Ro-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-viktorya-sergeeva-🫂-10455928.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-tranmautritam-2215599.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-sam-lion-6002000.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-pixabay-236606.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-milda-puga-4862597.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-helena-lopes-7980485.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-cottonbro-studio-6869654.jpg',
+  '/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg',
+  '/assets/images/carousel/CAROUSEL-artem-trubitsyn-oO0g3OfBQMw-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-paul-hanaoka-C0zDWAPFT9A-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-humberto-arellano-N_G2Sqdy9QY-unsplash.jpg',
+  '/assets/images/carousel/CAROUSEL-pexels-daniela-constantini-5591700.jpg',
 ];
 
 let currentImageIndex = 0;

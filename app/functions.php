@@ -164,8 +164,9 @@ function fetchStars()
     $database = databaseConnect('/database/hotel.db');
     $statement = $database->prepare('SELECT stars FROM hotel');
     $statement->execute();
-    $stars = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $stars[0];
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $stars = $result[0]['stars'];
+    return $stars;
 }
 
 function fetchFeatures($roomId)

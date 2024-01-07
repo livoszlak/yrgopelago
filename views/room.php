@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-require __DIR__ . '/navigation.php';
 require __DIR__ . '/head.php';
+require __DIR__ . '/navigation.php';
 require __DIR__ . '/header.php';
+require __DIR__ . '/../app/arrays.php';
 
 use benhall14\phpCalendar\Calendar as Calendar;
 
@@ -20,7 +21,6 @@ if (!empty($_SESSION['features'])) {
         }
     }
 }
-
 ?>
 
 <main>
@@ -35,12 +35,54 @@ if (!empty($_SESSION['features'])) {
             echo $calendar->draw(date('2024-01-01')); ?>
         </div>
         <div class="info-wrapper">
-            <div class="room-info">
-                <p>Room cost per night: <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></p><br>
-            </div>
+            <span class="room-name">
+                <?php switch ($_GET['room-type']):
+                    case 1:
+                        echo $roomDescriptions['budget']['name'];
+                        break;
+                    case 2:
+                        echo $roomDescriptions['standard']['name'];
+                        break;
+                    case 3:
+                        echo $roomDescriptions['luxury']['name'];
+                        break;
+                endswitch; ?>
+            </span>
             <div class="booking-info">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste quaerat consequatur alias vel sit sequi, adipisci ullam dignissimos? Hic unde pariatur totam incidunt at maxime, corporis adipisci labore vel enim! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio unde, quas alias adipisci voluptas aperiam natus enim reprehenderit eum, dolor nam esse incidunt ad tempora dolorum? Voluptas neque cum provident. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque consequatur voluptatem quas. Quod veniam fuga earum, laudantium recusandae magni amet. Enim praesentium quae tempore repellat, modi facilis aliquam dolorum sint!</p>
+                <p>
+                    <?php switch ($_GET['room-type']):
+                        case 1:
+                            echo $roomDescriptions['budget']['description'];
+                            break;
+                        case 2:
+                            echo $roomDescriptions['standard']['description'];
+                            break;
+                        case 3:
+                            echo $roomDescriptions['luxury']['description'];
+                            break;
+                    endswitch; ?>
+                </p>
+                <p>
+                    <?php switch ($_GET['room-type']):
+                        case 1:
+                            echo $roomDescriptions['budget']['lore'];
+                            break;
+                        case 2:
+                            echo $roomDescriptions['standard']['lore'];
+                            break;
+                        case 3:
+                            echo $roomDescriptions['luxury']['lore'];
+                            break;
+                    endswitch; ?>
+
+                </p>
             </div>
+        </div>
+        <div class="room-info">
+            <ul>
+                <li><b>Room cost per night:</b> <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></li><br>
+                <li><b># of cats available:</b> <?= count($roomInfo); ?></li>
+            </ul>
         </div>
     </div>
 

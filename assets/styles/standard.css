@@ -30,7 +30,7 @@
 
 .feature-price-bubble {
   background-color: var(--standard-green);
-  color: black;
+  color: var(--standard-fuchsia);
 }
 
 .quote {

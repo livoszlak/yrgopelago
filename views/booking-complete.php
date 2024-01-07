@@ -1,35 +1,34 @@
 <?php
 
 declare(strict_types=1);
-require __DIR__ . '/navigation.php';
 require __DIR__ . '/head.php';
+require __DIR__ . '/navigation.php';
 require __DIR__ . '/header.php'; ?>
 
 <main>
     <div class="thank-you">
-        <div class="headline">Booking complete</div>
+        <div class="headline">Booking complete!</div>
         <div class="booking-html">
-            You're spending <?= $_SESSION['totalDays']; ?> meowgical day/-s on The <?= $_SESSION['booking']['island']; ?><br>
-            The <?= $_SESSION['booking']['stars'] ?> star hotel <?= $_SESSION['booking']['hotel']; ?> welcomes you with happy paws!<br>
-            Arrival date: <?= $_SESSION['booking']['arrival_date']; ?><br>
-            Departure date: <?= $_SESSION['booking']['departure_date']; ?><br>
-            Total cost: <?= $_SESSION['booking']['total_cost']; ?><br>
-            Cats chosen for company during your stay: <?php
-                                                        for ($i = 0; $i < count($_SESSION['booking']['features']); $i++) :
-                                                            if (isset($_SESSION['booking']['features'][$i]['name'])) :
-                                                                echo $_SESSION['booking']['features'][$i]['name'] . '! ';
-                                                            else : echo $_SESSION['booking']['features'][$i];
-                                                            endif;
-                                                        endfor; ?>
-        </div>
-        <div class="json">
-            <a href="/views/booking-response.php">Click here to see your booking in JSON format!</a>
+            <div class="json">
+                <a href="/views/booking-response.php">Click here to see your booking in JSON format!</a>
+            </div>
+            <div class="html-details">
+                You're spending <span class="booking-data"><?= $_SESSION['totalDays']; ?></span> meowgical day/-s on <span class="booking-data">The <?= $_SESSION['booking']['island']; ?></span><br>
+                The <span class="booking-data"><?= $_SESSION['booking']['stars'] ?></span> star hotel <span class="booking-data"><?= $_SESSION['booking']['hotel']; ?></span> welcomes you with happy paws!<br>
+                <br>
+                <span class="booking-data">Arrival date: </span><?= $_SESSION['booking']['arrival_date']; ?><br>
+                <span class="booking-data">Departure date: </span><?= $_SESSION['booking']['departure_date']; ?><br>
+                <span class="booking-data">Total cost: </span><?= $_SESSION['booking']['total_cost']; ?><sup>cc</sup><br>
+                <span class="booking-data">Kitty companions: </span><?php
+                                                                    for ($i = 0; $i < count($_SESSION['booking']['features']); $i++) :
+                                                                        if (isset($_SESSION['booking']['features'][$i]['name'])) :
+                                                                            echo $_SESSION['booking']['features'][$i]['name'] . '! ';
+                                                                        else : echo $_SESSION['booking']['features'][$i];
+                                                                        endif;
+                                                                    endfor; ?>
+            </div>
         </div>
     </div>
 </main>
 
-<?php
-echo '<pre>';
-var_dump($_SESSION['booking']);
-
-require __DIR__ . '/footer.php'; ?>
+<?php require __DIR__ . '/footer.php'; ?>

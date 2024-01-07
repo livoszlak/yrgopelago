@@ -2,7 +2,9 @@
     <div class="container">
         <div class="logo"><a href="/index.php">Cat's Cradle</a>
             <div class="stars">
-
+                <?php for ($i = 0; $i < $_SESSION['stars']; $i++) : ?>
+                    <img src="/assets/images/icons/star.svg">
+                <?php endfor; ?>
             </div>
         </div>
         <ul class="navbar-nav">
