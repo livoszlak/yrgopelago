@@ -47,4 +47,9 @@
 
 .button {
   background-color: var(--budget-yellow);
+  color: var(--budget-pink);
+}
+
+.booked {
+  color: var(--budget-yellow);
 }

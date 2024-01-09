@@ -1,0 +1,25 @@
+/* BODY */
+
+@media screen and (max-width: 1050px) {
+body {
+    font-size: 0.8rem;
+}
+
+/* ROOM */
+
+@media screen and (max-width: 1050px) {
+  .calendar-info-wrapper {
+  }
+  .room-info-wrapper {
+    flex-direction: column;
+  }
+  .info-wrapper {
+    width: 560px;
+  }
+  .room-info > ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}

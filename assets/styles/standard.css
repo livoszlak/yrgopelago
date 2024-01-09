@@ -47,4 +47,9 @@
 
 .button {
   background-color: var(--standard-green);
+  color: var(--standard-fuchsia);
+}
+
+.booked {
+  color: var(--standard-green);
 }

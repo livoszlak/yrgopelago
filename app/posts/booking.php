@@ -16,10 +16,14 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     } else {
         unset($_SESSION['errors']);
         $transferCodeResponse = validateTransferCode($_POST['transfer-code'], $_SESSION['totalCost']);
+        $transferCodeAmount = $transferCodeResponse->amount;
     }
 
-    if (property_exists($transferCodeResponse, 'transferCode')) {
+    if (property_exists($transferCodeResponse, 'transferCode') && $transferCodeAmount >= $_SESSION['totalCost']) {
         deposit($_POST['transfer-code']);
+    } else {
+        $_SESSION['errors'][] = "By my whiskers, your transfer code was worth less than the cost of your stay. Please try again!";
+        redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
     }
 
     reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
@@ -68,6 +72,8 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    $catFact = getCatFact();
+
     $booking = [];
     foreach ($results as $row) {
         $booking['island'] = $row['island'];
@@ -77,12 +83,9 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
         $booking['total_cost'] = $row['total_cost'];
         $booking['stars'] = $row['stars'];
         !empty($_SESSION['features']) ? $booking['features'][] = ['name' => $row['feature_name'], 'cost' => $row['feature_price']] : $booking['features'][] = 'none';
-        $booking['additional_info'] = ['greeting' => $row['greeting']];
+        $booking['additional_info'] = ['greeting' => $row['greeting'], 'cat_fact' => $catFact];
     }
 
-    // header('Content-type: JSON');
-    // echo json_encode($results, JSON_PRETTY_PRINT);
-    // echo json_encode($booking, JSON_PRETTY_PRINT);
     $_SESSION['booking'] = array();
     $_SESSION['booking'] = $booking;
     redirect('/../views/booking-complete.php');

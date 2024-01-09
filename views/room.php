@@ -34,55 +34,57 @@ if (!empty($_SESSION['features'])) {
             <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
             echo $calendar->draw(date('2024-01-01')); ?>
         </div>
-        <div class="info-wrapper">
-            <span class="room-name">
-                <?php switch ($_GET['room-type']):
-                    case 1:
-                        echo $roomDescriptions['budget']['name'];
-                        break;
-                    case 2:
-                        echo $roomDescriptions['standard']['name'];
-                        break;
-                    case 3:
-                        echo $roomDescriptions['luxury']['name'];
-                        break;
-                endswitch; ?>
-            </span>
-            <div class="booking-info">
-                <p>
+        <div class="room-info-wrapper">
+            <div class="info-wrapper">
+                <span class="room-name">
                     <?php switch ($_GET['room-type']):
                         case 1:
-                            echo $roomDescriptions['budget']['description'];
+                            echo $roomDescriptions['budget']['name'];
                             break;
                         case 2:
-                            echo $roomDescriptions['standard']['description'];
+                            echo $roomDescriptions['standard']['name'];
                             break;
                         case 3:
-                            echo $roomDescriptions['luxury']['description'];
+                            echo $roomDescriptions['luxury']['name'];
                             break;
                     endswitch; ?>
-                </p>
-                <p>
-                    <?php switch ($_GET['room-type']):
-                        case 1:
-                            echo $roomDescriptions['budget']['lore'];
-                            break;
-                        case 2:
-                            echo $roomDescriptions['standard']['lore'];
-                            break;
-                        case 3:
-                            echo $roomDescriptions['luxury']['lore'];
-                            break;
-                    endswitch; ?>
+                </span>
+                <div class="booking-info">
+                    <p>
+                        <?php switch ($_GET['room-type']):
+                            case 1:
+                                echo $roomDescriptions['budget']['description'];
+                                break;
+                            case 2:
+                                echo $roomDescriptions['standard']['description'];
+                                break;
+                            case 3:
+                                echo $roomDescriptions['luxury']['description'];
+                                break;
+                        endswitch; ?>
+                    </p>
+                    <p>
+                        <?php switch ($_GET['room-type']):
+                            case 1:
+                                echo $roomDescriptions['budget']['lore'];
+                                break;
+                            case 2:
+                                echo $roomDescriptions['standard']['lore'];
+                                break;
+                            case 3:
+                                echo $roomDescriptions['luxury']['lore'];
+                                break;
+                        endswitch; ?>
 
-                </p>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="room-info">
-            <ul>
-                <li><b>Room cost per night:</b> <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></li><br>
-                <li><b># of cats available:</b> <?= count($roomInfo); ?></li>
-            </ul>
+            <div class="room-info">
+                <ul>
+                    <li><b>Room cost per night:</b> <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></li><br>
+                    <li><b># of cats available:</b> <?= count($roomInfo); ?></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -112,6 +114,7 @@ if (!empty($_SESSION['features'])) {
                     </div>
                 <?php endforeach; ?>
             </div>
+
             <div class="button-quote-wrapper">
                 <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
                 <div class="quote-wrapper">
@@ -124,10 +127,19 @@ if (!empty($_SESSION['features'])) {
                             if (count($_SESSION['features']) == 0) :
                                 echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
                             endif; ?>
+                            <?php if (!empty($_SESSION['errors'])) : ?>
+                                <div class="error-container">
+                                    <?php foreach ($_SESSION['errors'] as $error) :
+                                        echo $error;
+                                    endforeach;
+                                    $_SESSION['errors'] = []; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 </div>
     </form>
+
     <div class="booking-carousel-wrapper">
         <div class="room-carousel">
             <div class="mySlides fade">
@@ -137,14 +149,6 @@ if (!empty($_SESSION['features'])) {
 
         <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
             <div class="booking-wrapper">
-                <?php if (!empty($_SESSION['errors'])) : ?>
-                    <div class="error-container">
-                        <?php foreach ($_SESSION['errors'] as $error) :
-                            echo $error;
-                        endforeach;
-                        $_SESSION['errors'] = []; ?>
-                    </div>
-                <?php endif; ?>
                 <div class="booking-heading-wrapper">
                     Book your stay
                 </div>
@@ -163,19 +167,6 @@ if (!empty($_SESSION['features'])) {
     </div>
     </div>
     </div>
-    </div>
-
-    <!-- <div> -->
-    <!-- <?php echo '<pre>';
-            ?>
-        <br>
-        <br> POST
-        <?php var_dump($_POST); ?>
-        <br> SESSION
-        <?php var_dump($_SESSION); ?>
-        <br> GET
-        <?php var_dump($_GET); ?> -->
-    <!-- </div> -->
 
 </main>
 <?php require __DIR__ . '/footer.php'; ?>

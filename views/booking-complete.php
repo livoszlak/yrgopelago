@@ -27,6 +27,10 @@ require __DIR__ . '/header.php'; ?>
                                                                         endif;
                                                                     endfor; ?>
             </div>
+            <div class="random-fact">
+                <span class="booking-data">Did you know?</span><br>
+                <?= $_SESSION['booking']['additional_info']['cat_fact']; ?>
+            </div>
         </div>
     </div>
 </main>

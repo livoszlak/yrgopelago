@@ -57,6 +57,8 @@ endif;
     <?php if (isset($_GET['room-type'])) : ?>
         <link rel="stylesheet" type="text/css" href="../assets/styles/calendar.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/carousel.css">
+        <link rel="stylesheet" type="text/css" href="../assets/styles/room.css">
+
         <?php
         switch ($_GET['room-type']):
             case 1: ?>

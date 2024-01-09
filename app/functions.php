@@ -54,6 +54,26 @@ function validateTransferCode(string $transferCode, float $totalCost)
     return $data;
 }
 
+function getCatFact()
+{
+    $client = new Client();
+    try {
+        $response = $client->request('GET', 'https://catfact.ninja/fact', [
+            'form_params' => [
+                'max_length' => 60
+            ],
+        ]);
+    } catch (ClientException $e) {
+        echo "There was an issue fetching cat fact: " . $e->getMessage();
+    }
+
+    if ($response->getBody()) {
+        $factObject = json_decode($response->getBody()->getContents());
+        return $factObject->fact;
+    }
+}
+
+
 function deposit(string $transferCode)
 {
     $client = new Client();
@@ -88,7 +108,6 @@ function databaseConnect(string $dbName): object
     $dbPath = __DIR__ . '/' . $dbName;
     $db = "sqlite:$dbPath";
 
-    // Open the database file and catch the exception if it fails.
     try {
         $database = new PDO($db);
         $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -112,6 +131,17 @@ function checkAvailability(string $arrival, string $departure, int $roomId): arr
     $availableRooms = $statement->fetchAll(PDO::FETCH_ASSOC);
 
     return $availableRooms;
+}
+
+function countRemaining(int $roomId)
+{
+    $database = databaseConnect('/database/hotel.db');
+    $statement = $database->prepare('SELECT date FROM room_availability WHERE is_available = 1 AND room_id = :roomId');
+    $statement->bindParam(':roomId', $roomId, PDO::PARAM_INT);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $remainingDates = count($result);
+    return $remainingDates;
 }
 
 function isAvailable(string $arrival, string $departure, int $roomId): bool
