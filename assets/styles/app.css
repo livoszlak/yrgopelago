@@ -171,7 +171,6 @@ main {
 
 .room-card {
   height: 500px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -379,7 +378,7 @@ button.accordion {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
 .feature-choices-wrapper {
@@ -594,8 +593,30 @@ footer {
   }
 }
 
+@media screen and (max-width: 900px) {
+  .room-card {
+    width: 320px;
+    height: 400px;
+  }
+  .room-image > img {
+    height: 270px;
+    width: 270px;
+  }
+  .room-heading {
+    font-size: 2rem;
+  }
+  .remaining,
+  .feature-count {
+    font-size: 0.8rem;
+  }
+}
+
 @media screen and (max-width: 850px) {
-  .logo {
+  body {
+    font-size: 0.8rem;
+  }
+  .logo,
+  .headline {
     font-size: 2rem;
   }
   .navbar-nav {
@@ -607,6 +628,7 @@ footer {
   .index-info {
     flex-direction: column;
     align-items: center;
+    margin: 1rem;
   }
   .hotel-info {
     width: calc(80%);
@@ -624,6 +646,10 @@ footer {
   }
   .room-name {
     text-align: center;
+  }
+  .info-wrapper {
+    margin: 0;
+    width: calc(300px + 1rem);
   }
 }
 
