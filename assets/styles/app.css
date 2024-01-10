@@ -26,11 +26,6 @@ body {
   overflow-x: hidden;
 }
 
-/* img:not(.header-img) {
-  max-width: 405px;
-  max-height: 405px;
-} */
-
 .logo {
   display: flex;
   flex-direction: column;
