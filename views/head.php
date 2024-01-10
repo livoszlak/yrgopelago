@@ -84,7 +84,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                 <link rel="stylesheet" href="../assets/styles/luxury.css">
     <?php endswitch;
     endif; ?>
-    <?php if (stripos($link, 'room')) : ?>
+    <?php if (stripos($link, 'room') || stripos($link, 'booking-complete')) : ?>
         <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
     <?php else : ?>
         <link rel="stylesheet" href="assets/styles/app.css">
