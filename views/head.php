@@ -67,11 +67,6 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
-    <?php if (stripos($link, 'room')) : ?>
-        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
-    <?php else : ?>
-        <link rel="stylesheet" href="assets/styles/app.css">
-    <?php endif; ?>
     <?php if (isset($_GET['room-type'])) : ?>
         <link rel="stylesheet" type="text/css" href="../assets/styles/calendar.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/carousel.css">
@@ -89,6 +84,11 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
                 <link rel="stylesheet" href="../assets/styles/luxury.css">
     <?php endswitch;
     endif; ?>
+    <?php if (stripos($link, 'room')) : ?>
+        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
+    <?php else : ?>
+        <link rel="stylesheet" href="assets/styles/app.css">
+    <?php endif; ?>
     <title>Cat's Cradle</title>
 </head>
 

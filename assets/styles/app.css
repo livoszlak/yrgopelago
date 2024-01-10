@@ -322,6 +322,10 @@ input {
   padding: 1rem;
 }
 
+.error-container > ul {
+  padding: 0;
+}
+
 .instructions {
   width: 300px;
 }
@@ -492,8 +496,8 @@ button {
 
 .issues,
 .error-container {
-  width: 800px;
   font-weight: 800;
+  width: calc(50%);
 }
 
 .booking-carousel-wrapper {
@@ -594,6 +598,9 @@ footer {
 }
 
 @media screen and (max-width: 900px) {
+  body {
+    font-size: 0.8rem;
+  }
   .room-card {
     width: 320px;
     height: 400px;
@@ -609,12 +616,21 @@ footer {
   .feature-count {
     font-size: 0.8rem;
   }
+  .discount-headline,
+  .booking-heading-wrapper {
+    font-size: 2rem;
+  }
+  .mySlides > img,
+  .room-carousel,
+  .booking-carousel-wrapper {
+    height: 300px;
+  }
+  .booking-form {
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 850px) {
-  body {
-    font-size: 0.8rem;
-  }
   .logo,
   .headline {
     font-size: 2rem;
@@ -648,8 +664,60 @@ footer {
     text-align: center;
   }
   .info-wrapper {
-    margin: 0;
+    margin: 1rem 0 0 0;
     width: calc(300px + 1rem);
+  }
+  .error-container {
+    width: calc(80%);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .booking-carousel-wrapper {
+    height: fit-content;
+    width: 300px;
+    flex-direction: column-reverse;
+  }
+  .booking-form {
+    padding: 1rem;
+    margin: 0;
+    gap: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .date-picker-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .info-room-wrapper,
+  .calendar-info-wrapper,
+  .room-info-wrapper {
+    flex-direction: column-reverse;
+  }
+  .calendar-info-wrapper {
+    padding: 0 2rem;
+  }
+  .calendar-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .calendar-wrapper {
+    padding: 0.5rem;
+  }
+  .info-wrapper {
+    padding: 1rem 1rem 0 1rem;
+  }
+  .calendar-wrapper {
+    gap: 0;
+  }
+  .calendar-info-wrapper {
+    padding: 1rem 2rem;
+    gap: 0;
   }
 }
 

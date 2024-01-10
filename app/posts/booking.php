@@ -22,7 +22,7 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
 }
 
-if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeResponse, 'transferCode') || $transferCodeAmount < $_SESSION['totalCost']) {
+if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeResponse, 'transferCode') || $transferCodeAmount < $_SESSION['totalCost'] || $transferCodeAmount == 0) {
     $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
     redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
 } else {

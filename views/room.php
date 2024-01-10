@@ -156,7 +156,7 @@ if (!empty($_SESSION['features'])) {
     <div class="booking-carousel-wrapper">
         <div class="room-carousel">
             <div class="mySlides fade">
-                <img id="sliderImage" style="height: 100%" src="../assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg">
+                <img id="sliderImage" src="../assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg">
             </div>
         </div>
 
