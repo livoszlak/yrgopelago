@@ -549,7 +549,6 @@ button {
   flex-direction: column;
   gap: 1rem;
   background-color: var(--bg-minty);
-  width: 500px;
   padding: 2rem;
 }
 
@@ -620,6 +619,13 @@ footer {
   .booking-heading-wrapper {
     font-size: 2rem;
   }
+  .feature {
+    width: calc(200px * 0.7);
+    height: calc(100px * 0.7);
+  }
+  .feature-name {
+    font-size: 0.8rem;
+  }
   .mySlides > img,
   .room-carousel,
   .booking-carousel-wrapper {
@@ -634,6 +640,10 @@ footer {
   .logo,
   .headline {
     font-size: 2rem;
+  }
+  .stars > img {
+    height: 15px;
+    width: 15px;
   }
   .navbar-nav {
     font-size: 1.2rem;
@@ -652,6 +662,9 @@ footer {
 }
 
 @media screen and (max-width: 750px) {
+  .header-text {
+    font-size: 0.7rem;
+  }
   .room-info-wrapper {
     flex-direction: column;
     justify-content: center;
@@ -673,6 +686,9 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
+  .logo {
+    padding: 0;
+  }
   .booking-carousel-wrapper {
     height: fit-content;
     width: 300px;
@@ -686,12 +702,32 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+  .logo,
+  .headline {
+    font-size: 1.3rem;
+  }
+  .stars > img {
+    height: 10px;
+    width: 10px;
+  }
+  .navbar-nav {
+    font-size: 0.8rem;
+  }
+  .discounts {
+    padding: 0.5rem;
+  }
+  .discount-headline {
+    font-size: 1.8rem;
+  }
   .date-picker-wrapper {
     flex-direction: column;
   }
 }
 
 @media screen and (max-width: 425px) {
+  .header-text {
+    font-size: 0.5rem;
+  }
   .info-room-wrapper,
   .calendar-info-wrapper,
   .room-info-wrapper {

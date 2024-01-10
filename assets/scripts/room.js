@@ -1,22 +1,4 @@
-/* Fade-in animation */
-
-const items = document.querySelectorAll('.hotel-info');
-
-const active = function (entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('inview');
-    } else {
-      entry.target.classList.remove('inview');
-    }
-  });
-};
-const io = new IntersectionObserver(active);
-for (let i = 0; i < items.length; i++) {
-  io.observe(items[i]);
-}
-
-/* Sets id properties for td elements in availability calendar - might be needed at deployment, might not */
+/* Sets id properties for td elements in availability calendar */
 
 const days = document.querySelectorAll('td');
 
@@ -95,15 +77,3 @@ function changeImage() {
 }
 
 setInterval(changeImage, 3500);
-
-/* Feature-click targeting script */
-
-const features = document.getElementsByClassName('.feature');
-const checkboxes = document.querySelectorAll("input[type='checkbox']");
-
-for (let i = 0; i < features.length; i++) {
-  features[i].addEventListener('click', function () {
-    const checkbox = this.querySelector('input[type="checkbox"]');
-    if (checkbox) checkbox.checked = true;
-  });
-}
