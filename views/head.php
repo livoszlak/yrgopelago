@@ -45,8 +45,6 @@ if (isset($_GET['room-type']) && isset($_POST['booking-step-1'])) :
     getQuote();
 endif;
 
-
-
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $link = "https";
     $link .= "://";
@@ -58,8 +56,6 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $link .= $_SERVER['HTTP_HOST'];
     $link .= $_SERVER['REQUEST_URI'];
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -72,11 +68,12 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/app.css">
-    <?php if (stripos($link, 'booking-complete.php')) : ?>
+    <?php if (stripos($link, 'booking-complete.php') || stripos($link, 'index.php') || stripos($link, 'admin.php') || stripos($link, 'login.php')) : ?>
         <link rel="stylesheet" href="../assets/styles/app.css">
+    <?php else : ?>
+        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
     <?php endif; ?>
     <?php if (isset($_GET['room-type'])) : ?>
-        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/calendar.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/carousel.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/room.css">
@@ -85,15 +82,12 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
         switch ($_GET['room-type']):
             case 1: ?>
                 <link rel="stylesheet" href="../assets/styles/budget.css">
-                <link rel="stylesheet" href="../assets/styles/app.css">
             <?php break;
             case 2: ?>
                 <link rel="stylesheet" href="../assets/styles/standard.css">
-                <link rel="stylesheet" href="../assets/styles/app.css">
             <?php break;
             case 3: ?>
                 <link rel="stylesheet" href="../assets/styles/luxury.css">
-                <link rel="stylesheet" href="../assets/styles/app.css">
     <?php endswitch;
     endif; ?>
     <title>Cat's Cradle</title>

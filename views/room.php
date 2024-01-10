@@ -30,11 +30,11 @@ if (!empty($_SESSION['features'])) {
             and add 4 or more features to your 2+ days long stay for 40% off!</div>
     </div>
     <div class="calendar-info-wrapper">
-        <div class="calendar-wrapper">
-            <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
-            echo $calendar->draw(date('2024-01-01')); ?>
-        </div>
         <div class="room-info-wrapper">
+            <div class="calendar-wrapper">
+                <?php addCalendarEvent($calendar, (int)$_GET['room-type']);
+                echo $calendar->draw(date('2024-01-01')); ?>
+            </div>
             <div class="info-wrapper">
                 <span class="room-name">
                     <?php switch ($_GET['room-type']):
@@ -79,14 +79,16 @@ if (!empty($_SESSION['features'])) {
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="info-instructions-wrapper">
             <div class="room-info">
                 <ul>
                     <li><b>Room cost per night:</b> <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></li><br>
                     <li><b># of cats available:</b> <?= count($roomInfo); ?></li>
                 </ul>
-                <div class="instructions">
-                    <b>How to book:</b> check the calendar for available dates. Select your desired <b>arrival</b> and <b>departure</b> dates, then add which cats you want for company during your stay. Click the <b>"get your quote"</b> button for your total. Submit your name and transfer code. Welcome!</li>
-                </div>
+            </div>
+            <div class="instructions">
+                Check the calendar for available dates. Select your desired arrival and departure dates, then add which cats you want for company during your stay. Click the "get your quote" button for your total. Submit your name and transfer code. Welcome!</li>
             </div>
         </div>
     </div>
@@ -176,7 +178,7 @@ if (!empty($_SESSION['features'])) {
                 </div>
         </form>
     </div>
-    </div>
+
     </div>
 
 </main>

@@ -10,7 +10,7 @@
             <p>Our idyllic island hosts a harmony of domestic cats amid lush landscapes and sunny vistas. Wander pathways adorned by playful felines amidst blooming gardens, and listen to the serene symphony of contented purrs. Encounter a variety of breeds relaxing by clear streams or perched with regal grace. Your heart will surely be stolen by their charming antics.</p>
         </div>
         <div class="hotel-info">
-            <div class="info headline">YOUR MEOWGICAL STAY AWAITS</div>
+            <div class="info headline">A MEOWGICAL PLACE</div>
             <p>Indulge in a stay tailored to cat lovers' dreams! Choose from budget, standard, or luxury rooms, each offering modern comforts and equipped with cat toys. Personalize your stay by welcoming adorable feline companions into your room. Picture yourself unwinding amidst cozy spaces, cuddling with furry friends, and creating memories that purr-sist forever.</p>
         </div>
     </div>
