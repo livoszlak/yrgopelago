@@ -124,27 +124,32 @@ if (!empty($_SESSION['features'])) {
             <div class="button-quote-wrapper">
                 <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
                 <div class="quote-wrapper">
-                    <?php if (isset($_POST['booking-step-1'])) : ?>
-                        <?= 'Your total is <span class="quote">' . $_SESSION['totalCost'] . '<sup>cc</sup></span> for ' . $_SESSION['totalDays'] . ' days and ' . count($_SESSION['features']) . ' cats.'; ?>
-                        <div class="issues">
-                            <?php if ($_SESSION['totalDays'] == 0) : ?>
-                            <?= '<br>Either you selected unavailable dates, or you selected none. Please double check our availability calendar!';
-                            endif;
-                            if (count($_SESSION['features']) == 0) :
-                                echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
-                            endif; ?>
-                        </div>
-                    <?php endif; ?>
+                    <?= 'Your total is <span class="quote">' . (!isset($_SESSION['totalCost']) ? '0' : $_SESSION['totalCost']) . '<sup>cc</sup></span>' ?>
                 </div>
     </form>
 
+    <?php if (isset($_POST['booking-step-1'])) : ?>
+        <div class="issues">
+            <ul>
+                <?php if ($_SESSION['totalDays'] == 0) : ?>
+                    <li>You selected unavailable dates. Please double check our availability calendar!</li>
+                <?php endif;
+                if (count($_SESSION['features']) == 0) : ?>
+                    <li>No cats? Seriously? That hurts... right here in my meow-meow...</li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
     <div class="error-container">
-        <?php if (!empty($_SESSION['errors'])) : ?>
-            <?php foreach ($_SESSION['errors'] as $error) :
-                echo $error;
-            endforeach;
-            $_SESSION['errors'] = []; ?>
-        <?php endif; ?>
+        <ul>
+            <?php if (!empty($_SESSION['errors'])) :
+                foreach ($_SESSION['errors'] as $error) : ?>
+                    <li><?= $error; ?></li>
+                <?php endforeach;
+                $_SESSION['errors'] = []; ?>
+            <?php endif; ?>
+        </ul>
     </div>
     <div class="booking-carousel-wrapper">
         <div class="room-carousel">

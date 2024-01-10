@@ -28,6 +28,8 @@ if (isset($_POST['transfer-code'], $_POST['guest-name'])) :
     $_POST['guest-name'] = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
 endif;
 
+!isset($_SESSION['booking-step-1']) ? $_SESSION['totalCost'] = 0 : $_SESSION['totalCost'] = getQuote();
+
 if (isset($_GET['room-type']) && isset($_POST['booking-step-1'])) :
     $availableRooms = checkAvailability($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
     $dates = fetchDates($availableRooms);
