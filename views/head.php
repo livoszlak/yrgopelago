@@ -42,6 +42,22 @@ if (isset($_GET['room-type']) && isset($_POST['booking-step-1'])) :
     }
     getQuote();
 endif;
+
+
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $link = "https";
+    $link .= "://";
+    $link .= $_SERVER['HTTP_HOST'];
+    $link .= $_SERVER['REQUEST_URI'];
+} else {
+    $link = "http";
+    $link .= "://";
+    $link .= $_SERVER['HTTP_HOST'];
+    $link .= $_SERVER['REQUEST_URI'];
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,8 +69,12 @@ endif;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/styles/app.css">
+    <link rel="stylesheet" href="assets/styles/app.css">
+    <?php if (stripos($link, 'booking-complete.php')) : ?>
+        <link rel="stylesheet" href="../assets/styles/app.css">
+    <?php endif; ?>
     <?php if (isset($_GET['room-type'])) : ?>
+        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/calendar.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/carousel.css">
         <link rel="stylesheet" type="text/css" href="../assets/styles/room.css">
@@ -63,15 +83,18 @@ endif;
         switch ($_GET['room-type']):
             case 1: ?>
                 <link rel="stylesheet" href="../assets/styles/budget.css">
+                <link rel="stylesheet" href="../assets/styles/app.css">
             <?php break;
             case 2: ?>
                 <link rel="stylesheet" href="../assets/styles/standard.css">
+                <link rel="stylesheet" href="../assets/styles/app.css">
             <?php break;
             case 3: ?>
                 <link rel="stylesheet" href="../assets/styles/luxury.css">
+                <link rel="stylesheet" href="../assets/styles/app.css">
     <?php endswitch;
     endif; ?>
-    <title>Document</title>
+    <title>Cat's Cradle</title>
 </head>
 
 <body>

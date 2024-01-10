@@ -23,6 +23,4 @@ require __DIR__ . '/views/navigation.php'; ?>
 </article>
 
 <?php
-echo "USER_NAME: " . $_ENV['USER_NAME'] . "\n";
-echo "API_KEY: " . $_ENV['API_KEY'] . "\n";
 require __DIR__ . '/views/footer.php'; ?>

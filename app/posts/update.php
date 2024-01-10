@@ -56,4 +56,4 @@ if (isset($_POST['update-stars'])) {
     $statement->execute();
 }
 
-redirect('/../../admin.php');
+redirect('https://rogue-fun.se/cradle/admin.php');

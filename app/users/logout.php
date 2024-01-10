@@ -7,4 +7,4 @@ require __DIR__ . '/../autoload.php';
 // Remove the user session variable and redirect the user back to index
 unset($_SESSION['admin']);
 
-redirect('/index.php');
+redirect('https://rogue-fun.se/cradle/index.php');

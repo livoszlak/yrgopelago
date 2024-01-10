@@ -5,33 +5,36 @@ require __DIR__ . '/../../app/autoload.php';
 
 // use GuzzleHttp\Client;
 
+$transferCodeResponse = validateTransferCode($_POST['transfer-code'], $_SESSION['totalCost']);
+
+if (property_exists($transferCodeResponse, 'amount')) {
+    $transferCodeAmount = $transferCodeResponse->amount;
+} else {
+    $transferCodeAmount = 0;
+}
+
 if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type'])) {
     $_SESSION['errors'][] = 'Meouch, too slow! Someone else booked your desired date(s). Please refresh page to see updated availability calendar.';
-    redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
+    redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
+}
+
+if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeResponse, 'transferCode') || $transferCodeAmount < $_SESSION['totalCost']) {
+    $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
+    redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
 } else {
+    unset($_SESSION['errors']);
+    deposit($_POST['transfer-code']);
+}
 
-    if (!isValidUuid($_POST['transfer-code'])) {
-        $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
-        redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
-    } else {
-        unset($_SESSION['errors']);
-        $transferCodeResponse = validateTransferCode($_POST['transfer-code'], $_SESSION['totalCost']);
-        $transferCodeAmount = $transferCodeResponse->amount;
-    }
+/* */
 
-    if (property_exists($transferCodeResponse, 'transferCode') && $transferCodeAmount >= $_SESSION['totalCost']) {
-        deposit($_POST['transfer-code']);
-    } else {
-        $_SESSION['errors'][] = "By my whiskers, your transfer code was worth less than the cost of your stay. Please try again!";
-        redirect('/views/room.php?room-type=' . $_SESSION['room-type']);
-    }
 
-    reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
-    $bookingId = bookStay();
+reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
+$bookingId = bookStay();
 
-    $database = databaseConnect('/database/hotel.db');
-    if (!empty($_SESSION['features'])) {
-        $statement = $database->prepare("SELECT 
+$database = databaseConnect('/database/hotel.db');
+if (!empty($_SESSION['features'])) {
+    $statement = $database->prepare("SELECT 
     hotel.island,
     hotel.hotel,
     bookings.arrival_date,
@@ -51,8 +54,8 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     features ON booking_feature.feature_id = features.id
  WHERE 
     bookings.id = :bookingId");
-    } else {
-        $statement = $database->prepare("SELECT 
+} else {
+    $statement = $database->prepare("SELECT 
     hotel.island,
     hotel.hotel,
     bookings.arrival_date,
@@ -66,27 +69,26 @@ if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-t
     hotel ON bookings.hotel_id = hotel.id
  WHERE 
     bookings.id = :bookingId");
-    }
-
-    $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
-    $statement->execute();
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    $catFact = getCatFact();
-
-    $booking = [];
-    foreach ($results as $row) {
-        $booking['island'] = $row['island'];
-        $booking['hotel'] = $row['hotel'];
-        $booking['arrival_date'] = $row['arrival_date'];
-        $booking['departure_date'] = $row['departure_date'];
-        $booking['total_cost'] = $row['total_cost'];
-        $booking['stars'] = $row['stars'];
-        !empty($_SESSION['features']) ? $booking['features'][] = ['name' => $row['feature_name'], 'cost' => $row['feature_price']] : $booking['features'][] = 'none';
-        $booking['additional_info'] = ['greeting' => $row['greeting'], 'cat_fact' => $catFact];
-    }
-
-    $_SESSION['booking'] = array();
-    $_SESSION['booking'] = $booking;
-    redirect('/../views/booking-complete.php');
 }
+
+$statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
+$statement->execute();
+$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$catFact = getCatFact();
+
+$booking = [];
+foreach ($results as $row) {
+    $booking['island'] = $row['island'];
+    $booking['hotel'] = $row['hotel'];
+    $booking['arrival_date'] = $row['arrival_date'];
+    $booking['departure_date'] = $row['departure_date'];
+    $booking['total_cost'] = $row['total_cost'];
+    $booking['stars'] = $row['stars'];
+    !empty($_SESSION['features']) ? $booking['features'][] = ['name' => $row['feature_name'], 'cost' => $row['feature_price']] : $booking['features'][] = 'none';
+    $booking['additional_info'] = ['greeting' => $row['greeting'], 'cat_fact' => $catFact];
+}
+
+$_SESSION['booking'] = array();
+$_SESSION['booking'] = $booking;
+redirect('https://rogue-fun.se/cradle/views/booking-complete.php');

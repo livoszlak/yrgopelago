@@ -10,7 +10,7 @@ require __DIR__ . '/header.php'; ?>
         <div class="headline">Booking complete!</div>
         <div class="booking-html">
             <div class="json">
-                <a href="/views/booking-response.php">Click here to see your booking in JSON format!</a>
+                <a href="https://rogue-fun.se/cradle/views/booking-response.php">Click here to see your booking in JSON format!</a>
             </div>
             <div class="html-details">
                 You're spending <span class="booking-data"><?= $_SESSION['totalDays']; ?></span> meowgical day/-s on <span class="booking-data">The <?= $_SESSION['booking']['island']; ?></span><br>

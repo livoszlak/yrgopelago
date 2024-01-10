@@ -5,6 +5,7 @@ declare(strict_types=1);
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
+
 function redirect(string $path)
 {
     header("Location: {$path}");
@@ -45,7 +46,7 @@ function validateTransferCode(string $transferCode, float $totalCost)
             ],
         ]);
     } catch (ClientException $e) {
-        echo "There was an issue validating your transfer code: " . $e->getMessage();
+        // echo "There was an issue validating your transfer code: " . $e->getMessage();
     }
 
     if ($response->getBody()) {
@@ -64,7 +65,7 @@ function getCatFact()
             ],
         ]);
     } catch (ClientException $e) {
-        echo "There was an issue fetching cat fact: " . $e->getMessage();
+        // echo "There was an issue fetching cat fact: " . $e->getMessage();
     }
 
     if ($response->getBody()) {
@@ -87,7 +88,7 @@ function deposit(string $transferCode)
         $response = $response->getBody()->getContents();
         return true;
     } catch (ClientException $e) {
-        echo "There was an issue with depositing: " . $e->getMessage();
+        // echo "There was an issue with depositing: " . $e->getMessage();
         return false;
     }
 }
@@ -113,7 +114,7 @@ function databaseConnect(string $dbName): object
         $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $database->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        echo "Failed to connect to the database";
+        // echo "Failed to connect to the database";
         throw $e;
     }
     return $database;

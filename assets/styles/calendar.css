@@ -33,7 +33,7 @@ tr {
 }
 
 .booked > .cal-day-box {
-  background-image: url('/assets/images/icons/unavailable-strike.svg');
+  background-image: url('../images/icons/unavailable-strike.svg');
 }
 
 .booked {

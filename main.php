@@ -15,34 +15,34 @@
         </div>
     </div>
     <div class="rooms-wrapper">
-        <a href="/views/room.php?room-type=1">
+        <a href="views/room.php?room-type=1">
             <div class="room-card budget">
                 <div class="room-text">
                     <div class="room-heading">SAM'S SUITE</div>
                     <span class="remaining">Only <?= countRemaining(1); ?> dates left!</span><br>
                     <span class="feature-count"><?= count(fetchFeatures(1)); ?> companion cats available!</span>
                 </div>
-                <div class="room-image"><img src="/assets/images/ROOM-pexels-anete-lusina-5240576.png"></div>
+                <div class="room-image"><img src="assets/images/ROOM-pexels-anete-lusina-5240576.png"></div>
             </div>
         </a>
-        <a href="/views/room.php?room-type=2">
+        <a href="views/room.php?room-type=2">
             <div class="room-card standard">
                 <div class="room-text">
                     <div class="room-heading">FINDUS' FLAT</div>
                     <span class="remaining">Only <?= countRemaining(2); ?> dates left!</span><br>
                     <span class="feature-count"><?= count(fetchFeatures(2)); ?> companion cats available!</span>
                 </div>
-                <div class="room-image"><img src="/assets/images/ROOM-pexels-ekaterina-bolovtsova-7445017.png"></div>
+                <div class="room-image"><img src="assets/images/ROOM-pexels-ekaterina-bolovtsova-7445017.png"></div>
             </div>
         </a>
-        <a href="/views/room.php?room-type=3">
+        <a href="views/room.php?room-type=3">
             <div class="room-card luxury">
                 <div class="room-text">
                     <div class="room-heading">CHESHIRE'S CHAMBER</div>
                     <span class="remaining">Only <?= countRemaining(3); ?> dates left!</span><br>
                     <span class="feature-count"><?= count(fetchFeatures(3)); ?> companion cats available! </span>
                 </div>
-                <div class="room-image"><img src="/assets/images/ROOM-pexels-max-rahubovskiy-6580369.png"></div>
+                <div class="room-image"><img src="assets/images/ROOM-pexels-max-rahubovskiy-6580369.png"></div>
             </div>
         </a>
         <div class="cat-fact"></div>

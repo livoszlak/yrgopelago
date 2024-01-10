@@ -23,6 +23,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
   font-size: 1rem;
+  overflow-x: hidden;
 }
 
 /* img:not(.header-img) {
@@ -261,7 +262,6 @@ main {
   position: relative;
   flex-direction: column;
   width: 100%;
-  background-color: var(--budget-pink);
   justify-content: center;
   align-items: center;
   padding: 1rem;
@@ -269,7 +269,6 @@ main {
 
 .discount-headline {
   font-size: 3rem;
-  color: var(--budget-yellow);
   text-align: center;
 }
 
@@ -281,7 +280,6 @@ main {
 .calendar-info-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
   height: 400px;
   padding: 2rem;
@@ -312,17 +310,21 @@ input {
 .room-info-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 100%;
-  justify-content: space-evenly;
 }
 
 .room-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .room-info > ul {
   list-style-type: disclosure-closed;
+}
+
+.instructions {
+  max-width: 300px;
 }
 
 .date-picker-wrapper {
@@ -342,6 +344,15 @@ input {
 }
 
 .features-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.feature-choices-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -378,6 +389,9 @@ button:hover {
   color: black;
 }
 
+input.checkbox {
+}
+
 .input-wrapper {
   display: flex;
   flex-direction: row;
@@ -393,7 +407,7 @@ button:hover {
   background: whitesmoke;
   opacity: 70%;
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 0 2px;
 }
 
 .feature-price-bubble {
@@ -511,7 +525,7 @@ button {
 }
 
 footer {
-  height: 500px;
+  height: 300px;
   width: 100vw;
   background-color: var(--headline-orange);
 }

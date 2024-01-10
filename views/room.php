@@ -10,7 +10,7 @@ use benhall14\phpCalendar\Calendar as Calendar;
 
 $calendar = new Calendar;
 $calendar->useMondayStartingDate();
-$_SESSION['room-type'] = $_GET['room-type'];
+$_SESSION['room-type'] = htmlspecialchars($_GET['room-type'], ENT_QUOTES);
 $roomInfo = getRoomInfo();
 if (!empty($_SESSION['features'])) {
     foreach ($roomInfo as $info => $feature) {
@@ -84,6 +84,9 @@ if (!empty($_SESSION['features'])) {
                     <li><b>Room cost per night:</b> <?= $roomInfo[0]['room_price']; ?><sup>cc</sup></li><br>
                     <li><b># of cats available:</b> <?= count($roomInfo); ?></li>
                 </ul>
+                <div class="instructions">
+                    <b>How to book:</b> check the calendar for available dates. Select your desired <b>arrival</b> and <b>departure</b> dates, then add which cats you want for company during your stay. Click the <b>"get your quote"</b> button for your total. Submit your name and transfer code. Welcome!</li>
+                </div>
             </div>
         </div>
     </div>
@@ -102,17 +105,20 @@ if (!empty($_SESSION['features'])) {
             </div>
 
             <div class="features-wrapper">
-                <?php foreach ($roomInfo as $info => $feature) : ?>
-                    <div class="feature" style="background-image: url('/<?= $feature['feature_url']; ?>')">
-                        <div class="feature-price-bubble">
-                            <p><?= $feature['feature_price']; ?><sup>cc</sup></p>
+                <div class="headline">ADD FURRY FRIENDS TO YOUR STAY!</div>
+                <div class="feature-choices-wrapper">
+                    <?php foreach ($roomInfo as $info => $feature) : ?>
+                        <div class="feature" style="background-image: url('../<?= $feature['feature_url']; ?>')">
+                            <div class="feature-price-bubble">
+                                <p><?= $feature['feature_price']; ?><sup>cc</sup></p>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="checkbox" class="checkbox" id="<?= $feature['feature_id']; ?>" name="<?= $feature['feature_id'] ?>">
+                                <div class="feature-name-wrapper"><a class="feature-name"><?= $feature['feature_name']; ?></a></div></input>
+                            </div>
                         </div>
-                        <div class="input-wrapper">
-                            <input type="checkbox" id="<?= $feature['feature_id']; ?>" name="<?= $feature['feature_id'] ?>">
-                            <div class="feature-name-wrapper"><a class="feature-name"><?= $feature['feature_name']; ?></a></div></input>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
             <div class="button-quote-wrapper">
@@ -127,27 +133,27 @@ if (!empty($_SESSION['features'])) {
                             if (count($_SESSION['features']) == 0) :
                                 echo '<br><b>No cats? Seriously? That hurts... right here in my meow-meow...';
                             endif; ?>
-                            <?php if (!empty($_SESSION['errors'])) : ?>
-                                <div class="error-container">
-                                    <?php foreach ($_SESSION['errors'] as $error) :
-                                        echo $error;
-                                    endforeach;
-                                    $_SESSION['errors'] = []; ?>
-                                </div>
-                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 </div>
     </form>
 
+    <div class="error-container">
+        <?php if (!empty($_SESSION['errors'])) : ?>
+            <?php foreach ($_SESSION['errors'] as $error) :
+                echo $error;
+            endforeach;
+            $_SESSION['errors'] = []; ?>
+        <?php endif; ?>
+    </div>
     <div class="booking-carousel-wrapper">
         <div class="room-carousel">
             <div class="mySlides fade">
-                <img id="sliderImage" style="height: 100%" src="/assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg">
+                <img id="sliderImage" style="height: 100%" src="../assets/images/carousel/CAROUSEL-nine-koepfer-lpgAlv8I7V8-unsplash (1).jpg">
             </div>
         </div>
 
-        <form class="booking-form" action="/app/posts/booking.php" method="post" name="booking" id="booking">
+        <form class="booking-form" action="../app/posts/booking.php" method="post" name="booking" id="booking">
             <div class="booking-wrapper">
                 <div class="booking-heading-wrapper">
                     Book your stay
