@@ -192,6 +192,11 @@ footer {
 .update-heading {
   font-weight: 800;
 }
+
+.form-payment > label {
+  font-weight: 800;
+  color: var(--bg-minty);
+}
 /* FOOTER END */
 
 /* MEDIA QUERIES*/

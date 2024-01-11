@@ -134,13 +134,13 @@ if (!empty($_SESSION['features'])) {
         <div class="issues">
             <ul>
                 <?php if ($_SESSION['totalDays'] == 0) : ?>
-                    <li>You selected unavailable dates. Please double check our availability calendar!</li>
+                    <li>Hissss, you selected unavailable dates. Please double check our availability calendar!</li>
                 <?php endif;
                 if (count($_SESSION['features']) == 0) : ?>
                     <li>No cats? Seriously? That hurts... right here in my meow-meow...</li>
                 <?php endif;
                 if ($_POST['arrival'] > $_POST['departure']) : ?>
-                    <li>Your arrival date is set after your departure. Unless you are a time traveller, please reselect your dates!</li>
+                    <li>Your arrival date is set after your departure. Unless you are a time traveller (in which case, we have parking space for your TARDIS!), please reselect your dates!</li>
                 <?php endif; ?>
             </ul>
         </div>

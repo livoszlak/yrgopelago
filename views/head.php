@@ -28,13 +28,13 @@ $dotenv->load();
         <?php
         switch ($_GET['room-type']):
             case 1: ?>
-                <link rel="stylesheet" href="../assets/styles/budget.css">
+                <link rel="stylesheet" type="text/css" href="../assets/styles/budget.css">
             <?php break;
             case 2: ?>
-                <link rel="stylesheet" href="../assets/styles/standard.css">
+                <link rel="stylesheet" type="text/css" href="../assets/styles/standard.css">
             <?php break;
             case 3: ?>
-                <link rel="stylesheet" href="../assets/styles/luxury.css">
+                <link rel="stylesheet" type="text/css" href="../assets/styles/luxury.css">
         <?php endswitch;
     endif;
 
@@ -47,7 +47,7 @@ $dotenv->load();
     if (stripos($link, 'room') || stripos($link, 'booking-complete')) : ?>
         <link rel="stylesheet" type="text/css" href="../assets/styles/global.css">
     <?php else : ?>
-        <link rel="stylesheet" href="assets/styles/global.css">
+        <link rel="stylesheet" type="text/css" href="assets/styles/global.css">
     <?php endif; ?>
 
     <title>Cat's Cradle</title>
