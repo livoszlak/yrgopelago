@@ -1,10 +1,11 @@
 ![](https://github.com/livoszlak/yrgopelago/blob/master/assets/images/HEADER-gaelle-marcel-YnbJwNXy0YQ-unsplash.png)
 
-# Island name
+# Isle of Cats
+#####[aɪl ɒv kæts]#####
 
 Some text about your lovely island
 
-# Hotel name
+# The Cat's Cradle
 
 Why not add some info about the hotel of your dreams?
 
