@@ -1,6 +1,7 @@
 ## The Cat's Cradle database structure
 
 ### **Tables**
+*The **features** and **reservations** tables turned out to be obsolete. **Features** is unnecessary as I ended up putting different features in different rooms and at different prices, and made the **room_feature** junction table for that purpose, where the only data missing is feature_description (and I ran out of time before I could use that data anywhere on the site, unfortunately). I'm keeping the table for future deployment purposes. As for **reservations**, I wanted to implement logic for reserving a room while the guest went to get their transfer code, but I ran out of time as deployment caused me a lot of issues due to my project structure (and lack of experience thereof). It is something I will add in the future.*
 
 ```sql
 CREATE TABLE hotel
