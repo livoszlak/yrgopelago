@@ -1,6 +1,6 @@
 ## The Cat's Cradle database structure
 
-#### **Tables**
+### **Tables**
 
 ```sql
 CREATE TABLE hotel
@@ -77,7 +77,7 @@ FOREIGN KEY (booking_id) REFERENCES bookings(id)
 
 ```
 
-#### **Inserts** 
+### **Inserts** 
 
 ``` sql
 INSERT INTO hotel (hotel_name, hotel_address, stars)
