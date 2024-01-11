@@ -181,7 +181,6 @@ if (!empty($_SESSION['features'])) {
                 </div>
         </form>
     </div>
-
     </div>
 
 </main>

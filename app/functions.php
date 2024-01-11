@@ -176,6 +176,8 @@ function reserveRoom(string $arrival, string $departure, int $roomId)
     $statement->execute();
 }
 
+/* Temporary reservation function that I have not had time to implement yet because of deployment issues */
+
 // function reserveRoom(array $dates, int $roomId, string $guestId)
 // {
 //     $database = databaseConnect('/database/hotel.db');
@@ -362,4 +364,25 @@ function bookStay()
         }
     }
     return $bookingId;
+}
+
+function isInViews(): bool
+{
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $link = "https";
+        $link .= "://";
+        $link .= $_SERVER['HTTP_HOST'];
+        $link .= $_SERVER['REQUEST_URI'];
+    } else {
+        $link = "http";
+        $link .= "://";
+        $link .= $_SERVER['HTTP_HOST'];
+        $link .= $_SERVER['REQUEST_URI'];
+    }
+
+    if (!isset($_GET['room-type']) || !stripos($link, 'booking-complete') || !stripos($link, 'about') || !stripos($link, 'admin') || !stripos($link, 'login')) {
+        return true;
+    } else {
+        return false;
+    }
 }

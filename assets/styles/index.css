@@ -1,0 +1,106 @@
+.index-info {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.hotel-info {
+  width: calc(48% - 2rem);
+  background-color: var(--bg-minty);
+  padding: 2rem;
+}
+
+.info {
+  color: var(--budget-pink);
+}
+
+/* ROOM CARDS */
+
+.rooms-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.rooms-wrapper > a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.room-card {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.room-image > img {
+  height: 350px;
+  width: 350px;
+}
+
+.room-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+}
+
+.room-text {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.budget,
+.standard,
+.luxury {
+  width: 420px;
+}
+
+.budget {
+  background-color: var(--budget-pink);
+  color: var(--budget-yellow);
+  &:hover {
+    background-color: var(--budget-yellow);
+    color: var(--budget-pink);
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.standard {
+  background-color: var(--standard-fuchsia);
+  color: var(--standard-green);
+  &:hover {
+    color: var(--standard-fuchsia);
+    background-color: var(--standard-green);
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.luxury {
+  background-color: var(--luxury-purple);
+  color: var(--luxury-blue);
+  &:hover {
+    color: var(--luxury-purple);
+    background-color: var(--luxury-blue);
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.remaining,
+.feature-count {
+  font-style: italic;
+}
+
+/* ROOM CARDS END */

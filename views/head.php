@@ -82,12 +82,22 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             <?php break;
             case 3: ?>
                 <link rel="stylesheet" href="../assets/styles/luxury.css">
-    <?php endswitch;
-    endif; ?>
-    <?php if (stripos($link, 'room') || stripos($link, 'booking-complete')) : ?>
-        <link rel="stylesheet" type="text/css" href="../assets/styles/app.css">
+        <?php endswitch;
+    endif;
+
+    if (isInViews()) : ?>
+        <link rel="stylesheet" type="text/css" href="assets/styles/index.css">
+    <?php endif;
+    if (stripos($link, 'booking-complete')) : ?>
+        <link rel="stylesheet" type="text/css" href="../assets/styles/booking-response.css">
+    <?php endif;
+    // if (!isset($_GET['room-type']) || !stripos($link, 'booking-complete') || !stripos($link, 'about') || !stripos($link, 'admin') || !stripos($link, 'login')) :
+    if (stripos($link, 'room') || stripos($link, 'booking-complete')) : ?>
+        <!-- <link rel="stylesheet" type="text/css" href="../assets/styles/app.css"> -->
+        <link rel="stylesheet" type="text/css" href="../assets/styles/global.css">
     <?php else : ?>
-        <link rel="stylesheet" href="assets/styles/app.css">
+        <!-- <link rel="stylesheet" href="assets/styles/app.css"> -->
+        <link rel="stylesheet" href="assets/styles/global.css">
     <?php endif; ?>
 
     <title>Cat's Cradle</title>

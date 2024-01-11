@@ -24,8 +24,12 @@
                 <?php if (isset($_SESSION['admin'])) : ?>
                     <a class="nav-link" href="https://rogue-fun.se/cradle/admin.php">Admin</a>
             </li>
-            <a class="nav-link" href="app/users/logout.php">Logout admin</a>
-        <?php else : ?>
+            <?php if (stripos($link, 'room.php') || stripos($link, 'booking-complete')) : ?>
+                <a class="nav-link" href="../app/users/logout.php">Logout admin</a>
+            <?php else : ?>
+                <a class="nav-link" href="app/users/logout.php">Logout admin</a>
+            <?php endif;
+                else : ?>
             <a class="nav-link" href="https://rogue-fun.se/cradle/login.php">Login admin</a>
         <?php endif; ?>
         </li>

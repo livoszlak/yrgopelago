@@ -328,6 +328,7 @@ input {
 
 .instructions {
   width: 300px;
+  padding-bottom: 0.5rem;
 }
 
 .info-instructions-wrapper {
@@ -688,7 +689,7 @@ footer {
     font-size: 0.7rem;
   }
   .room-info-wrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
   }
@@ -751,12 +752,12 @@ footer {
     font-size: 0.5rem;
   }
   .info-room-wrapper,
-  .calendar-info-wrapper,
+  /* .calendar-info-wrapper, */
   .room-info-wrapper {
     flex-direction: column-reverse;
   }
   .calendar-info-wrapper {
-    padding: 0 2rem;
+    padding: 0 2rem 0.5rem;
   }
   .calendar-wrapper {
     margin-bottom: 1rem;
