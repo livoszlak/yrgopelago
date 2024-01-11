@@ -13,7 +13,7 @@ require __DIR__ . '/views/navigation.php'; ?>
         </div>
 
         <div class="mb-3">
-            <label for="adminKey" class="form-label">Key</label>
+            <label for="key" class="form-label">Key</label>
             <input class="form-control" type="password" name="adminKey" id="key" required>
             <small class="form-text">Please provide key.</small>
         </div>

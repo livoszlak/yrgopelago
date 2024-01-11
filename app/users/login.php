@@ -13,21 +13,15 @@ if (isset($_POST['admin'], $_POST['adminKey'])) {
     $admin = htmlspecialchars($_POST['admin'], ENT_QUOTES);
     $adminKey = htmlspecialchars($_POST['adminKey'], ENT_QUOTES);
 
-    // echo "Form data:\n";
-    // echo "admin: " . $admin . "\n";
-    // echo "adminKey: " . $adminKey . "\n";
-
     $admin = validateAdmin($admin, $adminKey);
 
     // If not valid, redirect back to the login page
     if (!$admin) {
-        // echo "Redirecting to login.php\n";
-        redirect('login.php');
+        redirect('../../login.php');
     } else {
         // Save admin in session, unset adminKey, redirect to admin page
         unset($_POST['adminKey']);
         $_SESSION['admin'] = $admin;
-        // echo "Redirecting to admin.php\n";
         redirect('../../admin.php');
     }
 }

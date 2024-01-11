@@ -89,6 +89,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     <?php else : ?>
         <link rel="stylesheet" href="assets/styles/app.css">
     <?php endif; ?>
+
     <title>Cat's Cradle</title>
 </head>
 
