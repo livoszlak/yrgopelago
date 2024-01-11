@@ -33,5 +33,12 @@ require __DIR__ . '/header.php'; ?>
             </div>
         </div>
     </div>
+    <div class="return">
+        <div class="return-headline">WHY NOT BOOK ADDITIONAL DAYS WITH US?</div>
+        <div class="buttons"><a href="https://rogue-fun.se/cradle/views/room.php?room-type=1"><button class="return-room">SAM'S SUITE</button></a>
+            <a href="https://rogue-fun.se/cradle/views/room.php?room-type=2"><button class="return-room">FINDUS' FLAT</button></a>
+            <a href="https://rogue-fun.se/cradle/views/room.php?room-type=3"><button class="return-room">CHESHIRE'S CHAMBER</button></a>
+        </div>
+    </div>
 </main>
 <?php require __DIR__ . '/footer.php'; ?>

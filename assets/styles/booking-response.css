@@ -20,3 +20,32 @@
   text-align: center;
   font-family: 'Bebas Neue', sans-serif;
 }
+
+.return {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  width: calc(580px - 2rem);
+  justify-content: space-between;
+}
+
+.return-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--headline-orange);
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+button {
+  background-color: var(--headline-orange);
+  color: var(--bg-minty);
+}

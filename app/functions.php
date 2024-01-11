@@ -386,3 +386,13 @@ function isInViews(): bool
         return false;
     }
 }
+
+function isInIndex(): bool
+{
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    if ($currentPage == 'index.php') {
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -5,13 +5,17 @@ require __DIR__ . '/../../app/autoload.php';
 
 // use GuzzleHttp\Client;
 
+getQuote();
 $transferCodeResponse = validateTransferCode($_POST['transfer-code'], $_SESSION['totalCost']);
 
-if (property_exists($transferCodeResponse, 'amount')) {
-    $transferCodeAmount = $transferCodeResponse->amount;
-} else {
+if (!property_exists($transferCodeResponse, 'amount') || $transferCodeResponse->amount <= 0 || $transferCodeResponse->amount < $_SESSION['totalCost']) {
     $transferCodeAmount = 0;
+    $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
+    redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
+} else {
+    $transferCodeAmount = $transferCodeResponse->amount;
 }
+
 
 if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type'])) {
     $_SESSION['errors'][] = 'Meouch, too slow! Someone else booked your desired date(s). Please refresh page to see updated availability calendar.';
