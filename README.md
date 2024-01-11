@@ -1,4 +1,4 @@
-WHY NOT A GIF HERE? TO SET THE MOOD.
+![](https://github.com/livoszlak/yrgopelago/blob/master/assets/images/HEADER-gaelle-marcel-YnbJwNXy0YQ-unsplash.png)
 
 # Island name
 
