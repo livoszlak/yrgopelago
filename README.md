@@ -1,7 +1,7 @@
 ![](https://github.com/livoszlak/yrgopelago/blob/master/assets/images/HEADER-gaelle-marcel-YnbJwNXy0YQ-unsplash.png)
 
 # Isle of Cats
-#####[aɪl ɒv kæts]#####
+[aɪl ɒv kæts]
 
 Some text about your lovely island
 
