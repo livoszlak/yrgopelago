@@ -15,10 +15,6 @@ if (property_exists($transferCodeResponse, 'amount')) {
 
 if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type'])) {
     $_SESSION['errors'][] = 'Meouch, too slow! Someone else booked your desired date(s). Please refresh page to see updated availability calendar.';
-    // $_SESSION['arrival-date'] = '';
-    // $_SESSION['departure-date'] = '';
-    // $_SESSION['features'] = [];
-    // $_SESSION['totalCost'] = 0;
     redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
 }
 
@@ -29,9 +25,6 @@ if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeRespo
     unset($_SESSION['errors']);
     deposit($_POST['transfer-code']);
 }
-
-/* */
-
 
 reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
 $bookingId = bookStay();

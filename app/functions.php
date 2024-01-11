@@ -250,37 +250,6 @@ function addCalendarEvent($calendar, $roomId)
             ['available']
         );
     }
-
-
-    // $calendar->addEvent(
-    //     $arrival,   # start date in either Y-m-d or Y-m-d H:i if you want to add a time.
-    //     $departure,   # end date in either Y-m-d or Y-m-d H:i if you want to add a time.
-    //     // 'My Birthday',  # event name text
-    //     true,           # should the date be masked - boolean default true
-    //     ['booked']   # (optional) additional classes in either string or array format to be included on the event days
-    // );
-
-    # or for multiple events
-
-    // $events = array();
-
-    // $events[] = array(
-    // 	'start' => '2022-01-14',
-    // 	'end' => '2022-01-14',
-    // 	'summary' => 'My Birthday',
-    // 	'mask' => true,
-    // 	'classes' => ['myclass', 'abc']
-    // );
-
-    // $events[] = array(
-    // 	'start' => '2022-12-25',
-    // 	'end' => '2022-12-25',
-    // 	'summary' => 'Christmas',
-    // 	'mask' => true
-    // );
-
-    // $calendar->addEvents($events);
-    // return $calendar->addEvents($events);
 }
 
 function getRoomInfo()

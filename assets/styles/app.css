@@ -563,9 +563,31 @@ button {
 }
 
 footer {
-  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  height: 250px;
   width: 100vw;
   background-color: var(--headline-orange);
+  padding: 1rem;
+}
+
+.contact-headline {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.contact-details {
+  font-size: 0.7rem;
+}
+
+.osz-logo {
+  background-image: url(../images/icons/oszlak.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 70%;
+  width: 100px;
 }
 
 /* MEDIA QUERIES*/
@@ -738,6 +760,12 @@ footer {
   }
   .calendar-wrapper {
     margin-bottom: 1rem;
+  }
+  .contact-headline {
+    font-size: 0.9rem;
+  }
+  .contact-details {
+    font-size: 0.6rem;
   }
 }
 

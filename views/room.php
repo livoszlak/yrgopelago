@@ -138,6 +138,9 @@ if (!empty($_SESSION['features'])) {
                 <?php endif;
                 if (count($_SESSION['features']) == 0) : ?>
                     <li>No cats? Seriously? That hurts... right here in my meow-meow...</li>
+                <?php endif;
+                if ($_POST['arrival'] > $_POST['departure']) : ?>
+                    <li>Your arrival date is set after your departure. Unless you are a time traveller, please reselect your dates!</li>
                 <?php endif; ?>
             </ul>
         </div>
