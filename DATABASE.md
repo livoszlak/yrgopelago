@@ -15,7 +15,7 @@ stars INTEGER
 CREATE TABLE rooms (
 id INTEGER PRIMARY KEY,
 room_type VARCHAR,
-room_price INT
+room_price INTEGER
 );
 
 
