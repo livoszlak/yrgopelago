@@ -5,6 +5,7 @@ declare(strict_types=1);
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
+/* Redirection */
 
 function redirect(string $path)
 {
@@ -12,6 +13,7 @@ function redirect(string $path)
     exit;
 }
 
+/* Generate unique user id */
 function guidv4(string $data = null): string
 {
     // Generate 16 bytes (128 bits) of random data or use the data passed into the function.
@@ -27,6 +29,7 @@ function guidv4(string $data = null): string
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
 
+/* Check if uuid is correctly formatted */
 function isValidUuid(string $uuid): bool
 {
     if (!is_string($uuid) || (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $uuid) !== 1)) {
@@ -35,6 +38,7 @@ function isValidUuid(string $uuid): bool
     return true;
 }
 
+/* Send transfer code to API and validate it */
 function validateTransferCode(string $transferCode, float $totalCost)
 {
     $client = new Client();
@@ -55,6 +59,7 @@ function validateTransferCode(string $transferCode, float $totalCost)
     return $data;
 }
 
+/* Fetch a random cat fact from the external catfact API to add to booking response */
 function getCatFact()
 {
     $client = new Client();
@@ -74,7 +79,7 @@ function getCatFact()
     }
 }
 
-
+/* Deposit amount from valid transfer code to my account */
 function deposit(string $transferCode)
 {
     $client = new Client();
@@ -93,6 +98,7 @@ function deposit(string $transferCode)
     }
 }
 
+/* Validate admin username and API key for login to admin page by checking values set in .ENV */
 function validateAdmin(string $input_username, string $input_api_key): bool
 {
     $username = $_ENV['USER_NAME'];
@@ -104,6 +110,7 @@ function validateAdmin(string $input_username, string $input_api_key): bool
     }
 }
 
+/* Connect to database */
 function databaseConnect(string $dbName): object
 {
     $dbPath = __DIR__ . '/' . $dbName;
@@ -120,6 +127,7 @@ function databaseConnect(string $dbName): object
     return $database;
 }
 
+/* Fetch available rooms for printing availability calendar on page load of room.php and double checking availability before booking occurs */
 function checkAvailability(string $arrival, string $departure, int $roomId): array
 {
     $database = databaseConnect('/database/hotel.db');
@@ -134,6 +142,7 @@ function checkAvailability(string $arrival, string $departure, int $roomId): arr
     return $availableRooms;
 }
 
+/* Count remaining dates available for booking for respective room types, for use in index page room cards */
 function countRemaining(int $roomId)
 {
     $database = databaseConnect('/database/hotel.db');
@@ -145,6 +154,7 @@ function countRemaining(int $roomId)
     return $remainingDates;
 }
 
+/* Additional check for availability of desired date range */
 function isAvailable(string $arrival, string $departure, int $roomId): bool
 {
     $database = databaseConnect('/database/hotel.db');
@@ -163,6 +173,7 @@ function isAvailable(string $arrival, string $departure, int $roomId): bool
     }
 }
 
+/* Sets availability to false for booked dates. On reflection, should have been merged with bookStay(). */
 function reserveRoom(string $arrival, string $departure, int $roomId)
 {
     $database = databaseConnect('/database/hotel.db');
@@ -192,6 +203,7 @@ function reserveRoom(string $arrival, string $departure, int $roomId)
 //     }
 // }
 
+/* Fetch star count for printing stars in header and for use in booking response */
 function fetchStars()
 {
     $database = databaseConnect('/database/hotel.db');
@@ -202,6 +214,7 @@ function fetchStars()
     return $stars;
 }
 
+/* Fetch features for display on separate room pages, since each room type has a different number of features available */
 function fetchFeatures($roomId)
 {
     $database = databaseConnect('/database/hotel.db');
@@ -212,6 +225,7 @@ function fetchFeatures($roomId)
     return $features;
 }
 
+/* Fetches selected available dates and formats them for ease of insertion into $_SESSION array */
 function fetchDates($availableRooms)
 {
     $dates = array();
@@ -221,6 +235,7 @@ function fetchDates($availableRooms)
     return $dates;
 }
 
+/* Logic for printing the availability calendar, updated on page reload */
 function addCalendarEvent($calendar, $roomId)
 {
     $database = databaseConnect('/database/hotel.db');
@@ -254,6 +269,7 @@ function addCalendarEvent($calendar, $roomId)
     }
 }
 
+/* Another helper fetch for ease of insertion of data into $_SESSION array -> ease of execution of booking script */
 function getRoomInfo()
 {
     $database = databaseConnect('/database/hotel.db');
@@ -264,6 +280,7 @@ function getRoomInfo()
     return $roomInfo;
 }
 
+/* Counts total cost of stay */
 function getQuote()
 {
     $featureTotal = countFeatureCosts();
@@ -282,6 +299,7 @@ function getQuote()
     return $totalCost;
 }
 
+/* Helper function to getQuote(), counts total feature costs */
 function countFeatureCosts(): int
 {
     $database = databaseConnect('/database/hotel.db');
@@ -306,6 +324,7 @@ function countFeatureCosts(): int
     return $featureTotal;
 }
 
+/* Helper function to getQuote(), counts total cost of selected dates */
 function countStayCost()
 {
     $roomId = (int)$_SESSION['room-type'];
@@ -319,6 +338,7 @@ function countStayCost()
     return $roomTotal;
 }
 
+/* Inserts booking data into the bookings and booking_feature tables */
 function bookStay()
 {
     $guestName = trim(htmlspecialchars($_POST['guest-name'], ENT_QUOTES));
@@ -366,6 +386,7 @@ function bookStay()
     return $bookingId;
 }
 
+/* Helper function to determine where to load different CSS/JS files, depending on page loaded. Needed after deployment due to unforseen project structure issues. */
 function isInViews(): bool
 {
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -387,6 +408,7 @@ function isInViews(): bool
     }
 }
 
+/* Helper function to determine where to load index.css, depending on page loaded. Needed after deployment due to unforseen project structure issues. */
 function isInIndex(): bool
 {
     $currentPage = basename($_SERVER['PHP_SELF']);

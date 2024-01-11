@@ -26,5 +26,4 @@ if (isset($_POST['admin'], $_POST['adminKey'])) {
     }
 }
 
-// Redirect
 redirect('index.php');
