@@ -1,7 +1,8 @@
 ![](https://github.com/livoszlak/yrgopelago/blob/master/assets/images/HEADER-gaelle-marcel-YnbJwNXy0YQ-unsplash.png)
 
 # Isle of Cats
-(pronounciation: [aɪl ɒv kæts], *"Ilovecats"*)
+
+(pronounciation: [aɪl ɒv kæts], _"Ilovecats"_)
 
 Welcome to **The Cat's Cradle**, a haven nestled in the heart of the **Yrgopelago**, where our story begins with the enchanting discovery of the **Isle of Cats**. This idyllic island, adorned with lush landscapes and sun-kissed vistas, revealed a paradise inhabited by a harmonious community of domestic cats.
 The island's extraordinary charm captured the hearts of explorers who envisioned a safe place for these charming creatures. The Cat's Cradle emerged as not just a hotel, but a sanctuary for the many homeless cats that call the Isle of Cats their home. We believe in creating an environment where guests can indulge in the delights of a stay tailored to cat lovers' dreams.
