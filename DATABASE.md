@@ -53,6 +53,7 @@ FOREIGN KEY (room_id) REFERENCES rooms(id)
 );
 
 CREATE TABLE room_availability (
+id INTEGER PRIMARY KEY,
 room_id INTEGER,
 date DATE,
 is_available BOOLEAN,
