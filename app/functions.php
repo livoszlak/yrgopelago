@@ -291,7 +291,7 @@ function getQuote()
     if ($_SESSION['totalDays'] > 2) {
         $discount = 0.75;
     } else if ($_SESSION['totalDays'] > 2 && count($_SESSION['features']) > 3) {
-        $discount = 0.6;
+        $discount = 0.7;
     }
 
     $totalCost = $_SESSION['totalCost'] * $discount;

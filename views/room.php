@@ -27,7 +27,7 @@ if (!empty($_SESSION['features'])) {
     <div class="discounts">
         <div class="discount-headline">PAW-TASTIC DISCOUNTS AVAILABLE!</div>
         <div class="discount-specs">Book more than 2 days with us for 25% off your stay -<br>
-            and add 4 or more features to your 2+ days long stay for 40% off!</div>
+            and add 4 or more features to your 2+ days long stay for 30% off!</div>
     </div>
     <div class="calendar-info-wrapper">
         <div class="room-info-wrapper">
