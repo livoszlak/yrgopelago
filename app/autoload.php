@@ -19,9 +19,10 @@ require __DIR__ . '/functions.php';
 // Fetch the global configuration array.
 $config = require __DIR__ . '/config.php';
 
-// Setup the database connection.
+// Setup the database connection. -- having this here gave me some issues, so I had to comment it out for now.
 // $database = connect('/database/hotel.db');
 
+// If statements setting up $_SESSION array, preparing booking variables, et c.
 $_SESSION['stars'] = fetchStars();
 
 if (!key_exists('userId', $_SESSION)) :
@@ -42,6 +43,8 @@ endif;
 
 !isset($_SESSION['booking-step-1']) ? $_SESSION['totalCost'] = 0 : $_SESSION['totalCost'] = getQuote();
 
+
+// Logic for displaying data on room.php booking page. Makes sure selected features are stored correctly in $_SESSION.
 if (isset($_GET['room-type']) && isset($_POST['booking-step-1'])) :
     $availableRooms = checkAvailability($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
     $dates = fetchDates($availableRooms);
@@ -57,6 +60,7 @@ if (isset($_GET['room-type']) && isset($_POST['booking-step-1'])) :
     getQuote();
 endif;
 
+// Checks browser location - needed for switches and if statements deciding which CSS and JS files are loaded. Also present in functions.
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $link = "https";
     $link .= "://";

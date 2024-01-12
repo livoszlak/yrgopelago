@@ -6,6 +6,7 @@ require __DIR__ . '/../autoload.php';
 
 $database = databaseConnect('/database/hotel.db');
 
+// Updates room price
 if (isset($_POST['update-room-price'])) {
     $roomId = $_POST['room'];
     $newPrice = (int)$_POST['new-price'];
@@ -16,6 +17,7 @@ if (isset($_POST['update-room-price'])) {
     $statement->execute();
 }
 
+// Updates feature prices (inreases or decreases all feature prices in a specific room by input amount)
 if (isset($_POST['update-feature-price'])) {
     $roomId = $_POST['room'];
     $priceModifier = (int)$_POST['price-modifier'];
@@ -48,6 +50,7 @@ if (isset($_POST['increase'])) {
     }
 }
 
+// Updates hotel star count
 if (isset($_POST['update-stars'])) {
     $newStars = $_POST['new-stars'];
 

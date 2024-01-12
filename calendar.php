@@ -1,6 +1,9 @@
 <?php
+// NOT THE ACTUAL CALENDAR ON WEBSITE. This is one I tried to make work for me, but had to abandon at some point. Left here in case I want to implement it later.
+
 
 declare(strict_types=1);
+
 ?>
 
 <div class="calendar">
@@ -50,8 +53,6 @@ declare(strict_types=1);
         <button class="date">31</button>
     </div>
 </div>
-
-
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');

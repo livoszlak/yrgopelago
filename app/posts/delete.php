@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
-// In this file we delete new posts in the database.
+// Wanted to implement this, but ran out of time. Later!
 
 redirect('/');

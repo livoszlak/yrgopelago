@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/../../app/autoload.php';
 
+// Fetch total cost, validate transfer code
 getQuote();
 $transferCodeResponse = validateTransferCode($_POST['transfer-code'], $_SESSION['totalCost']);
 
@@ -16,12 +17,13 @@ if (!property_exists($transferCodeResponse, 'amount') || $transferCodeResponse->
     $transferCodeAmount = $transferCodeResponse->amount;
 }
 
-
+// Double checks availability
 if (!isAvailable($_SESSION['arrival'], $_SESSION['departure'], $_SESSION['room-type'])) {
     $_SESSION['errors'][] = 'Meouch, too slow! Someone else booked your desired date(s). Please refresh page to see updated availability calendar.';
     redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
 }
 
+// Double checks transfer code format and amount, if all is fine, deposits to account
 if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeResponse, 'transferCode') || $transferCodeAmount < $_SESSION['totalCost'] || $transferCodeAmount == 0) {
     $_SESSION['errors'][] = 'Meow-ow, there was an issue with your transfer code! Please try again!';
     redirect('https://rogue-fun.se/cradle/views/room.php?room-type=' . $_SESSION['room-type']);
@@ -30,9 +32,11 @@ if (!isValidUuid($_POST['transfer-code']) || !property_exists($transferCodeRespo
     deposit($_POST['transfer-code']);
 }
 
+// Updates availability, books stay
 reserveRoom($_SESSION['arrival'], $_SESSION['departure'], (int)$_SESSION['room-type']);
 $bookingId = bookStay();
 
+// Fetches booking data
 $database = databaseConnect('/database/hotel.db');
 if (!empty($_SESSION['features'])) {
     $statement = $database->prepare("SELECT 
@@ -76,8 +80,10 @@ $statement->bindParam(':bookingId', $bookingId, PDO::PARAM_INT);
 $statement->execute();
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+// Fetches random cat fact from catfact API to add to booking response
 $catFact = getCatFact();
 
+// Makes a nice array of the booking for ease of JSON display
 $booking = [];
 foreach ($results as $row) {
     $booking['island'] = $row['island'];

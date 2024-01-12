@@ -1,5 +1,3 @@
-<?php
-?>
 <main>
     <div class="headline">
         <a>Welcome to the Cat's Cradle</a>
