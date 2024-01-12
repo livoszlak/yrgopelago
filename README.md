@@ -20,13 +20,25 @@ No installation needed, just come visit our lovely island! Booking currently res
 
 # Code review
 
-1. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-2. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-3. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-4. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-5. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-6. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-7. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-8. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-9. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
-10. example.js:10-15 - Remember to think about X and this could be refactored using the amazing Y function.
+1. views/navigation.php:3 - A suggestion if you want to easily switch between local hosting and deployed site
+   and have links like this one direct to the correct site, you could set a "base-url" in autoload.php
+   or another file which is loaded everywhere. Then concatenate (like: `<?= $baseUrl ?> . "index.php"`)
+   and change only one line of code when switching between local and deployed:
+   `$baseUrl = "/"` when hosting locally and `$baseUrl = https://rogue-fun.se/cradle/` when deploying.
+2. .editorconfig:12 - Set the indent size to 2 or 4, 20 is way to much!!
+3. views/room.php:15 - A minor thing but maybe a double negation `if (!empty ... )` could be changed to `if (isset ...)`?
+   I know the two don´t equate completely but something like that could improve readability.
+4. views/room.php:129 - I think it's generally not recommended to have HTML tags inside PHP strings.
+   On this line you could change it to exit PHP mode when you write HTML and enter PHP mode again thereafter.
+5. views/room.php:162 - Also a minor thing but it's always a good idea to exclude spaces from file names, just in case.
+6. calendar.php:23-53 - Even though it's not used, since you included the file I will comment on it :)
+   The buttons could be printed with a loop instead of writing each one manually.
+7. booking-complete.js:4 - Although `var` is completely valid code,
+   I think it's generally recommended to use `let` and `const` instead in JavaScript.
+8. app/users/arrays.php - This file is maybe a bit redundant? The content could be included in views/room.php.
+9. app/users/config.php - Same a above. I think it's generally very good that you have such a clear file structure,
+   but the content of this file could maybe be included in autoload.php instead?
+10. global.css:6-7 - The color contrast between text and background could be increased (especially on luxury room styling)
+    to increase readability and make the site more accessible.
+
+All in all a nice looking and well structured project with well documented code. / Joar
