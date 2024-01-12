@@ -129,7 +129,8 @@ header > img {
   font-size: 1.5rem;
 }
 
-/**/
+/* NAV & HEADER END*/
+/* HEADLINES, BUTTONS */
 
 .headline {
   font-family: 'Bebas Neue', sans-serif;
@@ -153,6 +154,7 @@ a > button {
   border: none;
 }
 
+/* HEADLINES, BUTTONS END */
 /* FOOTER */
 
 footer {
@@ -183,6 +185,9 @@ footer {
   width: 100px;
 }
 
+/* FOOTER END */
+/* ADMIN */
+
 .update {
   display: flex;
   flex-direction: column;
@@ -193,12 +198,18 @@ footer {
   font-weight: 800;
 }
 
-.form-payment > label {
+.form-payment > label,
+.mb-3 > label {
   font-weight: 800;
   color: var(--bg-minty);
 }
-/* FOOTER END */
 
+.btn-primary {
+  background-color: var(--headline-orange);
+  color: var(--bg-minty);
+}
+
+/* ADMIN END*/
 /* MEDIA QUERIES*/
 
 @media screen and (max-width: 1180px) {
