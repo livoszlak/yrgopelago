@@ -19,7 +19,7 @@ require __DIR__ . '/functions.php';
 // Fetch the global configuration array.
 $config = require __DIR__ . '/config.php';
 
-// Setup the database connection. -- having this here gave me some issues, so I had to comment it out for now.
+// Setup the database connection. -- having this here instead of initializing it for each query in my functions and scripts gave me some issues, so I had to comment it out for now.
 // $database = connect('/database/hotel.db');
 
 // If statements setting up $_SESSION array, preparing booking variables, et c.
