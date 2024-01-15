@@ -126,7 +126,7 @@ if (!empty($_SESSION['features'])) {
             <div class="button-quote-wrapper">
                 <button class="button" type="submit" name="booking-step-1" id="booking-step-1">Get your quote!</button>
                 <div class="quote-wrapper">
-                    <?= 'Your total is <span class="quote">' . (!isset($_SESSION['totalCost']) ? '0' : $_SESSION['totalCost']) . '<sup>cc</sup></span>' ?>
+                    <?= 'Your total is ' ?><span class="quote"><?= (!isset($_SESSION['totalCost']) ? '0' : $_SESSION['totalCost']); ?><sup>cc</sup></span>
                 </div>
     </form>
 
