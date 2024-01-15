@@ -1,29 +1,524 @@
 {
-  "vacation": [
+  "Island": "Porcelain Paradise",
+  "Hotel": "Tea-riffic Hotel",
+  "arrival_date": "2024-01-31",
+  "departure_date": "2024-01-31",
+  "Total_cost": 2,
+  "Stars": 1,
+  "additional_info": "Thank you for booking with Tea-riffic Hotel, have a Tea-riffic stay!"
+}
+
+{
+  "island": "Rainbow Reef",
+  "hotel": "Rainbow Reef Retreat",
+  "arrival_date": "2024-01-02",
+  "departure_date": "2024-01-03",
+  "total_cost": 6,
+  "stars": 2,
+  "features": [
+  {
+  "name": "Wildlife Watching",
+  "cost": 2
+  }
+  ],
+  "additional_info": {
+  "greeting": "Thank you for choosing Rainbow Reef Retreat! We hope you will enjoy your stay, gain a tan and leave well rested."
+  }
+  }
+
+  {
+    "island": "Vertigo",
+    "hotel": "Overview Hotel",
+    "arrival_date": "2024-01-11",
+    "departure_date": "2024-01-11",
+    "total_cost": 8,
+    "stars": "3",
+    "features": [
     {
-      "island": "Anthrax island",
-      "hotel": "Budget hostel",
-      "arrival_date": "2023-01-01",
-      "departure_date": "2023-01-04",
-      "total_cost": "8",
-      "stars": "2",
-      "features": [{ "name": "Fruit basket for vitamin C", "cost": 1 }],
-      "addtional_info": "Thank you for saving a buck at Budget hostel."
+    "name": "Private Cinema Under the Stars",
+    "cost": 1
     },
     {
-      "island": "Isla Bellevue",
-      "hotel": "Grand central Hotel",
-      "arrival_date": "2023-01-05",
-      "departure_date": "2023-01-08",
-      "total_cost": "11",
-      "stars": "3",
-      "features": [{ "name": "Pinball machine", "cost": 3 }],
-      "addtional_info": [
-        {
-          "greeting": "Thank you for choosing Centralhotellet",
-          "video": "https://www.youtube.com/watch?v=5Ym-k30X5PY"
-        }
-      ]
+    "name": "In-Room Telescope",
+    "cost": 1
+    },
+    {
+    "name": "Artisanal Pillow Menu",
+    "cost": 1
+    },
+    {
+    "name": "Virtual Reality Adventure",
+    "cost": 2
     }
-  ]
+    ],
+    "additional_info": {
+    "greeting": "Thank you for choosing Overview Hotel!",
+    "imageUrl": "https://adamwelin.se/overview/images/success.png"
+    }
+    }
+
+    {
+      "island": "Isola Insulinde",
+      "hotel": "The Whirling",
+      "arrival_date": "2024-01-03",
+      "departure_date": "2024-01-03",
+      "total_cost": "9",
+      "stars": "4",
+      "features": [
+          {
+              "name": "tour",
+              "price": 2
+          },
+          {
+              "name": "maybells",
+              "price": 2
+          },
+          {
+              "name": "pen",
+              "price": 2
+          }
+      ],
+      "additional_info": {
+          "greeting": "Thank you for choosing The Whirling!",
+          "welcome_video_url": "https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ"
+      }
+  }     
+
+  {
+    "island": "Mount Frost",
+    "hotel": "The Ice Hotel",
+    "stars": "5",
+    "arrival_date": "2024-01-31",
+    "departure_date": "2024-01-31",
+    "features": [
+    {
+    "name": "Sushi buffet",
+    "cost": 0
+    },
+    {
+    "name": "Extra blanket",
+    "cost": 1
+    },
+    {
+    "name": "Penguin BBQ buffet",
+    "cost": 1
+    },
+    {
+    "name": "Whisky on the rocks",
+    "cost": 1
+    },
+    {
+    "name": "Siberian husky company",
+    "cost": 1
+    },
+    {
+    "name": "Ice sculpting crash course",
+    "cost": 1
+    }
+    ],
+    "total_cost": "15",
+    "additional_info": {
+    "date_for_measurement": "2024-01-12",
+    "time_for_measurement": "09:46",
+    "temperature": "-13.6 °C",
+    "precipitation": "0 mm",
+    "wind_speed": "16.9 km/h",
+    "weather_api": "https://open-meteo.com/en/docs/metno-api/"
+    }
+    }
+
+    {
+      "island": "Kalimdor",
+      "hotel": "Horde Haven Inn",
+      "arrival_date": "2024-01-18",
+      "departure_date": "2024-01-19",
+      "total_cost": 12,
+      "room_type": "Razor Hill Retreat",
+      "additional_info": {
+      "greeting": "Greetings Traveler, Welcome to the Horde Haven Inn & Razor Hill Retreat!"
+      }
+      }
+
+      {"island":"Isle of dogs","hotel":"Belmond Cockapoo Palace","arrival_date":"2024-01-30","departure_date":"2024-01-30","total_cost":9,"stars":"3","features":[{"name":"Bring human","price":1},{"name":"Pawdicure","price":3}],"additional_info":{"greeting":"Thank you for chosing Belmond Cockapoo Palace."}}
+
+      {
+        "island": "Isola Insulinde",
+        "hotel": "The Whirling",
+        "arrival_date": "2024-01-31",
+        "departure_date": "2024-01-31",
+        "total_cost": "19",
+        "stars": "4",
+        "features": [
+            {
+                "name": "karaoke",
+                "price": 3
+            },
+            {
+                "name": "petanque",
+                "price": 2
+            },
+            {
+                "name": "safari",
+                "price": 5
+            },
+            {
+                "name": "novel",
+                "price": 3
+            },
+            {
+                "name": "necktie",
+                "price": 3
+            }
+        ],
+        "additional_info": {
+            "greeting": "Thank you for choosing The Whirling!",
+            "welcome_video_url": "https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ"
+        }
+    }  
+
+    [
+      {
+          "island": "Jurassic Island",
+          "name": "Jurassic Hotel",
+          "arrival_date": "16-01-2024",
+          "departure_date": "16-01-2024",
+          "room_type": "Standard",
+          "total_cost": 13,
+          "booking_id": 11,
+          "stars": "4",
+          "features": [
+              {
+                  "name": "Swim with dinosaurs",
+                  "price": 1
+              },
+              {
+                  "name": "Visit the incubation room",
+                  "price": 2
+              },
+              {
+                  "name": "Fly amongst dinosaurs",
+                  "price": 3
+              },
+              {
+                  "name": "Dinosaur Safari",
+                  "price": 3
+              }
+          ],
+          "additional_info": [
+              {
+                  "greeting": "Thank you for choosing Jurassic Hotel",
+                  "dino": "Arrhinoceratops",
+                  "dinoURL": "https://en.wikipedia.org/wiki/Arrhinoceratops"
+              }
+          ]
+      }
+  ] 
+
+  {
+    "island": "Terra Verde",
+    "hotel": "Harvest Haven",
+    "arrival_date": "2024-01-31",
+    "departure_date": "2024-01-31",
+    "total_cost": 10,
+    "stars": "4",
+    "features": [
+    {
+    "name": "cashew",
+    "cost": 1
+    },
+    {
+    "name": "wine",
+    "cost": 2
+    },
+    {
+    "name": "dinner",
+    "cost": 4
+    }
+    ],
+    "additional_info": {
+    "greeting": "Thank you for choosing Harvest Haven",
+    "imageUrl": "No image at the moment"
+    }
+    }
+
+    {"bookingId":"13","Hotel":"Sahaja Resort","Island":"Java","Stars":2,"arrival_date":"2024-01-02","departure_date":"2024-01-02","roomCost":0,"featureCost":0,"totalCost":0,"features":[{"FeatureType":"Breakfast","FeaturePrice":2},{"FeatureType":"Mini Bar","FeaturePrice":3},{"FeatureType":"Swimming Pool","FeaturePrice":3}]}1
+    
+    {"island":"Colada","hotel":"Vagabond","arrival_date":"2024-01-17","departure_date":"2024-01-17","total_cost":8,"stars":"2","features":{"name":"clean","cost":2},"additional_info":"Thanks for staying with us!"}
+
+    {
+      "island": "Hiss Ingen Island",
+      "hotel": "P\u00f6l Harbor Hotel",
+      "stars": "3",
+      "addtional_info": {
+          "greeting": "Thank you for choosing P\u00f6l Harbor Hotel",
+          "checkin": "Checkin is at 15:00"
+      },
+      "arrival_date": "2024-01-25",
+      "departure_date": "2024-01-26",
+      "total_cost": "13",
+      "features": [
+          {
+              "name": "sauna",
+              "cost": 2
+          },
+          {
+              "name": "Figma",
+              "cost": 2
+          },
+          {
+              "name": "Tour",
+              "cost": 2
+          }
+      ]
+  }
+
+  {
+    "island": "Vertigo",
+    "hotel": "Overview Hotel",
+    "arrival_date": "2024-01-01",
+    "departure_date": "2024-01-01",
+    "total_cost": 16,
+    "stars": "3",
+    "features": [
+    {
+    "name": "In-Room Mixologist Bar Cart",
+    "cost": 2
+    },
+    {
+    "name": "Underwater Soundscapes",
+    "cost": 2
+    },
+    {
+    "name": "Smart Mirror Fitness Classes",
+    "cost": 3
+    },
+    {
+    "name": "Culinary Scavenger Hunt",
+    "cost": 3
+    }
+    ],
+    "additional_info": {
+    "greeting": "Thank you for choosing Overview Hotel!",
+    "imageUrl": "https://adamwelin.se/overview/images/success.png"
+    }
+    }
+    
+    [
+      {
+          "island": "Jurassic Island",
+          "name": "Jurassic Hotel",
+          "arrival_date": "17-01-2024",
+          "departure_date": "17-01-2024",
+          "room_type": "Standard",
+          "total_cost": 4,
+          "booking_id": 15,
+          "stars": "4",
+          "features": [],
+          "additional_info": [
+              {
+                  "greeting": "Thank you for choosing Jurassic Hotel",
+                  "dino": "Barilium",
+                  "dinoURL": "https://en.wikipedia.org/wiki/Barilium"
+              }
+          ]
+      }
+  ] 
+  
+  {
+    "island": "Fawkes Island",
+    "hotel": "The Featherby Hotel",
+    "arrival_date": "2024-01-22",
+    "departure_date": "2024-01-23",
+    "total_cost": 9,
+    "stars": 3,
+    "features": [
+    {
+    "name": "600m Breakfast Hurdle",
+    "cost": 1
+    },
+    {
+    "name": "Lunging Lunch Lounge",
+    "cost": 2
+    },
+    {
+    "name": "2 in 1 Pool Party",
+    "cost": 2
+    }
+    ],
+    "additional_info": {
+    "greeting": "Enjoy your stay at The Featherby Hotel",
+    "game_URL": "https://henkes-portfolio.se/ProvingGrounds/"
+    }
+    }
+
+    {
+      "guest": "Liv Oszlak",
+      "island": "Berghav",
+      "hotel": "STUUGA",
+      "arrival_date": "2024-01-27",
+      "departure_date": "2024-01-28",
+      "total_cost": "19",
+      "stars": "3",
+      "features": [
+          {
+              "name": "kayak",
+              "price": 5
+          },
+          {
+              "name": "guided tour of the island",
+              "price": 8
+          }
+      ],
+      "addtional_info": "Thank you for choosing STUUGA",
+      "booking_id": "a2b339ee-1238-4b4d-8316-1721f23927d4"
+  } 
+
+  {
+    "island": "Mount Frost",
+    "hotel": "The Ice Hotel",
+    "stars": "5",
+    "arrival_date": "2024-01-29",
+    "departure_date": "2024-01-29",
+    "features": [
+    {
+    "name": "Sushi buffet",
+    "cost": 0
+    },
+    {
+    "name": "Aurora guarantee",
+    "cost": 2
+    },
+    {
+    "name": "Polar bear safari",
+    "cost": 2
+    },
+    {
+    "name": "Ice fishing excursion",
+    "cost": 2
+    },
+    {
+    "name": "Snowmobile (gas included)",
+    "cost": 2
+    }
+    ],
+    "total_cost": "19",
+    "additional_info": {
+    "date_for_measurement": "2024-01-12",
+    "time_for_measurement": "10:34",
+    "temperature": "-17.9 °C",
+    "precipitation": "0 mm",
+    "wind_speed": "18 km/h",
+    "weather_api": "https://open-meteo.com/en/docs/metno-api/"
+    }
+    }
+
+  
+additional_info
+: 
+"Thank you for booking, we look forward to your visit!"
+arrival_date
+: 
+"4-01-2024"
+departure_date
+: 
+"4-01-2024"
+features
+: 
+{Breakfast: 'yes', feature2: 'yes', feature3: 'yes'}
+hotel
+: 
+"Hotel Sunne"
+island
+: 
+"Melemele Island"
+message from Snubbul
+: 
+"Warf!"
+msg
+: 
+"Booking successful, your recipt is logged in the console"
+stars
+: 
+"5"
+total_cost
+: 
+"18"
+
+
+{
+  "island": "Rainbow Reef",
+  "hotel": "Rainbow Reef Retreat",
+  "arrival_date": "2024-01-30",
+  "departure_date": "2024-01-31",
+  "total_cost": 10,
+  "stars": 2,
+  "features": [
+  {
+  "name": "Lotus Spa",
+  "cost": 3
+  },
+  {
+  "name": "Jet Ski Adventures",
+  "cost": 4
+  }
+  ],
+  "additional_info": {
+  "greeting": "Thank you for choosing Rainbow Reef Retreat! We hope you will enjoy your stay, gain a tan and leave well rested."
+  }
+  }
+
+  {
+    "island": "Vertigo",
+    "hotel": "Overview Hotel",
+    "arrival_date": "2024-01-04",
+    "departure_date": "2024-01-05",
+    "total_cost": 17,
+    "stars": "3",
+    "features": [
+    {
+    "name": "AI-guided Nature Walks",
+    "cost": 3
+    },
+    {
+    "name": "Personal Concierge Drone",
+    "cost": 3
+    },
+    {
+    "name": "Customized Sleep Rituals",
+    "cost": 3
+    }
+    ],
+    "additional_info": {
+    "greeting": "Thank you for choosing Overview Hotel!",
+    "imageUrl": "https://adamwelin.se/overview/images/success.png"
+    }
+    }
+
+    Island: Islandistan
+Dates: 2024-01-08
+Room Type: Standard
+Feature: Skydiving
+Cost for feature: $6
+Totalcost: $14
+
+{
+  "status": "success",
+  "island": "Vinga",
+  "hotel": "Vinga Hotell",
+  "arrival_date": "2024-01-07",
+  "departure_date": "2024-01-07",
+  "total_cost": 7,
+  "stars": 5,
+  "features": [
+    [
+      "Paddla i Paradiset"
+    ]
+  ],
+  "additional_info": {
+    "greeting": "Tack för att du valde Vinga Hotell!",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Lighthouse_of_Island_of_Vinga.jpg",
+    "message": "Booking successful",
+    "bookingId": "291",
+    "guestId": "309"
+  }
 }

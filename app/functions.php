@@ -187,7 +187,7 @@ function reserveRoom(string $arrival, string $departure, int $roomId)
     $statement->execute();
 }
 
-/* Temporary reservation function that I have not had time to implement yet because of deployment issues */
+/* Temporary reservation function that I have not had time to implement yet because of deployment issues. */
 
 // function reserveRoom(array $dates, int $roomId, string $guestId)
 // {
